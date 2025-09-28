@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hwl_portforlio/pages/contact.dart';
-import 'package:hwl_portforlio/pages/experience.dart';
-import 'package:hwl_portforlio/pages/hero_section.dart';
-import 'package:hwl_portforlio/pages/project.dart';
+import 'package:hwl_portforlio/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // --- Data Models ---
@@ -139,23 +136,17 @@ class _EducationPageState extends State<EducationPage>
     final Size screenSize = MediaQuery.of(context).size;
     final bool isDesktop = screenSize.width > 800; // Arbitrary breakpoint
     return Scaffold(
+      backgroundColor: const Color(0xFF121212),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFFEFF1F8), // Light, neutral grey-blue
-              Color(0xFFFDFDFE), // Fading to nearly white
-            ],
-          ),
+          color: Color(0xFF121212),
         ),
         child: Stack(
           children: [
             Positioned(
               top: isDesktop ? 40 : 20, // Adjust padding for desktop/mobile
               right: isDesktop ? 60 : 12,
-              left: isDesktop? null: 12,
+              left: isDesktop ? null : 12,
               child: FadeTransition(
                 opacity: _navbarFadeAnimation,
                 child: SizedBox(
@@ -165,11 +156,11 @@ class _EducationPageState extends State<EducationPage>
                     physics: const AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _buildNavLink(context, 'Home', widget.page),
-                      _buildNavLink(context, 'Projects', widget.page),
-                      _buildNavLink(context, 'Experiences', widget.page),
-                      _buildNavLink(context, 'Education', widget.page),
-                      _buildNavLink(context, 'Contact', widget.page),
+                      NavLink(title: 'Home', page: widget.page),
+                      NavLink(title: 'Projects', page: widget.page),
+                      NavLink(title: 'Experiences', page: widget.page),
+                      NavLink(title: 'Education', page: widget.page),
+                      NavLink(title: 'Contact', page: widget.page),
                     ],
                   ),
                 ),
@@ -222,7 +213,7 @@ class _EducationPageState extends State<EducationPage>
       style: const TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.bold,
-        color: Color(0xFF6B4EEA),
+        color: Color(0xFFBB86FC),
       ),
     );
   }
@@ -268,61 +259,6 @@ class _EducationPageState extends State<EducationPage>
           .toList(),
     );
   }
-
-  Widget _buildNavLink(BuildContext context, String title, String page) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: TextButton(
-        style:  const ButtonStyle(
-          overlayColor: WidgetStatePropertyAll(Colors.transparent),
-          padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        ),
-        onPressed: () {
-          if (title == 'Home') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HeroSection(
-                          page: 'Home',
-                        )));
-          }
-
-          if (title == 'Projects') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ProjectsPage(page: 'Projects')));
-          }
-
-          if (title == 'Contact') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ContactPage(
-                          page: 'Contact',
-                        )));
-          }
-
-          if (title == 'Experiences') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ExperiencePage(page: 'Experiences')));
-          }
-        },
-        child: Text(
-          title,
-          style: TextStyle(
-            color: (page == title) ? const Color(0xFF6B4EEA) : Colors.black87,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 // --- Custom Tile for Education Timeline ---
@@ -365,6 +301,7 @@ class _EducationTile extends StatelessWidget {
                         decoration: TextDecoration.underline,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -378,12 +315,12 @@ class _EducationTile extends StatelessWidget {
                         Text(
                           item.university,
                           style: const TextStyle(
-                            color: Color(0xFF6B4EEA),
+                            color: Color(0xFFBB86FC),
                           ),
                         ),
                         const Icon(
                           Icons.open_in_new,
-                          color: Color(0xFF6B4EEA),
+                          color: Color(0xFFBB86FC),
                           size: 14,
                         ),
                       ],
@@ -391,10 +328,10 @@ class _EducationTile extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                   Text(item.duration,
-                      style: TextStyle(color: Colors.grey[600], fontSize: 13)),
+                      style: TextStyle(color: Colors.grey[400], fontSize: 13)),
                   const SizedBox(height: 8),
                   Text(item.description,
-                      style: TextStyle(color: Colors.grey[800])),
+                      style: TextStyle(color: Colors.grey[300])),
                 ],
               ),
             ),
@@ -415,7 +352,7 @@ class _TimelineNode extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final timelineColor = Colors.deepPurple[400];
+    final timelineColor = const Color(0xFFBB86FC);
     return SizedBox(
       width: 20,
       child: Column(
@@ -465,9 +402,9 @@ class _CertificationCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color(0xFF1E1E1E),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey.shade200),
+        border: Border.all(color: Colors.grey.shade700),
       ),
       child: InkWell(
         onTap: () async {
@@ -479,12 +416,12 @@ class _CertificationCard extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: Colors.deepPurple[100]?.withOpacity(0.5),
+                color: const Color(0xFFBB86FC).withOpacity(0.2),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Icon(
                 item.icon,
-                color: Colors.deepPurple[600],
+                color: const Color(0xFFBB86FC),
                 size: 20,
               ),
             ),
@@ -494,7 +431,7 @@ class _CertificationCard extends StatelessWidget {
               style: const TextStyle(
                 decoration: TextDecoration.underline,
                 fontWeight: FontWeight.w600,
-                color: Color(0xFF333A65),
+                color: Colors.white,
               ),
             ),
           ],

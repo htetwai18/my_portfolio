@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hwl_portforlio/pages/contact.dart';
-import 'package:hwl_portforlio/pages/education.dart';
-import 'package:hwl_portforlio/pages/hero_section.dart';
-import 'package:hwl_portforlio/pages/project.dart';
+import 'package:hwl_portforlio/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // --- Data Model ---
@@ -119,24 +116,17 @@ class _ExperiencePageState extends State<ExperiencePage>
     final Size screenSize = MediaQuery.of(context).size;
     final bool isDesktop = screenSize.width > 800; // Arbitrary breakpoint
     return Scaffold(
-      // Light blue-purple background
+      backgroundColor: const Color(0xFF121212),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFFEFF1F8), // Light, neutral grey-blue
-              Color(0xFFFDFDFE), // Fading to nearly white
-            ],
-          ),
+          color: Color(0xFF121212),
         ),
         child: Stack(
           children: [
             Positioned(
               top: isDesktop ? 40 : 20, // Adjust padding for desktop/mobile
               right: isDesktop ? 60 : 12,
-              left: isDesktop? null: 12,
+              left: isDesktop ? null : 12,
               child: FadeTransition(
                 opacity: _navbarFadeAnimation,
                 child: SizedBox(
@@ -146,11 +136,11 @@ class _ExperiencePageState extends State<ExperiencePage>
                     physics: const AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _buildNavLink(context, 'Home', widget.page),
-                      _buildNavLink(context, 'Projects', widget.page),
-                      _buildNavLink(context, 'Experiences', widget.page),
-                      _buildNavLink(context, 'Education', widget.page),
-                      _buildNavLink(context, 'Contact', widget.page),
+                      NavLink( title: 'Home',page:  widget.page),
+                      NavLink( title: 'Projects',page:  widget.page),
+                      NavLink( title: 'Experiences',page:  widget.page),
+                      NavLink( title: 'Education',page:  widget.page),
+                      NavLink( title: 'Contact',page:  widget.page),
                     ],
                   ),
                 ),
@@ -201,7 +191,7 @@ class _ExperiencePageState extends State<ExperiencePage>
             style: const TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.bold,
-              color: Color(0xFF1E2A5D),
+              color: Colors.white,
               fontFamily:
                   'YourFontFamily', // Make sure to add a font if you have one
             ),
@@ -209,16 +199,16 @@ class _ExperiencePageState extends State<ExperiencePage>
               const TextSpan(text: 'My Professional '),
               TextSpan(
                 text: 'Experience',
-                style: TextStyle(color: Colors.deepPurple[400]),
+                style: TextStyle(color: const Color(0xFFBB86FC)),
               ),
             ],
           ),
         ),
         const SizedBox(height: 16),
-        const Text(
+        Text(
           'A timeline of my journey as a Flutter Developer, contributing to innovative mobile applications.',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, color: Colors.black54),
+          style: TextStyle(fontSize: 16, color: Colors.grey[400]),
         ),
       ],
     );
@@ -248,56 +238,6 @@ class _ExperiencePageState extends State<ExperiencePage>
           }),
         );
       },
-    );
-  }
-
-  Widget _buildNavLink(BuildContext context, String title, String page) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: TextButton(
-        style:  const ButtonStyle(
-          overlayColor: WidgetStatePropertyAll(Colors.transparent),
-          padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        ),
-        onPressed: () {
-          if (title == 'Education') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const EducationPage(page: 'Education')));
-          }
-          if (title == 'Home') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HeroSection(
-                          page: 'Home',
-                        )));
-          }
-          if (title == 'Contact') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ContactPage(page: 'Contact')));
-          }
-          if (title == 'Projects') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ProjectsPage(page: 'Projects')));
-          }
-        },
-        child: Text(
-          title,
-          style: TextStyle(
-            color: (page == title) ? const Color(0xFF6B4EEA) : Colors.black87,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
     );
   }
 }
@@ -384,21 +324,21 @@ class _TimelineCenterNode extends StatelessWidget {
           Flexible(
             child: Container(
               width: 2,
-              color: isFirst ? Colors.transparent : Colors.grey[300],
+              color: isFirst ? Colors.transparent : Colors.grey[600],
             ),
           ),
           Container(
             width: 12,
             height: 12,
             decoration: BoxDecoration(
-              color: Colors.deepPurple[400],
+              color: const Color(0xFFBB86FC),
               shape: BoxShape.circle,
             ),
           ),
           Flexible(
             child: Container(
               width: 2,
-              color: isLast ? Colors.transparent : Colors.grey[300],
+              color: isLast ? Colors.transparent : Colors.grey[600],
             ),
           ),
         ],
@@ -429,11 +369,11 @@ class _ExperienceCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 12.0),
       padding: const EdgeInsets.all(24.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color(0xFF1E1E1E),
         borderRadius: BorderRadius.circular(12.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.3),
             spreadRadius: 1,
             blurRadius: 8,
             offset: const Offset(0, 3),
@@ -450,13 +390,15 @@ class _ExperienceCard extends StatelessWidget {
                 child: Text(
                   experience.title,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white),
                 ),
               ),
               const SizedBox(width: 8),
               Text(
                 experience.duration,
-                style: TextStyle(color: Colors.grey[600], fontSize: 12),
+                style: TextStyle(color: Colors.grey[400], fontSize: 12),
               ),
             ],
           ),
@@ -470,7 +412,7 @@ class _ExperienceCard extends StatelessWidget {
                 Text(
                   experience.company,
                   style: TextStyle(
-                    color: Colors.deepPurple[400],
+                    color: const Color(0xFFBB86FC),
                     fontWeight: FontWeight.w600,
                     decoration: TextDecoration.underline,
                   ),
@@ -478,7 +420,7 @@ class _ExperienceCard extends StatelessWidget {
                 const SizedBox(width: 4),
                 const Icon(
                   Icons.open_in_new,
-                  color: Color(0xFF6B4EEA),
+                  color: Color(0xFFBB86FC),
                   size: 14,
                 ),
               ],
@@ -491,10 +433,12 @@ class _ExperienceCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Icon(Icons.check_circle,
-                        color: Colors.deepPurple[400], size: 16),
+                        color: const Color(0xFFBB86FC), size: 16),
                     const SizedBox(width: 8),
                     Expanded(
-                        child: Text(resp, style: const TextStyle(height: 1.4))),
+                        child: Text(resp,
+                            style: TextStyle(
+                                height: 1.4, color: Colors.grey[300]))),
                   ],
                 ),
               )),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hwl_portforlio/main.dart';
 import 'dart:math' as math;
-import 'package:hwl_portforlio/pages/contact.dart';
-import 'package:hwl_portforlio/pages/education.dart';
-import 'package:hwl_portforlio/pages/experience.dart';
-import 'package:hwl_portforlio/pages/hero_section.dart';
-import 'package:hwl_portforlio/pages/project_detail.dart'; // Used for a placeholder icon color
+import 'package:hwl_portforlio/pages/project_detail.dart';
 
 // --- Data Model ---
 class Project {
@@ -48,17 +46,17 @@ class _ProjectsPageState extends State<ProjectsPage>
   late Animation<double> _navbarFadeAnimation; // For the nav bar
 
   // --- Projects Data ---
-  final List<Project> _projects = const [
+  final List<Project> _projects = [
     Project(
       imagePath: 'assets/images/digicraft_main.png',
       title: 'Digicraft Home App',
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.flutter, FontAwesomeIcons.nodeJs],
     ),
     Project(
       imagePath: 'assets/images/zcultures_main.png',
-      title: 'Zculture App',
+      title: 'Zcultures App',
       description:
           'A global AI-powered social commerce platform that uses an O2O strategy to connect brands, creators, nightlife venues.',
       techIcons: [],
@@ -165,24 +163,17 @@ class _ProjectsPageState extends State<ProjectsPage>
     final Size screenSize = MediaQuery.of(context).size;
     final bool isDesktop = screenSize.width > 800; // Arbitrary breakpoint
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF121212),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFFEFF1F8), // Light, neutral grey-blue
-              Color(0xFFFDFDFE), // Fading to nearly white
-            ],
-          ),
+          color: Color(0xFF121212),
         ),
         child: Stack(
           children: [
             Positioned(
               top: isDesktop ? 40 : 20, // Adjust padding for desktop/mobile
               right: isDesktop ? 60 : 12,
-              left: isDesktop? null: 12,
+              left: isDesktop ? null : 12,
               child: FadeTransition(
                 opacity: _navbarFadeAnimation,
                 child: SizedBox(
@@ -192,11 +183,11 @@ class _ProjectsPageState extends State<ProjectsPage>
                     physics: const AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _buildNavLink(context, 'Home', widget.page),
-                      _buildNavLink(context, 'Projects', widget.page),
-                      _buildNavLink(context, 'Experiences', widget.page),
-                      _buildNavLink(context, 'Education', widget.page),
-                      _buildNavLink(context, 'Contact', widget.page),
+                      NavLink(title: 'Home', page: widget.page),
+                      NavLink(title: 'Projects', page: widget.page),
+                      NavLink(title: 'Experiences', page: widget.page),
+                      NavLink(title: 'Education', page: widget.page),
+                      NavLink(title: 'Contact', page: widget.page),
                     ],
                   ),
                 ),
@@ -246,14 +237,14 @@ class _ProjectsPageState extends State<ProjectsPage>
           style: TextStyle(
             fontSize: 42,
             fontWeight: FontWeight.bold,
-            color: const Color(0xFF6B4EEA),
+            color: const Color(0xFFBB86FC),
           ),
         ),
         const SizedBox(height: 16),
         Text(
           'A selection of my recent work, showcasing my skills and experience in software development.',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, color: Colors.grey[700]),
+          style: TextStyle(fontSize: 16, color: Colors.grey[400]),
         ),
       ],
     );
@@ -266,56 +257,6 @@ class _ProjectsPageState extends State<ProjectsPage>
       alignment: WrapAlignment.center,
       children:
           _projects.map((project) => ProjectCard(project: project)).toList(),
-    );
-  }
-
-  Widget _buildNavLink(BuildContext context, String title, String page) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: TextButton(
-        style:  const ButtonStyle(
-          overlayColor: WidgetStatePropertyAll(Colors.transparent),
-          padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        ),
-        onPressed: () {
-          if (title == 'Education') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const EducationPage(page: 'Education')));
-          }
-          if (title == 'Home') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HeroSection(
-                          page: 'Home',
-                        )));
-          }
-          if (title == 'Contact') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ContactPage(page: 'Contact')));
-          }
-          if (title == 'Experiences') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ExperiencePage(page: 'Experiences')));
-          }
-        },
-        child: Text(
-          title,
-          style: TextStyle(
-            color: (page == title) ? const Color(0xFF6B4EEA) : Colors.black87,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
     );
   }
 }
@@ -345,7 +286,7 @@ class _ProjectCardState extends State<ProjectCard> {
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(16.0),
-          border: Border.all(color: Colors.grey.shade200),
+          border: Border.all(color: Colors.grey.shade700),
           boxShadow:
               // _isHovered
               //     ? [
@@ -359,7 +300,7 @@ class _ProjectCardState extends State<ProjectCard> {
               //     :
               [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withOpacity(0.3),
               spreadRadius: 1,
               blurRadius: 2,
               offset: const Offset(0, 4),
@@ -384,7 +325,7 @@ class _ProjectCardState extends State<ProjectCard> {
                 // In case asset is not found
                 errorBuilder: (context, error, stackTrace) => Container(
                   height: 200,
-                  color: Colors.grey[200],
+                  color: const Color(0xFF2D2D2D),
                   alignment: Alignment.center,
                   child:
                       const Icon(Icons.image_not_supported, color: Colors.grey),
@@ -392,7 +333,11 @@ class _ProjectCardState extends State<ProjectCard> {
               ),
             ),
             Container(
-              color: Colors.white,
+              decoration: const BoxDecoration(
+                  color: Color(0xFF1E1E1E),
+                  borderRadius: BorderRadius.only(
+                      bottomRight: Radius.circular(16),
+                      bottomLeft: Radius.circular(16))),
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -402,12 +347,13 @@ class _ProjectCardState extends State<ProjectCard> {
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w600,
+                      color: Colors.white,
                     ),
                   ),
                   const SizedBox(height: 8),
                   Text(
                     widget.project.description,
-                    style: TextStyle(color: Colors.grey[700], height: 1.5),
+                    style: TextStyle(color: Colors.grey[400], height: 1.5),
                   ),
                   const SizedBox(height: 16),
                   Row(
@@ -442,8 +388,8 @@ class _ProjectCardState extends State<ProjectCard> {
                                   builder: (context) => ProjectDetailPage()));
                         },
                         style: TextButton.styleFrom(
-                          backgroundColor: Colors.grey[200],
-                          foregroundColor: const Color(0xFF6B4EEA),
+                          backgroundColor: const Color(0xFF2D2D2D),
+                          foregroundColor: const Color(0xFFBB86FC),
                           padding: const EdgeInsets.symmetric(
                               horizontal: 24, vertical: 16),
                           shape: RoundedRectangleBorder(

@@ -2,10 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
-import 'package:hwl_portforlio/pages/education.dart';
-import 'package:hwl_portforlio/pages/experience.dart';
-import 'package:hwl_portforlio/pages/hero_section.dart';
-import 'package:hwl_portforlio/pages/project.dart';
+import 'package:hwl_portforlio/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatefulWidget {
@@ -125,16 +122,10 @@ class _ContactPageState extends State<ContactPage>
     final Size screenSize = MediaQuery.of(context).size;
     final bool isDesktop = screenSize.width > 800; // Arbitrary breakpoint
     return Scaffold(
+      backgroundColor: const Color(0xFF121212),
       body: Container(
         decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFFEFF1F8), // Light, neutral grey-blue
-              Color(0xFFFDFDFE), // Fading to nearly white
-            ],
-          ),
+          color: Color(0xFF121212),
         ),
         child: Stack(
           children: [
@@ -151,11 +142,11 @@ class _ContactPageState extends State<ContactPage>
                     physics: const AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _buildNavLink(context, 'Home', widget.page),
-                      _buildNavLink(context, 'Projects', widget.page),
-                      _buildNavLink(context, 'Experiences', widget.page),
-                      _buildNavLink(context, 'Education', widget.page),
-                      _buildNavLink(context, 'Contact', widget.page),
+                      NavLink(title: 'Home', page: widget.page),
+                      NavLink(title: 'Projects', page: widget.page),
+                      NavLink(title: 'Experiences', page: widget.page),
+                      NavLink(title: 'Education', page: widget.page),
+                      NavLink(title: 'Contact', page: widget.page),
                     ],
                   ),
                 ),
@@ -208,7 +199,7 @@ class _ContactPageState extends State<ContactPage>
           style: TextStyle(
             fontSize: 42,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF6B4EEA),
+            color: Color(0xFFBB86FC),
           ),
         ),
         const SizedBox(height: 16),
@@ -217,7 +208,7 @@ class _ContactPageState extends State<ContactPage>
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 16,
-            color: Colors.grey[700],
+            color: Colors.grey[400],
             height: 1.5,
           ),
         ),
@@ -229,11 +220,11 @@ class _ContactPageState extends State<ContactPage>
     return Container(
       padding: const EdgeInsets.all(32.0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color(0xFF1E1E1E),
         borderRadius: BorderRadius.circular(24.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.3),
             spreadRadius: 2,
             blurRadius: 10,
             offset: const Offset(0, 5),
@@ -281,8 +272,8 @@ class _ContactPageState extends State<ContactPage>
             ElevatedButton(
               onPressed: _sendEmail, // Call the new function here
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF6B4EEA),
-                foregroundColor: Colors.white,
+                backgroundColor: const Color(0xFFBB86FC),
+                foregroundColor: const Color(0xFF121212),
                 padding: const EdgeInsets.symmetric(vertical: 20),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12.0),
@@ -309,8 +300,9 @@ class _ContactPageState extends State<ContactPage>
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: label,
+        hintStyle: TextStyle(color: Colors.grey[500]),
         filled: true,
-        fillColor: Colors.grey[100],
+        fillColor: const Color(0xFF2D2D2D),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
         border: OutlineInputBorder(
@@ -319,13 +311,14 @@ class _ContactPageState extends State<ContactPage>
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(color: Colors.grey[300]!),
+          borderSide: BorderSide(color: Colors.grey[600]!),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(color: Colors.indigo[600]!, width: 2),
+          borderSide: BorderSide(color: const Color(0xFFBB86FC), width: 2),
         ),
       ),
+      style: TextStyle(color: Colors.white),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your $label';
@@ -402,8 +395,8 @@ class _ContactPageState extends State<ContactPage>
         ),
         const SizedBox(height: 24),
         Text(
-          '© 2025 Htet Wai Lwin. Created with Flutter 3.5.0',
-          style: TextStyle(color: Colors.grey[600]),
+          '© 2025 Htet Wai Lwin. Created with Flutter 3.35.4',
+          style: TextStyle(color: Colors.grey[400]),
         ),
       ],
     );
@@ -411,66 +404,12 @@ class _ContactPageState extends State<ContactPage>
 
   Widget _buildSocialIcon(IconData icon, Function onTap, String tip) {
     return IconButton(
-      icon: Icon(icon, color: Colors.grey[800]),
+      icon: Icon(icon, color: Colors.grey[400]),
       onPressed: () {
         onTap();
       },
       splashRadius: 24,
       tooltip: tip,
-    );
-  }
-
-  Widget _buildNavLink(BuildContext context, String title, String page) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: TextButton(
-        style: const ButtonStyle(
-          overlayColor: WidgetStatePropertyAll(Colors.transparent),
-          padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        ),
-        onPressed: () {
-          if (title == 'Education') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const EducationPage(page: 'Education')));
-          }
-
-          if (title == 'Home') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const HeroSection(
-                          page: 'Home',
-                        )));
-          }
-
-          if (title == 'Projects') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ProjectsPage(page: 'Projects')));
-          }
-
-          if (title == 'Experiences') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ExperiencePage(page: 'Experiences')));
-          }
-        },
-        child: Text(
-          title,
-          style: TextStyle(
-            color: (page == title) ? const Color(0xFF6B4EEA) : Colors.black87,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-      ),
     );
   }
 }

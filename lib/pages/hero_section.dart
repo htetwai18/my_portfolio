@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hwl_portforlio/pages/contact.dart';
-import 'package:hwl_portforlio/pages/education.dart';
-import 'package:hwl_portforlio/pages/experience.dart';
-import 'package:hwl_portforlio/pages/project.dart';
+import 'package:hwl_portforlio/main.dart';
 import 'dart:html' as html;
 
 class HeroSection extends StatefulWidget {
@@ -70,9 +67,8 @@ class _HeroSectionState extends State<HeroSection>
   void _downloadResume() {
     const String assetPath = "assets/NCCL5_HWL_certificate_1.pdf";
 
-    final anchor = html.AnchorElement(href: assetPath)
-      ..setAttribute("download",
-          "NCCL5_HWL_certificate_1.pdf")
+    html.AnchorElement(href: assetPath)
+      ..setAttribute("download", "NCCL5_HWL_certificate_1.pdf")
       ..click();
   }
 
@@ -82,12 +78,12 @@ class _HeroSectionState extends State<HeroSection>
     final bool isDesktop = screenSize.width > 960;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xFF121212),
       body: Container(
         // --- FIX #1: REMOVE PINK/PURPLE TINT FROM GRADIENT ---
         // Replaced the previous colors with a cleaner, more neutral gradient.
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Color(0xFF121212),
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -97,7 +93,6 @@ class _HeroSectionState extends State<HeroSection>
                 margin: EdgeInsets.only(
                   top: isDesktop ? 40 : 20, // Adjust padding for desktop/mobile
                   right: isDesktop ? 60 : 12,
-
                 ),
                 height: 50,
                 child: FadeTransition(
@@ -107,11 +102,11 @@ class _HeroSectionState extends State<HeroSection>
                     physics: const AlwaysScrollableScrollPhysics(),
                     scrollDirection: Axis.horizontal,
                     children: [
-                      _buildNavLink(context, 'Home', widget.page),
-                      _buildNavLink(context, 'Projects', widget.page),
-                      _buildNavLink(context, 'Experiences', widget.page),
-                      _buildNavLink(context, 'Education', widget.page),
-                      _buildNavLink(context, 'Contact', widget.page),
+                      NavLink( title: 'Home',page:  widget.page),
+                      NavLink( title: 'Projects',page:  widget.page),
+                      NavLink( title: 'Experiences',page:  widget.page),
+                      NavLink( title: 'Education',page:  widget.page),
+                      NavLink( title: 'Contact',page:  widget.page),
                     ],
                   ),
                 ),
@@ -146,7 +141,7 @@ class _HeroSectionState extends State<HeroSection>
                                 style: TextStyle(
                                   fontSize: isDesktop ? 64 : 48,
                                   fontWeight: FontWeight.bold,
-                                  color: const Color(0xFF6B4EEA),
+                                  color: const Color(0xFFBB86FC),
                                 ),
                                 textAlign: isDesktop
                                     ? TextAlign.start
@@ -160,7 +155,7 @@ class _HeroSectionState extends State<HeroSection>
                                 'Mobile Application Developer(Flutter)',
                                 style: TextStyle(
                                     fontSize: isDesktop ? 28 : 22,
-                                    color: Colors.black87),
+                                    color: Colors.white),
                                 textAlign: isDesktop
                                     ? TextAlign.start
                                     : TextAlign.center,
@@ -173,7 +168,7 @@ class _HeroSectionState extends State<HeroSection>
                                 'Building cross-platform apps with Flutter & Dart.',
                                 style: TextStyle(
                                     fontSize: isDesktop ? 20 : 16,
-                                    color: Colors.black54),
+                                    color: Colors.grey[400]),
                                 textAlign: isDesktop
                                     ? TextAlign.start
                                     : TextAlign.center,
@@ -185,7 +180,8 @@ class _HeroSectionState extends State<HeroSection>
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyLarge
-                                  ?.copyWith(height: 1.6),
+                                  ?.copyWith(
+                                      height: 1.6, color: Colors.grey[300]),
                               textAlign: isDesktop
                                   ? TextAlign.start
                                   : TextAlign.center,
@@ -198,8 +194,8 @@ class _HeroSectionState extends State<HeroSection>
                               icon: const Icon(Icons.download),
                               label: const Text('Download Resume'),
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF6B4EEA),
-                                foregroundColor: Colors.white,
+                                backgroundColor: const Color(0xFFBB86FC),
+                                foregroundColor: const Color(0xFF121212),
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 24, vertical: 16),
                                 shape: RoundedRectangleBorder(
@@ -212,7 +208,9 @@ class _HeroSectionState extends State<HeroSection>
                                 style: Theme.of(context)
                                     .textTheme
                                     .headlineSmall
-                                    ?.copyWith(fontWeight: FontWeight.bold)),
+                                    ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white)),
                             const SizedBox(height: 16),
                             buildSkillsWrap(isDesktop),
                             // const SizedBox(height: 32),
@@ -242,7 +240,7 @@ class _HeroSectionState extends State<HeroSection>
                             height: isDesktop ? 350 : 200,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.white,
+                              color: const Color(0xFF1E1E1E),
                               boxShadow: [
                                 BoxShadow(
                                     color: Colors.black.withOpacity(0.08),
@@ -250,7 +248,8 @@ class _HeroSectionState extends State<HeroSection>
                                     offset: const Offset(0, 15))
                               ],
                               border: Border.all(
-                                  color: Colors.white.withOpacity(0.5),
+                                  color:
+                                      const Color(0xFFBB86FC).withOpacity(0.3),
                                   width: 6),
                             ),
                             child: ClipOval(
@@ -302,12 +301,12 @@ class _HeroSectionState extends State<HeroSection>
     return Chip(
       label: Text(skill,
           style: TextStyle(
-              color: Colors.deepPurple[800], fontWeight: FontWeight.w500)),
-      backgroundColor: Colors.white,
+              color: const Color(0xFFBB86FC), fontWeight: FontWeight.w500)),
+      backgroundColor: const Color(0xFF1E1E1E),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-        side: BorderSide(color: Colors.deepPurple.withOpacity(0.2)),
+        side: BorderSide(color: const Color(0xFFBB86FC).withOpacity(0.3)),
       ),
     );
   }
@@ -342,7 +341,7 @@ class _HeroSectionState extends State<HeroSection>
       margin: margin,
       padding: const EdgeInsets.symmetric(vertical: 24.0, horizontal: 16.0),
       decoration: BoxDecoration(
-          color: Colors.white,
+          color: const Color(0xFF1E1E1E),
           borderRadius: BorderRadius.circular(16),
           boxShadow: [
             BoxShadow(
@@ -350,74 +349,20 @@ class _HeroSectionState extends State<HeroSection>
                 blurRadius: 20,
                 offset: const Offset(0, 4))
           ],
-          border: Border.all(color: Colors.grey.shade200)),
+          border: Border.all(color: Colors.grey.shade700)),
       child: Column(
         children: [
           Text(stat['value']!,
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.bold, color: Colors.deepPurple)),
+                  fontWeight: FontWeight.bold, color: const Color(0xFFBB86FC))),
           const SizedBox(height: 8),
           Text(stat['label']!,
               style: Theme.of(context)
                   .textTheme
                   .titleMedium
-                  ?.copyWith(color: Colors.grey[600]),
+                  ?.copyWith(color: Colors.grey[400]),
               textAlign: TextAlign.center),
         ],
-      ),
-    );
-  }
-
-  Widget _buildNavLink(BuildContext context, String title, String page) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: TextButton(
-        style:  const ButtonStyle(
-          overlayColor: WidgetStatePropertyAll(Colors.transparent),
-          padding: WidgetStatePropertyAll(EdgeInsets.zero),
-        ),
-        onPressed: () {
-          if (title == 'Education') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const EducationPage(page: 'Education')));
-          }
-
-          if (title == 'Projects') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ProjectsPage(page: 'Projects')));
-          }
-
-          if (title == 'Contact') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ContactPage(
-                          page: 'Contact',
-                        )));
-          }
-
-          if (title == 'Experiences') {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        const ExperiencePage(page: 'Experiences')));
-          }
-        },
-        child: Text(
-          title,
-          style: TextStyle(
-            color: (page == title) ? const Color(0xFF6B4EEA) : Colors.black87,
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
       ),
     );
   }
