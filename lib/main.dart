@@ -59,17 +59,6 @@ class _NavLinkState extends State<NavLink> {
             // Use callback to scroll to section if available
             if (widget.onSectionClick != null) {
               widget.onSectionClick!(widget.title);
-            } else {
-              // Fallback to navigation for other pages
-              if (widget.title == 'Home') {
-                if (widget.title != widget.page) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const HeroSection(page: 'Home')));
-                }
-              }
             }
           },
           child: AnimatedScale(

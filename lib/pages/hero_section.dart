@@ -33,7 +33,7 @@ class _HeroSectionState extends State<HeroSection>
   final ScrollController _scrollController = ScrollController();
 
   // GlobalKeys for each section
-  final GlobalKey _homeKey = GlobalKey();
+
   final GlobalKey _experiencesKey = GlobalKey();
   final GlobalKey _educationKey = GlobalKey();
   final GlobalKey _projectsKey = GlobalKey();
@@ -277,9 +277,6 @@ class _HeroSectionState extends State<HeroSection>
     GlobalKey? targetKey;
 
     switch (section) {
-      case 'Home':
-        targetKey = _homeKey;
-        break;
       case 'Experiences':
         targetKey = _experiencesKey;
         break;
@@ -409,10 +406,6 @@ class _HeroSectionState extends State<HeroSection>
                       physics: const AlwaysScrollableScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       children: [
-                        NavLink(
-                            title: 'Home',
-                            page: widget.page,
-                            onSectionClick: _scrollToSection),
                         NavLink(
                             title: 'Projects',
                             page: widget.page,
