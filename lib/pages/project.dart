@@ -52,28 +52,28 @@ class _ProjectsPageState extends State<ProjectsPage>
       title: 'Digicraft Home App',
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
-      techIcons: [FontAwesomeIcons.flutter, FontAwesomeIcons.nodeJs],
+      techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/zcultures_main.png',
       title: 'Zcultures App',
       description:
           'A global AI-powered social commerce platform that uses an O2O strategy to connect brands, creators, nightlife venues.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/suzuki_main.png',
       title: 'Suzuki Smart Order App',
       description:
           'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/weday_main.png',
       title: 'Weday App',
       description:
           'A social app with features for posts, comments, nested replies, reactions, and live streaming powered by Agora SDK.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.flutter],
     ),
 
     Project(
@@ -81,21 +81,21 @@ class _ProjectsPageState extends State<ProjectsPage>
       title: 'ARFI Ecommerce App',
       description:
           'A mobile e-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/dr_rej_main.png',
       title: 'Dr Rejvue Clinic Membership App',
       description:
           'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/hrm_main.png',
       title: 'Kwin HR Management App',
       description:
           'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.flutter],
     ),
     // Project(
     //   imagePath: 'assets/placeholder.png',
@@ -116,14 +116,14 @@ class _ProjectsPageState extends State<ProjectsPage>
       title: 'Tiger Backoffice',
       description:
           'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.laravel],
     ),
     Project(
       imagePath: 'assets/images/infinity_main.jpg',
       title: 'Infinity 688 Backoffice',
       description:
           'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
-      techIcons: [],
+      techIcons: [FontAwesomeIcons.laravel],
     ),
   ];
 

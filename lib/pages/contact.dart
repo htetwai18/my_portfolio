@@ -388,7 +388,7 @@ class _ContactPageState extends State<ContactPage>
                       .stackOverflow, // Phone is available in default Material Icons
                   () async {
                 await _launchUrl(
-                    ' https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
+                    'https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
               }, 'Stack overflow'),
             ],
           ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hwl_portforlio/main.dart';
+import 'package:hwl_portforlio/pages/education.dart';
 import 'dart:html' as html;
+import 'package:hwl_portforlio/pages/experience.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HeroSection extends StatefulWidget {
   final String page;
@@ -22,6 +25,92 @@ class _HeroSectionState extends State<HeroSection>
   late Animation<double> _imageScaleAnimation;
   late Animation<double> _navbarFadeAnimation;
 
+  final List<Experience> _experiences = const [
+    Experience(
+      title: 'Flutter & Laravel Developer',
+      company: 'Whatif Solutions Sdn Bhd',
+      duration: 'May 2025 - Sep 2025',
+      responsibilities: [
+        'Digicraft Home App',
+        'Zcultures App',
+        'Tiger Online Casino Backoffice',
+        'Infinity 688 Casino Backoffice',
+      ],
+      link: 'https://www.whatifsolutions.my/',
+    ),
+    Experience(
+      title: 'Part-time Flutter Developer',
+      company: 'My Day Thu Kywal',
+      duration: 'Sep 2024 - Jan 2025',
+      responsibilities: [
+        'Weday App',
+      ],
+      link: 'https://myday.com.mm/',
+    ),
+    Experience(
+      title: 'Flutter Developer',
+      company: 'Kwin Technologies',
+      duration: 'Sep 2022 - Apr 2025',
+      responsibilities: [
+        'Suzuki Smart Order App',
+        'Kwin HR Management App',
+        'ARFI Ecommerce App',
+        'Dr Rejvue Aesthetic Clinic Membership App',
+        'Yankin Bubble Tea POS App',
+        'Kwin Client Management App',
+      ],
+      link: 'http://kwintechnologies.com/',
+    ),
+  ];
+
+  final List<EducationItem> _educationItems = const [
+    EducationItem(
+      degree: 'Bachelor of Science - BSc(Hons), Computing',
+      university: 'University of Greenwich',
+      duration: 'Dec 2024 - Nov 2025',
+      description:
+          'Skills: Project Management · Software Development · Enterprise Software · Software Documentation',
+      linkUni: 'https://www.gre.ac.uk/',
+      linkDegree: '',
+    ),
+    EducationItem(
+      degree: 'Level-5 Higher Diploma, Computing',
+      university: 'NCC Education',
+      duration: 'Dec 2023 - Oct 2024',
+      description:
+          'Skills: Requirements Analysis · Risk Management · Risk Assessment',
+      linkUni: 'https://www.nccedu.com/',
+      linkDegree:
+          'https://drive.google.com/file/d/17Arr6LxB79z-KRWQOodM7-jT2C9dT1Md/view?usp=sharing',
+    ),
+    EducationItem(
+      degree: 'Level-4 Higher Diploma, Computing',
+      university: 'NCC Education',
+      duration: 'Jan 2023 - Dec 2023',
+      description:
+          'Focus on computer science fundamentals and software practices.',
+      linkUni: 'https://www.nccedu.com/',
+      linkDegree:
+          'https://drive.google.com/file/d/1JpU3znVEIstXyJopNBdGqJ8ysAgDo4jA/view?usp=sharing',
+    ),
+    EducationItem(
+      degree: 'Final Part II - MBBS',
+      university: 'University of Medicine 2, Yangon',
+      duration: 'Dec 2014 - Jan 2020',
+      description: 'Completed foundational studies in medicine and surgery.',
+      linkUni: 'https://um2ygn.edu.mm/',
+      linkDegree: '',
+    ),
+  ];
+
+  final List<CertificationItem> _certificationItems = const [
+    CertificationItem(
+      icon: Icons.phone_android,
+      name: 'Flutter Full Term Course(PADC)',
+      link:
+          'https://drive.google.com/file/d/1omIB7SXl7D_xmjbrkk-nEPDkfPuxvqD8/view?usp=sharing',
+    ),
+  ];
   @override
   void initState() {
     super.initState();
@@ -87,27 +176,32 @@ class _HeroSectionState extends State<HeroSection>
         ),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                margin: EdgeInsets.only(
-                  top: isDesktop ? 40 : 20, // Adjust padding for desktop/mobile
-                  right: isDesktop ? 60 : 12,
-                ),
-                height: 50,
-                child: FadeTransition(
-                  opacity: _navbarFadeAnimation,
-                  child: ListView(
-                    shrinkWrap: true,
-                    physics: const AlwaysScrollableScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      NavLink( title: 'Home',page:  widget.page),
-                      NavLink( title: 'Projects',page:  widget.page),
-                      NavLink( title: 'Experiences',page:  widget.page),
-                      NavLink( title: 'Education',page:  widget.page),
-                      NavLink( title: 'Contact',page:  widget.page),
-                    ],
+              Align(
+                alignment: Alignment.centerRight,
+                child: Container(
+                  margin: EdgeInsets.only(
+                    top: isDesktop
+                        ? 40
+                        : 20, // Adjust padding for desktop/mobile
+                    right: isDesktop ? 60 : 12,
+                  ),
+                  height: 50,
+                  child: FadeTransition(
+                    opacity: _navbarFadeAnimation,
+                    child: ListView(
+                      shrinkWrap: true,
+                      physics: const AlwaysScrollableScrollPhysics(),
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        NavLink(title: 'Home', page: widget.page),
+                        NavLink(title: 'Projects', page: widget.page),
+                        NavLink(title: 'Experiences', page: widget.page),
+                        NavLink(title: 'Education', page: widget.page),
+                        NavLink(title: 'Contact', page: widget.page),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -213,14 +307,6 @@ class _HeroSectionState extends State<HeroSection>
                                         color: Colors.white)),
                             const SizedBox(height: 16),
                             buildSkillsWrap(isDesktop),
-                            // const SizedBox(height: 32),
-                            // Text('Quick Stats',
-                            //     style: Theme.of(context)
-                            //         .textTheme
-                            //         .headlineSmall
-                            //         ?.copyWith(fontWeight: FontWeight.bold)),
-                            // const SizedBox(height: 16),
-                            // buildQuickStatsSection(isDesktop),
                           ],
                         ),
                       ),
@@ -267,6 +353,18 @@ class _HeroSectionState extends State<HeroSection>
                   ),
                 ),
               ),
+              const SizedBox(height: 100),
+              _buildHeader(),
+              const SizedBox(height: 48),
+              _buildTimeline(),
+              const SizedBox(height: 100),
+              _buildSectionHeader('Education'),
+              const SizedBox(height: 24),
+              _buildEducationTimeline(),
+              const SizedBox(height: 48),
+              _buildSectionHeader('Certifications'),
+              const SizedBox(height: 24),
+              _buildCertificationsGrid(),
             ],
           ),
         ),
@@ -364,6 +462,121 @@ class _HeroSectionState extends State<HeroSection>
               textAlign: TextAlign.center),
         ],
       ),
+    );
+  }
+
+  Widget _buildHeader() {
+    return Column(
+      children: [
+        RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: const TextStyle(
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontFamily:
+                  'YourFontFamily', // Make sure to add a font if you have one
+            ),
+            children: [
+              const TextSpan(text: 'My Professional '),
+              TextSpan(
+                text: 'Experience',
+                style: TextStyle(color: const Color(0xFFBB86FC)),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'A timeline of my journey as a Flutter Developer, contributing to innovative mobile applications.',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16, color: Colors.grey[400]),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildTimeline() {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // Use a single-column layout on narrow screens
+        bool isNarrow = constraints.maxWidth < 760;
+
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: (isNarrow) ? 14 : 60),
+          child: Column(
+            children: List.generate(_experiences.length, (index) {
+              final experience = _experiences[index];
+              final isFirst = index == 0;
+              final isLast = index == _experiences.length - 1;
+              // On wide screens, alternate alignment. On narrow, all are right-aligned.
+              final isLeftAligned = !isNarrow && index % 2 == 1;
+
+              return TimelineTile(
+                experience: experience,
+                isFirst: isFirst,
+                isLast: isLast,
+                isLeftAligned: isLeftAligned,
+                isNarrow: isNarrow,
+              );
+            }),
+          ),
+        );
+      },
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Text(
+      title,
+      style: const TextStyle(
+        fontSize: 28,
+        fontWeight: FontWeight.bold,
+        color: Color(0xFFBB86FC),
+      ),
+    );
+  }
+
+  Widget _buildEducationTimeline() {
+    Future<void> _launchUrl(String url) async {
+      final Uri uri = Uri.parse(url);
+      if (!await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      )) {
+        throw "Cannot launch url";
+      }
+    }
+
+    return Column(
+      children: List.generate(_educationItems.length, (index) {
+        return EducationTile(
+          onTapLinkDegree: () async {
+            if (_educationItems[index].linkDegree != '') {
+              await _launchUrl(_educationItems[index].linkDegree);
+            }
+          },
+          item: _educationItems[index],
+          isFirst: index == 0,
+          isLast: index == _educationItems.length - 1,
+          onTapLinkUni: () async {
+            await _launchUrl(_educationItems[index].linkUni);
+          },
+        );
+      }),
+    );
+  }
+
+  Widget _buildCertificationsGrid() {
+    return Wrap(
+      spacing: 16,
+      runSpacing: 16,
+      children: _certificationItems
+          .map(
+            (item) => CertificationCard(item: item),
+          )
+          .toList(),
     );
   }
 }

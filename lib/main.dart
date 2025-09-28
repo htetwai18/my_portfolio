@@ -66,15 +66,15 @@ class _NavLinkState extends State<NavLink> {
                         builder: (context) => const HeroSection(page: 'Home')));
               }
             }
-            if (widget.title == 'Education') {
-              if (widget.title != widget.page) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const EducationPage(page: 'Education')));
-              }
-            }
+            // if (widget.title == 'Education') {
+            //   if (widget.title != widget.page) {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) =>
+            //                 const EducationPage(page: 'Education')));
+            //   }
+            // }
 
             if (widget.title == 'Projects') {
               if (widget.title != widget.page) {
@@ -97,15 +97,15 @@ class _NavLinkState extends State<NavLink> {
               }
             }
 
-            if (widget.title == 'Experiences') {
-              if (widget.title != widget.page) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const ExperiencePage(page: 'Experiences')));
-              }
-            }
+            // if (widget.title == 'Experiences') {
+            //   if (widget.title != widget.page) {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) =>
+            //                 const ExperiencePage(page: 'Experiences')));
+            //   }
+            // }
           },
           child: AnimatedScale(
             scale: _isHovered ? 1.1 : 1.0,
