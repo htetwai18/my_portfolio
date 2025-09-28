@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hwl_portforlio/pages/contact.dart';
-import 'package:hwl_portforlio/pages/education.dart';
-import 'package:hwl_portforlio/pages/experience.dart';
 import 'package:hwl_portforlio/pages/hero_section.dart';
-import 'package:hwl_portforlio/pages/project.dart';
 
 void main() {
   runApp(const MyApp());
@@ -76,26 +72,26 @@ class _NavLinkState extends State<NavLink> {
             //   }
             // }
 
-            if (widget.title == 'Projects') {
-              if (widget.title != widget.page) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            const ProjectsPage(page: 'Projects')));
-              }
-            }
+            // if (widget.title == 'Projects') {
+            //   if (widget.title != widget.page) {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) =>
+            //                 const ProjectsPage(page: 'Projects')));
+            //   }
+            // }
 
-            if (widget.title == 'Contact') {
-              if (widget.title != widget.page) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ContactPage(
-                              page: 'Contact',
-                            )));
-              }
-            }
+            // if (widget.title == 'Contact') {
+            //   if (widget.title != widget.page) {
+            //     Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //             builder: (context) => const ContactPage(
+            //                   page: 'Contact',
+            //                 )));
+            //   }
+            // }
 
             // if (widget.title == 'Experiences') {
             //   if (widget.title != widget.page) {

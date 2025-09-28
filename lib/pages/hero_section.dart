@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hwl_portforlio/main.dart';
 import 'package:hwl_portforlio/pages/education.dart';
 import 'dart:html' as html;
 import 'package:hwl_portforlio/pages/experience.dart';
+import 'package:hwl_portforlio/pages/project.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:http/http.dart' as http;
 
 class HeroSection extends StatefulWidget {
   final String page;
@@ -18,6 +23,12 @@ class HeroSection extends StatefulWidget {
 
 class _HeroSectionState extends State<HeroSection>
     with SingleTickerProviderStateMixin {
+  final _formKey = GlobalKey<FormState>();
+  // Add controllers to get the text field values
+  final _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _messageController = TextEditingController();
+
   late AnimationController _controller;
   late Animation<Offset> _nameSlideAnimation;
   late Animation<Offset> _titleSlideAnimation;
@@ -68,8 +79,6 @@ class _HeroSectionState extends State<HeroSection>
       degree: 'Bachelor of Science - BSc(Hons), Computing',
       university: 'University of Greenwich',
       duration: 'Dec 2024 - Nov 2025',
-      description:
-          'Skills: Project Management · Software Development · Enterprise Software · Software Documentation',
       linkUni: 'https://www.gre.ac.uk/',
       linkDegree: '',
     ),
@@ -77,8 +86,6 @@ class _HeroSectionState extends State<HeroSection>
       degree: 'Level-5 Higher Diploma, Computing',
       university: 'NCC Education',
       duration: 'Dec 2023 - Oct 2024',
-      description:
-          'Skills: Requirements Analysis · Risk Management · Risk Assessment',
       linkUni: 'https://www.nccedu.com/',
       linkDegree:
           'https://drive.google.com/file/d/17Arr6LxB79z-KRWQOodM7-jT2C9dT1Md/view?usp=sharing',
@@ -87,8 +94,6 @@ class _HeroSectionState extends State<HeroSection>
       degree: 'Level-4 Higher Diploma, Computing',
       university: 'NCC Education',
       duration: 'Jan 2023 - Dec 2023',
-      description:
-          'Focus on computer science fundamentals and software practices.',
       linkUni: 'https://www.nccedu.com/',
       linkDegree:
           'https://drive.google.com/file/d/1JpU3znVEIstXyJopNBdGqJ8ysAgDo4jA/view?usp=sharing',
@@ -97,7 +102,6 @@ class _HeroSectionState extends State<HeroSection>
       degree: 'Final Part II - MBBS',
       university: 'University of Medicine 2, Yangon',
       duration: 'Dec 2014 - Jan 2020',
-      description: 'Completed foundational studies in medicine and surgery.',
       linkUni: 'https://um2ygn.edu.mm/',
       linkDegree: '',
     ),
@@ -109,6 +113,87 @@ class _HeroSectionState extends State<HeroSection>
       name: 'Flutter Full Term Course(PADC)',
       link:
           'https://drive.google.com/file/d/1omIB7SXl7D_xmjbrkk-nEPDkfPuxvqD8/view?usp=sharing',
+    ),
+  ];
+
+  final List<Project> _projects = [
+    Project(
+      imagePath: 'assets/images/digicraft_main.png',
+      title: 'Digicraft Home App',
+      description:
+          'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
+      techIcons: [FontAwesomeIcons.flutter],
+    ),
+    Project(
+      imagePath: 'assets/images/zcultures_main.png',
+      title: 'Zcultures App',
+      description:
+          'A global AI-powered social commerce platform that uses an O2O strategy to connect brands, creators, nightlife venues.',
+      techIcons: [FontAwesomeIcons.flutter],
+    ),
+    Project(
+      imagePath: 'assets/images/suzuki_main.png',
+      title: 'Suzuki Smart Order App',
+      description:
+          'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
+      techIcons: [FontAwesomeIcons.flutter],
+    ),
+    Project(
+      imagePath: 'assets/images/weday_main.png',
+      title: 'Weday App',
+      description:
+          'A social app with features for posts, comments, nested replies, reactions, and live streaming powered by Agora SDK.',
+      techIcons: [FontAwesomeIcons.flutter],
+    ),
+
+    Project(
+      imagePath: 'assets/images/arfi_main.png',
+      title: 'ARFI Ecommerce App',
+      description:
+          'A mobile e-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
+      techIcons: [FontAwesomeIcons.flutter],
+    ),
+    Project(
+      imagePath: 'assets/images/dr_rej_main.png',
+      title: 'Dr Rejvue Clinic Membership App',
+      description:
+          'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
+      techIcons: [FontAwesomeIcons.flutter],
+    ),
+    Project(
+      imagePath: 'assets/images/hrm_main.png',
+      title: 'Kwin HR Management App',
+      description:
+          'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
+      techIcons: [FontAwesomeIcons.flutter],
+    ),
+    // Project(
+    //   imagePath: 'assets/placeholder.png',
+    //   title: 'Yankin Bubble Tea POS App',
+    //   description:
+    //   'A point-of-sale application redesigned from a legacy system, supporting offline data storage, order tracking, and efficient daily operations.',
+    //   techIcons: [],
+    // ),
+    // Project(
+    //   imagePath: 'assets/placeholder.png',
+    //   title: 'Kwin Client Management App',
+    //   description:
+    //   'A lightweight client management tool that automates subscription expiry tracking and provides easy manual access control for customers.',
+    //   techIcons: [],
+    // ),
+    Project(
+      imagePath: 'assets/images/tiger_main.png',
+      title: 'Tiger Backoffice',
+      description:
+          'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
+      techIcons: [FontAwesomeIcons.laravel],
+    ),
+    Project(
+      imagePath: 'assets/images/infinity_main.jpg',
+      title: 'Infinity 688 Backoffice',
+      description:
+          'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
+      techIcons: [FontAwesomeIcons.laravel],
     ),
   ];
   @override
@@ -150,7 +235,53 @@ class _HeroSectionState extends State<HeroSection>
   @override
   void dispose() {
     _controller.dispose();
+    _nameController.dispose();
+    _emailController.dispose();
+    _messageController.dispose();
     super.dispose();
+  }
+
+  Future<void> _sendEmail() async {
+    if (_formKey.currentState!.validate()) {
+      final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+      const serviceId = 'service_dx6jkwf';
+      const templateId = 'template_dsbktpk';
+      const userId = 'nEOpcklJoxm-lX5As';
+
+      final response = await http.post(
+        url,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: json.encode({
+          'service_id': serviceId,
+          'template_id': templateId,
+          'user_id': userId,
+          'template_params': {
+            'name': _nameController.text,
+            'email': _emailController.text,
+            'message': _messageController.text,
+          }
+        }),
+      );
+
+      if (response.statusCode == 200) {
+        // Clear the form fields
+        _nameController.clear();
+        _emailController.clear();
+        _messageController.clear();
+        // Show a success message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Message sent successfully!')),
+        );
+      } else {
+        // Show an error message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Failed to send message. Please try again.')),
+        );
+      }
+    }
   }
 
   void _downloadResume() {
@@ -365,6 +496,20 @@ class _HeroSectionState extends State<HeroSection>
               _buildSectionHeader('Certifications'),
               const SizedBox(height: 24),
               _buildCertificationsGrid(),
+              const SizedBox(height: 100),
+              _buildProjectHeader(),
+              const SizedBox(height: 48),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: _buildProjectsGrid(),
+              ),
+              const SizedBox(height: 100),
+              _buildContactHeader(context),
+              const SizedBox(height: 32),
+              _buildFormCard(context),
+              const SizedBox(height: 48),
+              _buildContactFooter(context),
+              const SizedBox(height: 48),
             ],
           ),
         ),
@@ -504,7 +649,7 @@ class _HeroSectionState extends State<HeroSection>
         bool isNarrow = constraints.maxWidth < 760;
 
         return Padding(
-          padding: EdgeInsets.symmetric(horizontal: (isNarrow) ? 14 : 60),
+          padding: EdgeInsets.symmetric(horizontal: (isNarrow) ? 14 : 100),
           child: Column(
             children: List.generate(_experiences.length, (index) {
               final experience = _experiences[index];
@@ -551,6 +696,9 @@ class _HeroSectionState extends State<HeroSection>
 
     return Column(
       children: List.generate(_educationItems.length, (index) {
+        // Alternate between left and right alignment for zigzag effect
+        final isLeftAligned = index % 2 == 1;
+
         return EducationTile(
           onTapLinkDegree: () async {
             if (_educationItems[index].linkDegree != '') {
@@ -560,6 +708,7 @@ class _HeroSectionState extends State<HeroSection>
           item: _educationItems[index],
           isFirst: index == 0,
           isLast: index == _educationItems.length - 1,
+          isLeftAligned: isLeftAligned,
           onTapLinkUni: () async {
             await _launchUrl(_educationItems[index].linkUni);
           },
@@ -577,6 +726,265 @@ class _HeroSectionState extends State<HeroSection>
             (item) => CertificationCard(item: item),
           )
           .toList(),
+    );
+  }
+
+  Widget _buildProjectHeader() {
+    return Column(
+      children: [
+        const Text(
+          'My Projects',
+          style: TextStyle(
+            fontSize: 42,
+            fontWeight: FontWeight.bold,
+            color: const Color(0xFFBB86FC),
+          ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'A selection of my recent work, showcasing my skills and experience in software development.',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16, color: Colors.grey[400]),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildProjectsGrid() {
+    return Wrap(
+      spacing: 24, // Horizontal space between cards
+      runSpacing: 24, // Vertical space between cards
+      alignment: WrapAlignment.center,
+      children:
+          _projects.map((project) => ProjectCard(project: project)).toList(),
+    );
+  }
+
+  Widget _buildContactHeader(BuildContext context) {
+    return Column(
+      children: [
+        const Text(
+          'Get in Touch',
+          style: TextStyle(
+            fontSize: 42,
+            fontWeight: FontWeight.bold,
+            color: Color(0xFFBB86FC),
+          ),
+        ),
+        const SizedBox(height: 16),
+        Text(
+          "I'm always open to discussing new projects, creative ideas, or opportunities.\nFeel free to reach out, and I'll get back to you as soon as possible.",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey[400],
+            height: 1.5,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildFormCard(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isDesktop = screenSize.width > 960;
+    return Container(
+      width: isDesktop ? (screenSize.width)/2 : null,
+      margin: isDesktop
+          ? const EdgeInsets.symmetric(horizontal: 0)
+          : const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.all(32.0),
+      decoration: BoxDecoration(
+        color: const Color(0xFF1E1E1E),
+        borderRadius: BorderRadius.circular(24.0),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.3),
+            spreadRadius: 2,
+            blurRadius: 10,
+            offset: const Offset(0, 5),
+          ),
+        ],
+      ),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Use LayoutBuilder for responsive Name/Email fields
+            LayoutBuilder(
+              builder: (context, constraints) {
+                // Use a breakpoint to switch between Row and Column
+                if (constraints.maxWidth > 550) {
+                  return Row(
+                    children: [
+                      Expanded(
+                          child: _buildTextFormField('Your Name',
+                              controller: _nameController)),
+                      const SizedBox(width: 16),
+                      Expanded(
+                          child: _buildTextFormField('Your Email',
+                              controller: _emailController)),
+                    ],
+                  );
+                } else {
+                  return Column(
+                    children: [
+                      _buildTextFormField('Your Name',
+                          controller: _nameController),
+                      const SizedBox(height: 16),
+                      _buildTextFormField('Your Email',
+                          controller: _emailController),
+                    ],
+                  );
+                }
+              },
+            ),
+            const SizedBox(height: 16),
+            _buildTextFormField('Your Message',
+                maxLines: 5, controller: _messageController),
+            const SizedBox(height: 32),
+            ElevatedButton(
+              onPressed: _sendEmail, // Call the new function here
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFFBB86FC),
+                foregroundColor: const Color(0xFF121212),
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                elevation: 4,
+                shadowColor: Colors.indigo.withOpacity(0.4),
+              ),
+              child: const Text(
+                'Send Message',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Update the TextFormField to accept a controller
+  Widget _buildTextFormField(String label,
+      {int maxLines = 1, required TextEditingController controller}) {
+    return TextFormField(
+      controller: controller, // Assign the controller
+      maxLines: maxLines,
+      decoration: InputDecoration(
+        hintText: label,
+        hintStyle: TextStyle(color: Colors.grey[500]),
+        filled: true,
+        fillColor: const Color(0xFF2D2D2D),
+        contentPadding:
+            const EdgeInsets.symmetric(horizontal: 20.0, vertical: 16.0),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide.none,
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide(color: Colors.grey[600]!),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(12.0),
+          borderSide: BorderSide(color: const Color(0xFFBB86FC), width: 2),
+        ),
+      ),
+      style: TextStyle(color: Colors.white),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your $label';
+        }
+        if (label == 'Your Email' && !RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
+          return 'Please enter a valid email address';
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildContactFooter(BuildContext context) {
+    Future<void> _launchUrl(String url) async {
+      final Uri uri = Uri.parse(url);
+      if (!await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      )) {
+        throw "Cannot launch url";
+      }
+    }
+
+    return Column(
+      children: [
+        SizedBox(
+          height: 30,
+          child: ListView(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _buildSocialIcon(FontAwesomeIcons.linkedin, () async {
+                await _launchUrl('https://www.linkedin.com/in/htetwailwin/');
+              }, 'LinkedIn'),
+              const SizedBox(width: 24),
+              _buildSocialIcon(FontAwesomeIcons.github, () async {
+                await _launchUrl('https://github.com/htetwai18');
+              }, 'Github'),
+              const SizedBox(width: 24),
+              _buildSocialIcon(
+                  FontAwesomeIcons
+                      .reddit, // Phone is available in default Material Icons
+                  () async {
+                await _launchUrl(
+                    'https://www.reddit.com/user/OkFudge8505/'); // opens phone dialer
+              }, 'Reddit'),
+              const SizedBox(width: 24),
+              _buildSocialIcon(
+                  FontAwesomeIcons
+                      .medium, // Phone is available in default Material Icons
+                  () async {
+                await _launchUrl(
+                    'https://medium.com/@htetwai.18.lwin'); // opens phone dialer
+              }, 'Medium'),
+              const SizedBox(width: 24),
+              _buildSocialIcon(
+                  FontAwesomeIcons
+                      .youtube, // Phone is available in default Material Icons
+                  () async {
+                await _launchUrl(
+                    'https://www.youtube.com/@HtetWaiLwin-q1g'); // opens phone dialer
+              }, 'Youtube'),
+              const SizedBox(width: 24),
+              _buildSocialIcon(
+                  FontAwesomeIcons
+                      .stackOverflow, // Phone is available in default Material Icons
+                  () async {
+                await _launchUrl(
+                    'https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
+              }, 'Stack overflow'),
+            ],
+          ),
+        ),
+        const SizedBox(height: 24),
+        Text(
+          '© 2025 Htet Wai Lwin. Created with Flutter 3.35.4',
+          style: TextStyle(color: Colors.grey[400]),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSocialIcon(IconData icon, Function onTap, String tip) {
+    return IconButton(
+      icon: Icon(icon, color: Colors.grey[400]),
+      onPressed: () {
+        onTap();
+      },
+      splashRadius: 24,
+      tooltip: tip,
     );
   }
 }

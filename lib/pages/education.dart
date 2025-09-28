@@ -6,7 +6,6 @@ class EducationItem {
   final String degree;
   final String university;
   final String duration;
-  final String description;
   final String linkUni;
   final String linkDegree;
 
@@ -14,7 +13,6 @@ class EducationItem {
     required this.degree,
     required this.university,
     required this.duration,
-    required this.description,
     required this.linkUni,
     required this.linkDegree,
   });
@@ -37,6 +35,7 @@ class EducationTile extends StatelessWidget {
   final EducationItem item;
   final bool isFirst;
   final bool isLast;
+  final bool isLeftAligned;
   final Function onTapLinkUni, onTapLinkDegree;
 
   const EducationTile({
@@ -44,67 +43,204 @@ class EducationTile extends StatelessWidget {
     required this.item,
     required this.isFirst,
     required this.isLast,
+    required this.isLeftAligned,
     required this.onTapLinkUni,
     required this.onTapLinkDegree,
   });
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isDesktop = screenSize.width > 800;
+
+    // For mobile, always use left alignment
+    if (!isDesktop) {
+      return IntrinsicHeight(
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TimelineNode(isFirst: isFirst, isLast: isLast),
+            const SizedBox(width: 24),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 40.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        onTapLinkDegree();
+                      },
+                      child: Text(
+                        item.degree,
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    InkWell(
+                      onTap: () {
+                        onTapLinkUni();
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            item.university,
+                            style: const TextStyle(
+                              color: Color(0xFFBB86FC),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.open_in_new,
+                            color: Color(0xFFBB86FC),
+                            size: 14,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(item.duration,
+                        style:
+                            TextStyle(color: Colors.grey[400], fontSize: 13)),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    // For desktop, use zigzag layout
     return IntrinsicHeight(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          TimelineNode(isFirst: isFirst, isLast: isLast),
-          const SizedBox(width: 24),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 40.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                InkWell(
-                  onTap: () {
-                    onTapLinkDegree();
-                  },
-                  child: Text(
-                    item.degree,
-                    style: const TextStyle(
-                      decoration: TextDecoration.underline,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 4),
-                InkWell(
-                  onTap: () {
-                    onTapLinkUni();
-                  },
-                  child: Row(
-                    children: [
-                      Text(
-                        item.university,
+          // Left side content
+          if (isLeftAligned) ...[
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 40.0, right: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        onTapLinkDegree();
+                      },
+                      child: Text(
+                        item.degree,
                         style: const TextStyle(
-                          color: Color(0xFFBB86FC),
+                          decoration: TextDecoration.underline,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                        textAlign: TextAlign.right,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    InkWell(
+                      onTap: () {
+                        onTapLinkUni();
+                      },
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            item.university,
+                            style: const TextStyle(
+                              color: Color(0xFFBB86FC),
+                            ),
+                          ),
+                          const SizedBox(width: 4),
+                          const Icon(
+                            Icons.open_in_new,
+                            color: Color(0xFFBB86FC),
+                            size: 14,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(item.duration,
+                        style: TextStyle(color: Colors.grey[400], fontSize: 13),
+                        textAlign: TextAlign.right),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(width: 24),
+          ] else ...[
+            // Empty space when content is on right
+            Expanded(child: Container()),
+            const SizedBox(width: 24),
+          ],
+
+          // Center timeline - always in the middle
+          TimelineNode(isFirst: isFirst, isLast: isLast),
+
+          // Right side content
+          if (!isLeftAligned) ...[
+            const SizedBox(width: 24),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 40.0, left: 24.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        onTapLinkDegree();
+                      },
+                      child: Text(
+                        item.degree,
+                        style: const TextStyle(
+                          decoration: TextDecoration.underline,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
-                      const Icon(
-                        Icons.open_in_new,
-                        color: Color(0xFFBB86FC),
-                        size: 14,
+                    ),
+                    const SizedBox(height: 4),
+                    InkWell(
+                      onTap: () {
+                        onTapLinkUni();
+                      },
+                      child: Row(
+                        children: [
+                          Text(
+                            item.university,
+                            style: const TextStyle(
+                              color: Color(0xFFBB86FC),
+                            ),
+                          ),
+                          const Icon(
+                            Icons.open_in_new,
+                            color: Color(0xFFBB86FC),
+                            size: 14,
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(item.duration,
+                        style:
+                            TextStyle(color: Colors.grey[400], fontSize: 13)),
+                  ],
                 ),
-                const SizedBox(height: 4),
-                Text(item.duration,
-                    style: TextStyle(color: Colors.grey[400], fontSize: 13)),
-                const SizedBox(height: 8),
-                Text(item.description,
-                    style: TextStyle(color: Colors.grey[300])),
-              ],
+              ),
             ),
-          ),
+          ] else ...[
+            // Empty space when content is on left
+            const SizedBox(width: 24),
+            Expanded(child: Container()),
+          ],
         ],
       ),
     );
@@ -134,8 +270,8 @@ class TimelineNode extends StatelessWidget {
           Container(
             width: 10,
             height: 10,
-            decoration:
-                const BoxDecoration(color: timelineColor, shape: BoxShape.circle),
+            decoration: const BoxDecoration(
+                color: timelineColor, shape: BoxShape.circle),
           ),
           Expanded(
             child: Container(
