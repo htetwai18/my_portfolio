@@ -29,6 +29,19 @@ class _HeroSectionState extends State<HeroSection>
   final _emailController = TextEditingController();
   final _messageController = TextEditingController();
 
+  // Scroll controller for smooth scrolling
+  final ScrollController _scrollController = ScrollController();
+
+  // GlobalKeys for each section
+  final GlobalKey _homeKey = GlobalKey();
+  final GlobalKey _experiencesKey = GlobalKey();
+  final GlobalKey _educationKey = GlobalKey();
+  final GlobalKey _projectsKey = GlobalKey();
+  final GlobalKey _contactKey = GlobalKey();
+
+  // Back to top button visibility
+  bool _showBackToTop = false;
+
   late AnimationController _controller;
   late Animation<Offset> _nameSlideAnimation;
   late Animation<Offset> _titleSlideAnimation;
@@ -204,6 +217,23 @@ class _HeroSectionState extends State<HeroSection>
       duration: const Duration(milliseconds: 1500),
     );
 
+    // Add scroll listener to show/hide back to top button
+    _scrollController.addListener(() {
+      if (_scrollController.offset >= 400) {
+        if (!_showBackToTop) {
+          setState(() {
+            _showBackToTop = true;
+          });
+        }
+      } else {
+        if (_showBackToTop) {
+          setState(() {
+            _showBackToTop = false;
+          });
+        }
+      }
+    });
+
     // Animations remain the same
     _nameSlideAnimation =
         Tween<Offset>(begin: const Offset(-0.2, 0), end: Offset.zero).animate(
@@ -235,10 +265,52 @@ class _HeroSectionState extends State<HeroSection>
   @override
   void dispose() {
     _controller.dispose();
+    _scrollController.dispose();
     _nameController.dispose();
     _emailController.dispose();
     _messageController.dispose();
     super.dispose();
+  }
+
+  // Method to scroll to specific section
+  void _scrollToSection(String section) {
+    GlobalKey? targetKey;
+
+    switch (section) {
+      case 'Home':
+        targetKey = _homeKey;
+        break;
+      case 'Experiences':
+        targetKey = _experiencesKey;
+        break;
+      case 'Education':
+        targetKey = _educationKey;
+        break;
+      case 'Projects':
+        targetKey = _projectsKey;
+        break;
+      case 'Contact':
+        targetKey = _contactKey;
+        break;
+    }
+
+    if (targetKey != null && targetKey.currentContext != null) {
+      Scrollable.ensureVisible(
+        targetKey.currentContext!,
+        duration: const Duration(milliseconds: 800),
+        curve: Curves.easeInOut,
+        alignment: 0.1, // Scroll to show the section near the top
+      );
+    }
+  }
+
+  // Method to scroll to top
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 800),
+      curve: Curves.easeInOut,
+    );
   }
 
   Future<void> _sendEmail() async {
@@ -299,6 +371,15 @@ class _HeroSectionState extends State<HeroSection>
 
     return Scaffold(
       backgroundColor: const Color(0xFF121212),
+      floatingActionButton: _showBackToTop
+          ? FloatingActionButton(
+              onPressed: _scrollToTop,
+              backgroundColor: const Color(0xFFBB86FC),
+              foregroundColor: const Color(0xFF121212),
+              elevation: 8,
+              child: const Icon(Icons.keyboard_arrow_up, size: 28),
+            )
+          : null,
       body: Container(
         // --- FIX #1: REMOVE PINK/PURPLE TINT FROM GRADIENT ---
         // Replaced the previous colors with a cleaner, more neutral gradient.
@@ -306,6 +387,7 @@ class _HeroSectionState extends State<HeroSection>
           color: Color(0xFF121212),
         ),
         child: SingleChildScrollView(
+          controller: _scrollController,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -326,11 +408,26 @@ class _HeroSectionState extends State<HeroSection>
                       physics: const AlwaysScrollableScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       children: [
-                        NavLink(title: 'Home', page: widget.page),
-                        NavLink(title: 'Projects', page: widget.page),
-                        NavLink(title: 'Experiences', page: widget.page),
-                        NavLink(title: 'Education', page: widget.page),
-                        NavLink(title: 'Contact', page: widget.page),
+                        NavLink(
+                            title: 'Home',
+                            page: widget.page,
+                            onSectionClick: _scrollToSection),
+                        NavLink(
+                            title: 'Projects',
+                            page: widget.page,
+                            onSectionClick: _scrollToSection),
+                        NavLink(
+                            title: 'Experiences',
+                            page: widget.page,
+                            onSectionClick: _scrollToSection),
+                        NavLink(
+                            title: 'Education',
+                            page: widget.page,
+                            onSectionClick: _scrollToSection),
+                        NavLink(
+                            title: 'Contact',
+                            page: widget.page,
+                            onSectionClick: _scrollToSection),
                       ],
                     ),
                   ),
@@ -364,7 +461,7 @@ class _HeroSectionState extends State<HeroSection>
                               child: Text(
                                 'Htet Wai Lwin',
                                 style: TextStyle(
-                                  fontSize: isDesktop ? 64 : 48,
+                                  fontSize: isDesktop ? 66 : 48,
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xFFBB86FC),
                                 ),
@@ -379,7 +476,7 @@ class _HeroSectionState extends State<HeroSection>
                               child: Text(
                                 'Mobile Application Developer(Flutter)',
                                 style: TextStyle(
-                                    fontSize: isDesktop ? 28 : 22,
+                                    fontSize: isDesktop ? 32 : 22,
                                     color: Colors.white),
                                 textAlign: isDesktop
                                     ? TextAlign.start
@@ -392,7 +489,7 @@ class _HeroSectionState extends State<HeroSection>
                               child: Text(
                                 'Building cross-platform apps with Flutter & Dart.',
                                 style: TextStyle(
-                                    fontSize: isDesktop ? 20 : 16,
+                                    fontSize: isDesktop ? 24 : 16,
                                     color: Colors.grey[400]),
                                 textAlign: isDesktop
                                     ? TextAlign.start
@@ -452,9 +549,9 @@ class _HeroSectionState extends State<HeroSection>
                           scale: _imageScaleAnimation,
                           child: Container(
                             width: isDesktop
-                                ? 350
+                                ? 380
                                 : 200, // Slightly larger on desktop
-                            height: isDesktop ? 350 : 200,
+                            height: isDesktop ? 380 : 200,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: const Color(0xFF1E1E1E),
@@ -485,11 +582,18 @@ class _HeroSectionState extends State<HeroSection>
                 ),
               ),
               const SizedBox(height: 100),
-              _buildHeader(),
+              // Home section
+              Container(
+                key: _experiencesKey,
+                child: _buildHeader(),
+              ),
               const SizedBox(height: 48),
               _buildTimeline(),
               const SizedBox(height: 100),
-              _buildSectionHeader('Education'),
+              Container(
+                key: _educationKey,
+                child: _buildSectionHeader('Education'),
+              ),
               const SizedBox(height: 24),
               _buildEducationTimeline(),
               const SizedBox(height: 48),
@@ -497,14 +601,22 @@ class _HeroSectionState extends State<HeroSection>
               const SizedBox(height: 24),
               _buildCertificationsGrid(),
               const SizedBox(height: 100),
-              _buildProjectHeader(),
+              // Projects section
+              Container(
+                key: _projectsKey,
+                child: _buildProjectHeader(),
+              ),
               const SizedBox(height: 48),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: _buildProjectsGrid(),
               ),
               const SizedBox(height: 100),
-              _buildContactHeader(context),
+              // Contact section
+              Container(
+                key: _contactKey,
+                child: _buildContactHeader(context),
+              ),
               const SizedBox(height: 32),
               _buildFormCard(context),
               const SizedBox(height: 48),
@@ -789,7 +901,7 @@ class _HeroSectionState extends State<HeroSection>
     final Size screenSize = MediaQuery.of(context).size;
     final bool isDesktop = screenSize.width > 960;
     return Container(
-      width: isDesktop ? (screenSize.width)/2 : null,
+      width: isDesktop ? (screenSize.width) / 2 : null,
       margin: isDesktop
           ? const EdgeInsets.symmetric(horizontal: 0)
           : const EdgeInsets.symmetric(horizontal: 16),
