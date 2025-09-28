@@ -399,6 +399,7 @@ class _HeroSectionState extends State<HeroSection>
                         ? 40
                         : 20, // Adjust padding for desktop/mobile
                     right: isDesktop ? 60 : 12,
+                    left: 12,
                   ),
                   height: 50,
                   child: FadeTransition(
@@ -1019,6 +1020,9 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   Widget _buildContactFooter(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isDesktop = screenSize.width > 960;
+
     Future<void> _launchUrl(String url) async {
       final Uri uri = Uri.parse(url);
       if (!await launchUrl(
@@ -1029,63 +1033,66 @@ class _HeroSectionState extends State<HeroSection>
       }
     }
 
-    return Column(
-      children: [
-        SizedBox(
-          height: 30,
-          child: ListView(
-            shrinkWrap: true,
-            scrollDirection: Axis.horizontal,
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildSocialIcon(FontAwesomeIcons.linkedin, () async {
-                await _launchUrl('https://www.linkedin.com/in/htetwailwin/');
-              }, 'LinkedIn'),
-              const SizedBox(width: 24),
-              _buildSocialIcon(FontAwesomeIcons.github, () async {
-                await _launchUrl('https://github.com/htetwai18');
-              }, 'Github'),
-              const SizedBox(width: 24),
-              _buildSocialIcon(
-                  FontAwesomeIcons
-                      .reddit, // Phone is available in default Material Icons
-                  () async {
-                await _launchUrl(
-                    'https://www.reddit.com/user/OkFudge8505/'); // opens phone dialer
-              }, 'Reddit'),
-              const SizedBox(width: 24),
-              _buildSocialIcon(
-                  FontAwesomeIcons
-                      .medium, // Phone is available in default Material Icons
-                  () async {
-                await _launchUrl(
-                    'https://medium.com/@htetwai.18.lwin'); // opens phone dialer
-              }, 'Medium'),
-              const SizedBox(width: 24),
-              _buildSocialIcon(
-                  FontAwesomeIcons
-                      .youtube, // Phone is available in default Material Icons
-                  () async {
-                await _launchUrl(
-                    'https://www.youtube.com/@HtetWaiLwin-q1g'); // opens phone dialer
-              }, 'Youtube'),
-              const SizedBox(width: 24),
-              _buildSocialIcon(
-                  FontAwesomeIcons
-                      .stackOverflow, // Phone is available in default Material Icons
-                  () async {
-                await _launchUrl(
-                    'https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
-              }, 'Stack overflow'),
-            ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: isDesktop ? 0 : 16),
+      child: Column(
+        children: [
+          SizedBox(
+            height: 30,
+            child: ListView(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildSocialIcon(FontAwesomeIcons.linkedin, () async {
+                  await _launchUrl('https://www.linkedin.com/in/htetwailwin/');
+                }, 'LinkedIn'),
+                const SizedBox(width: 24),
+                _buildSocialIcon(FontAwesomeIcons.github, () async {
+                  await _launchUrl('https://github.com/htetwai18');
+                }, 'Github'),
+                const SizedBox(width: 24),
+                _buildSocialIcon(
+                    FontAwesomeIcons
+                        .reddit, // Phone is available in default Material Icons
+                    () async {
+                  await _launchUrl(
+                      'https://www.reddit.com/user/OkFudge8505/'); // opens phone dialer
+                }, 'Reddit'),
+                const SizedBox(width: 24),
+                _buildSocialIcon(
+                    FontAwesomeIcons
+                        .medium, // Phone is available in default Material Icons
+                    () async {
+                  await _launchUrl(
+                      'https://medium.com/@htetwai.18.lwin'); // opens phone dialer
+                }, 'Medium'),
+                const SizedBox(width: 24),
+                _buildSocialIcon(
+                    FontAwesomeIcons
+                        .youtube, // Phone is available in default Material Icons
+                    () async {
+                  await _launchUrl(
+                      'https://www.youtube.com/@HtetWaiLwin-q1g'); // opens phone dialer
+                }, 'Youtube'),
+                const SizedBox(width: 24),
+                _buildSocialIcon(
+                    FontAwesomeIcons
+                        .stackOverflow, // Phone is available in default Material Icons
+                    () async {
+                  await _launchUrl(
+                      'https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
+                }, 'Stack overflow'),
+              ],
+            ),
           ),
-        ),
-        const SizedBox(height: 24),
-        Text(
-          '© 2025 Htet Wai Lwin. Created with Flutter 3.35.4',
-          style: TextStyle(color: Colors.grey[400]),
-        ),
-      ],
+          const SizedBox(height: 24),
+          Text(
+            '© 2025 Htet Wai Lwin. Created with Flutter 3.35.4',
+            style: TextStyle(color: Colors.grey[400]),
+          ),
+        ],
+      ),
     );
   }
 
