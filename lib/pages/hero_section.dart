@@ -22,7 +22,7 @@ class HeroSection extends StatefulWidget {
 }
 
 class _HeroSectionState extends State<HeroSection>
-    with SingleTickerProviderStateMixin {
+    with TickerProviderStateMixin {
   final _formKey = GlobalKey<FormState>();
   // Add controllers to get the text field values
   final _nameController = TextEditingController();
@@ -42,12 +42,25 @@ class _HeroSectionState extends State<HeroSection>
   // Back to top button visibility
   bool _showBackToTop = false;
 
-  late AnimationController _controller;
+  // Animation controllers for scroll-triggered animations
+  late AnimationController _mainController;
+  late AnimationController _experiencesController;
+  late AnimationController _educationController;
+  late AnimationController _projectsController;
+  late AnimationController _contactController;
+
+  // Main animations
   late Animation<Offset> _nameSlideAnimation;
   late Animation<Offset> _titleSlideAnimation;
   late Animation<Offset> _descriptionSlideAnimation;
   late Animation<double> _imageScaleAnimation;
   late Animation<double> _navbarFadeAnimation;
+
+  // Section animations
+  late Animation<double> _experiencesFadeAnimation;
+  late Animation<double> _educationFadeAnimation;
+  late Animation<double> _projectsFadeAnimation;
+  late Animation<double> _contactFadeAnimation;
 
   final List<Experience> _experiences = const [
     Experience(
@@ -132,50 +145,50 @@ class _HeroSectionState extends State<HeroSection>
   final List<Project> _projects = [
     Project(
       imagePath: 'assets/images/digicraft_main.png',
-      title: 'Digicraft Home App',
+      title: 'Digicraft Home',
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
       techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/zcultures_main.png',
-      title: 'Zcultures App',
+      title: 'Zcultures',
       description:
           'A global AI-powered social commerce platform that uses an O2O strategy to connect brands, creators, nightlife venues.',
       techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/suzuki_main.png',
-      title: 'Suzuki Smart Order App',
+      title: 'Suzuki Smart Order',
       description:
           'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
       techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/weday_main.png',
-      title: 'Weday App',
+      title: 'Weday',
       description:
-          'A social app with features for posts, comments, nested replies, reactions, and live streaming powered by Agora SDK.',
+          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by agora sdk',
       techIcons: [FontAwesomeIcons.flutter],
     ),
 
     Project(
       imagePath: 'assets/images/arfi_main.png',
-      title: 'ARFI Ecommerce App',
+      title: 'ARFI Ecommerce',
       description:
           'A mobile e-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
       techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/dr_rej_main.png',
-      title: 'Dr Rejvue Clinic Membership App',
+      title: 'Dr Rejvue Clinic Membership',
       description:
           'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
       techIcons: [FontAwesomeIcons.flutter],
     ),
     Project(
       imagePath: 'assets/images/hrm_main.png',
-      title: 'Kwin HR Management App',
+      title: 'Kwin HR Management',
       description:
           'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
       techIcons: [FontAwesomeIcons.flutter],
@@ -212,12 +225,32 @@ class _HeroSectionState extends State<HeroSection>
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
+
+    // Initialize main animation controller
+    _mainController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
     );
 
-    // Add scroll listener to show/hide back to top button
+    // Initialize section animation controllers
+    _experiencesController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    _educationController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    _projectsController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+    _contactController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 1000),
+    );
+
+    // Add scroll listener to show/hide back to top button and trigger section animations
     _scrollController.addListener(() {
       if (_scrollController.offset >= 400) {
         if (!_showBackToTop) {
@@ -232,39 +265,85 @@ class _HeroSectionState extends State<HeroSection>
           });
         }
       }
+
+      // Trigger section animations based on scroll position
+      _triggerSectionAnimations();
     });
 
-    // Animations remain the same
+    // Main animations
     _nameSlideAnimation =
         Tween<Offset>(begin: const Offset(-0.2, 0), end: Offset.zero).animate(
             CurvedAnimation(
-                parent: _controller,
+                parent: _mainController,
                 curve: const Interval(0.0, 0.6, curve: Curves.easeOutCubic)));
     _titleSlideAnimation =
         Tween<Offset>(begin: const Offset(-0.2, 0), end: Offset.zero).animate(
             CurvedAnimation(
-                parent: _controller,
+                parent: _mainController,
                 curve: const Interval(0.1, 0.7, curve: Curves.easeOutCubic)));
     _descriptionSlideAnimation =
         Tween<Offset>(begin: const Offset(-0.2, 0), end: Offset.zero).animate(
             CurvedAnimation(
-                parent: _controller,
+                parent: _mainController,
                 curve: const Interval(0.2, 0.8, curve: Curves.easeOutCubic)));
     _imageScaleAnimation = Tween<double>(begin: 0.7, end: 1.0).animate(
         CurvedAnimation(
-            parent: _controller,
+            parent: _mainController,
             curve: const Interval(0.4, 1.0, curve: Curves.easeOutBack)));
     _navbarFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
-            parent: _controller,
+            parent: _mainController,
             curve: const Interval(0.6, 1.0, curve: Curves.easeOut)));
 
-    _controller.forward();
+    // Section animations
+    _experiencesFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(
+            parent: _experiencesController, curve: Curves.easeInOut));
+    _educationFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(parent: _educationController, curve: Curves.easeInOut));
+    _projectsFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(parent: _projectsController, curve: Curves.easeInOut));
+    _contactFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+        CurvedAnimation(parent: _contactController, curve: Curves.easeInOut));
+
+    _mainController.forward();
+  }
+
+  // Method to trigger section animations based on scroll position
+  void _triggerSectionAnimations() {
+    final scrollOffset = _scrollController.offset;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    // Trigger experiences animation when section comes into view
+    if (scrollOffset > screenHeight * 0.3 &&
+        !_experiencesController.isCompleted) {
+      _experiencesController.forward();
+    }
+
+    // Trigger education animation when section comes into view
+    if (scrollOffset > screenHeight * 0.8 &&
+        !_educationController.isCompleted) {
+      _educationController.forward();
+    }
+
+    // Trigger projects animation when section comes into view
+    if (scrollOffset > screenHeight * 1.5 && !_projectsController.isCompleted) {
+      _projectsController.forward();
+    }
+
+    // Trigger contact animation when section comes into view
+    if (scrollOffset > screenHeight * 2.2 && !_contactController.isCompleted) {
+      _contactController.forward();
+    }
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _mainController.dispose();
+    _experiencesController.dispose();
+    _educationController.dispose();
+    _projectsController.dispose();
+    _contactController.dispose();
     _scrollController.dispose();
     _nameController.dispose();
     _emailController.dispose();
@@ -367,7 +446,7 @@ class _HeroSectionState extends State<HeroSection>
     final bool isDesktop = screenSize.width > 960;
 
     return Scaffold(
-      backgroundColor: const Color(0xFF121212),
+      backgroundColor: const Color.fromRGBO(1, 0, 0, 1),
       floatingActionButton: _showBackToTop
           ? FloatingActionButton(
               onPressed: _scrollToTop,
@@ -381,7 +460,7 @@ class _HeroSectionState extends State<HeroSection>
         // --- FIX #1: REMOVE PINK/PURPLE TINT FROM GRADIENT ---
         // Replaced the previous colors with a cleaner, more neutral gradient.
         decoration: const BoxDecoration(
-          color: Color(0xFF121212),
+          color: const Color.fromRGBO(1, 0, 0, 1),
         ),
         child: SingleChildScrollView(
           controller: _scrollController,
@@ -491,44 +570,56 @@ class _HeroSectionState extends State<HeroSection>
                               ),
                             ),
                             const SizedBox(height: 32),
-                            Text(
-                              "I'm a passionate Mobile developer with a focus on creating beautiful and functional cross-platform applications. I have over 3 years of experience in mobile app development, specializing in Flutter and Dart.",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge
-                                  ?.copyWith(
-                                      height: 1.6, color: Colors.grey[300]),
-                              textAlign: isDesktop
-                                  ? TextAlign.start
-                                  : TextAlign.center,
+                            SlideTransition(
+                              position: _descriptionSlideAnimation,
+                              child: Text(
+                                "I'm a passionate Mobile developer with a focus on creating beautiful and functional cross-platform applications. I have over 3 years of experience in mobile app development, specializing in Flutter and Dart.",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge
+                                    ?.copyWith(
+                                        height: 1.6, color: Colors.grey[300]),
+                                textAlign: isDesktop
+                                    ? TextAlign.start
+                                    : TextAlign.center,
+                              ),
                             ),
                             const SizedBox(height: 24),
-                            ElevatedButton.icon(
-                              onPressed: () {
-                                _downloadResume();
-                              },
-                              icon: const Icon(Icons.download),
-                              label: const Text('Download Resume'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFFBB86FC),
-                                foregroundColor: const Color(0xFF121212),
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 24, vertical: 16),
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                elevation: 2,
+                            SlideTransition(
+                              position: _descriptionSlideAnimation,
+                              child: ElevatedButton.icon(
+                                onPressed: () {
+                                  _downloadResume();
+                                },
+                                icon: const Icon(Icons.download),
+                                label: const Text('Download Resume'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color(0xFFBB86FC),
+                                  foregroundColor: const Color(0xFF121212),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 24, vertical: 16),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(12)),
+                                  elevation: 2,
+                                ),
                               ),
                             ),
                             const SizedBox(height: 32),
-                            Text('My Skills',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .headlineSmall
-                                    ?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white)),
+                            SlideTransition(
+                              position: _descriptionSlideAnimation,
+                              child: Text('My Skills',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .headlineSmall
+                                      ?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.white)),
+                            ),
                             const SizedBox(height: 16),
-                            buildSkillsWrap(isDesktop),
+                            SlideTransition(
+                              position: _descriptionSlideAnimation,
+                              child: buildSkillsWrap(isDesktop),
+                            ),
                           ],
                         ),
                       ),
@@ -582,14 +673,38 @@ class _HeroSectionState extends State<HeroSection>
                 child: _buildHeader(),
               ),
               const SizedBox(height: 48),
-              _buildTimeline(),
+              FadeTransition(
+                opacity: _experiencesFadeAnimation,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(0, 0.3),
+                    end: Offset.zero,
+                  ).animate(CurvedAnimation(
+                    parent: _experiencesController,
+                    curve: Curves.easeOutCubic,
+                  )),
+                  child: _buildTimeline(),
+                ),
+              ),
               const SizedBox(height: 100),
               Container(
                 key: _educationKey,
                 child: _buildSectionHeader('Education'),
               ),
               const SizedBox(height: 24),
-              _buildEducationTimeline(),
+              FadeTransition(
+                opacity: _educationFadeAnimation,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(0, 0.3),
+                    end: Offset.zero,
+                  ).animate(CurvedAnimation(
+                    parent: _educationController,
+                    curve: Curves.easeOutCubic,
+                  )),
+                  child: _buildEducationTimeline(),
+                ),
+              ),
               const SizedBox(height: 48),
               _buildSectionHeader('Certifications'),
               const SizedBox(height: 24),
@@ -601,9 +716,21 @@ class _HeroSectionState extends State<HeroSection>
                 child: _buildProjectHeader(),
               ),
               const SizedBox(height: 48),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: _buildProjectsGrid(),
+              FadeTransition(
+                opacity: _projectsFadeAnimation,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(0, 0.3),
+                    end: Offset.zero,
+                  ).animate(CurvedAnimation(
+                    parent: _projectsController,
+                    curve: Curves.easeOutCubic,
+                  )),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: _buildProjectsGrid(),
+                  ),
+                ),
               ),
               const SizedBox(height: 100),
               // Contact section
@@ -612,9 +739,25 @@ class _HeroSectionState extends State<HeroSection>
                 child: _buildContactHeader(context),
               ),
               const SizedBox(height: 32),
-              _buildFormCard(context),
-              const SizedBox(height: 48),
-              _buildContactFooter(context),
+              FadeTransition(
+                opacity: _contactFadeAnimation,
+                child: SlideTransition(
+                  position: Tween<Offset>(
+                    begin: const Offset(0, 0.3),
+                    end: Offset.zero,
+                  ).animate(CurvedAnimation(
+                    parent: _contactController,
+                    curve: Curves.easeOutCubic,
+                  )),
+                  child: Column(
+                    children: [
+                      _buildFormCard(context),
+                      const SizedBox(height: 48),
+                      _buildContactFooter(context),
+                    ],
+                  ),
+                ),
+              ),
               const SizedBox(height: 48),
             ],
           ),
@@ -764,12 +907,15 @@ class _HeroSectionState extends State<HeroSection>
               // On wide screens, alternate alignment. On narrow, all are right-aligned.
               final isLeftAligned = !isNarrow && index % 2 == 1;
 
-              return TimelineTile(
+              return AnimatedTimelineTile(
                 experience: experience,
                 isFirst: isFirst,
                 isLast: isLast,
                 isLeftAligned: isLeftAligned,
                 isNarrow: isNarrow,
+                animationController: _experiencesController,
+                delay:
+                    Duration(milliseconds: index * 200), // Staggered animation
               );
             }),
           ),
@@ -805,7 +951,7 @@ class _HeroSectionState extends State<HeroSection>
         // Alternate between left and right alignment for zigzag effect
         final isLeftAligned = index % 2 == 1;
 
-        return EducationTile(
+        return AnimatedEducationTile(
           onTapLinkDegree: () async {
             if (_educationItems[index].linkDegree != '') {
               await _launchUrl(_educationItems[index].linkDegree);
@@ -815,6 +961,8 @@ class _HeroSectionState extends State<HeroSection>
           isFirst: index == 0,
           isLast: index == _educationItems.length - 1,
           isLeftAligned: isLeftAligned,
+          animationController: _educationController,
+          delay: Duration(milliseconds: index * 200), // Staggered animation
           onTapLinkUni: () async {
             await _launchUrl(_educationItems[index].linkUni);
           },
@@ -1097,6 +1245,186 @@ class _HeroSectionState extends State<HeroSection>
       },
       splashRadius: 24,
       tooltip: tip,
+    );
+  }
+}
+
+// Animated Timeline Tile for branching effect
+class AnimatedTimelineTile extends StatefulWidget {
+  final Experience experience;
+  final bool isFirst;
+  final bool isLast;
+  final bool isLeftAligned;
+  final bool isNarrow;
+  final AnimationController animationController;
+  final Duration delay;
+
+  const AnimatedTimelineTile({
+    super.key,
+    required this.experience,
+    required this.isFirst,
+    required this.isLast,
+    required this.isLeftAligned,
+    required this.isNarrow,
+    required this.animationController,
+    required this.delay,
+  });
+
+  @override
+  State<AnimatedTimelineTile> createState() => _AnimatedTimelineTileState();
+}
+
+class _AnimatedTimelineTileState extends State<AnimatedTimelineTile>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _itemController;
+  late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _itemController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _itemController, curve: Curves.easeInOut),
+    );
+
+    // Create branching effect - items slide in from periphery toward center
+    final slideBegin = widget.isLeftAligned
+        ? const Offset(-0.5, 0) // From left
+        : const Offset(0.5, 0); // From right
+
+    _slideAnimation =
+        Tween<Offset>(begin: slideBegin, end: Offset.zero).animate(
+      CurvedAnimation(parent: _itemController, curve: Curves.easeOutCubic),
+    );
+
+    // Start animation with delay when parent controller starts
+    widget.animationController.addStatusListener((status) {
+      if (status == AnimationStatus.forward) {
+        Future.delayed(widget.delay, () {
+          if (mounted) {
+            _itemController.forward();
+          }
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _itemController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: TimelineTile(
+          experience: widget.experience,
+          isFirst: widget.isFirst,
+          isLast: widget.isLast,
+          isLeftAligned: widget.isLeftAligned,
+          isNarrow: widget.isNarrow,
+        ),
+      ),
+    );
+  }
+}
+
+// Animated Education Tile for branching effect
+class AnimatedEducationTile extends StatefulWidget {
+  final EducationItem item;
+  final bool isFirst;
+  final bool isLast;
+  final bool isLeftAligned;
+  final Function onTapLinkUni, onTapLinkDegree;
+  final AnimationController animationController;
+  final Duration delay;
+
+  const AnimatedEducationTile({
+    super.key,
+    required this.item,
+    required this.isFirst,
+    required this.isLast,
+    required this.isLeftAligned,
+    required this.onTapLinkUni,
+    required this.onTapLinkDegree,
+    required this.animationController,
+    required this.delay,
+  });
+
+  @override
+  State<AnimatedEducationTile> createState() => _AnimatedEducationTileState();
+}
+
+class _AnimatedEducationTileState extends State<AnimatedEducationTile>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _itemController;
+  late Animation<double> _fadeAnimation;
+  late Animation<Offset> _slideAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _itemController = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 800),
+    );
+
+    _fadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
+      CurvedAnimation(parent: _itemController, curve: Curves.easeInOut),
+    );
+
+    // Create branching effect - items slide in from periphery toward center
+    final slideBegin = widget.isLeftAligned
+        ? const Offset(-0.5, 0) // From left
+        : const Offset(0.5, 0); // From right
+
+    _slideAnimation =
+        Tween<Offset>(begin: slideBegin, end: Offset.zero).animate(
+      CurvedAnimation(parent: _itemController, curve: Curves.easeOutCubic),
+    );
+
+    // Start animation with delay when parent controller starts
+    widget.animationController.addStatusListener((status) {
+      if (status == AnimationStatus.forward) {
+        Future.delayed(widget.delay, () {
+          if (mounted) {
+            _itemController.forward();
+          }
+        });
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _itemController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FadeTransition(
+      opacity: _fadeAnimation,
+      child: SlideTransition(
+        position: _slideAnimation,
+        child: EducationTile(
+          onTapLinkDegree: widget.onTapLinkDegree,
+          item: widget.item,
+          isFirst: widget.isFirst,
+          isLast: widget.isLast,
+          isLeftAligned: widget.isLeftAligned,
+          onTapLinkUni: widget.onTapLinkUni,
+        ),
+      ),
     );
   }
 }
