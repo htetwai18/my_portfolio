@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hwl_portforlio/main.dart';
 import 'package:hwl_portforlio/pages/education.dart';
 import 'dart:html' as html;
@@ -532,9 +533,9 @@ class _HeroSectionState extends State<HeroSection>
                             SlideTransition(
                               position: _nameSlideAnimation,
                               child: Text(
-                                'Htet Wai Lwin',
-                                style: TextStyle(
-                                  fontSize: isDesktop ? 66 : 48,
+                                'Htet Wai Lwin...',
+                                style: GoogleFonts.oxanium(
+                                  fontSize: isDesktop ? 55 : 34,
                                   fontWeight: FontWeight.bold,
                                   color: const Color(0xFFBB86FC),
                                 ),
@@ -548,9 +549,10 @@ class _HeroSectionState extends State<HeroSection>
                               position: _titleSlideAnimation,
                               child: Text(
                                 'Mobile Application Developer(Flutter)',
-                                style: TextStyle(
-                                    fontSize: isDesktop ? 32 : 22,
-                                    color: Colors.white),
+                                style: GoogleFonts.oxanium(
+                                  fontSize: isDesktop ? 32 : 22,
+                                  color: Colors.white,
+                                ),
                                 textAlign: isDesktop
                                     ? TextAlign.start
                                     : TextAlign.center,
@@ -561,9 +563,10 @@ class _HeroSectionState extends State<HeroSection>
                               position: _descriptionSlideAnimation,
                               child: Text(
                                 'Building cross-platform apps with Flutter & Dart.',
-                                style: TextStyle(
-                                    fontSize: isDesktop ? 24 : 16,
-                                    color: Colors.grey[400]),
+                                style: GoogleFonts.poppins(
+                                  fontSize: isDesktop ? 20 : 14,
+                                  color: Colors.grey[400],
+                                ),
                                 textAlign: isDesktop
                                     ? TextAlign.start
                                     : TextAlign.center,
@@ -574,11 +577,10 @@ class _HeroSectionState extends State<HeroSection>
                               position: _descriptionSlideAnimation,
                               child: Text(
                                 "I'm a passionate Mobile developer with a focus on creating beautiful and functional cross-platform applications. I have over 3 years of experience in mobile app development, specializing in Flutter and Dart.",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge
-                                    ?.copyWith(
-                                        height: 1.6, color: Colors.grey[300]),
+                                style: GoogleFonts.poppins(
+                                  fontSize: isDesktop ? 16 : 12,
+                                  color: Colors.white,
+                                ),
                                 textAlign: isDesktop
                                     ? TextAlign.start
                                     : TextAlign.center,
@@ -592,7 +594,10 @@ class _HeroSectionState extends State<HeroSection>
                                   _downloadResume();
                                 },
                                 icon: const Icon(Icons.download),
-                                label: const Text('Download Resume'),
+                                label: Text(
+                                  'Download Resume',
+                                  style: GoogleFonts.oxanium(fontSize: 14),
+                                ),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: const Color(0xFFBB86FC),
                                   foregroundColor: const Color(0xFF121212),
@@ -607,13 +612,20 @@ class _HeroSectionState extends State<HeroSection>
                             const SizedBox(height: 32),
                             SlideTransition(
                               position: _descriptionSlideAnimation,
-                              child: Text('My Skills',
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .headlineSmall
-                                      ?.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white)),
+                              child: Text(
+                                'My Skills',
+                                style: GoogleFonts.oxanium(
+                                  fontSize: 24,
+                                  color: Colors.white,
+                                ),
+                                // style: Theme.of(context)
+                                //     .textTheme
+                                //     .headlineSmall
+                                //     ?.copyWith(
+                                //       fontWeight: FontWeight.bold,
+                                //       color: Colors.white,
+                                //     ),
+                              ),
                             ),
                             const SizedBox(height: 16),
                             SlideTransition(
@@ -791,9 +803,13 @@ class _HeroSectionState extends State<HeroSection>
 
   Widget buildSkillChip(String skill) {
     return Chip(
-      label: Text(skill,
-          style: TextStyle(
-              color: const Color(0xFFBB86FC), fontWeight: FontWeight.w500)),
+      label: Text(
+        skill,
+        style: GoogleFonts.oxanium(
+          color: const Color(0xFFBB86FC),
+          fontWeight: FontWeight.w500,
+        ),
+      ),
       backgroundColor: const Color(0xFF1E1E1E),
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       shape: RoundedRectangleBorder(
@@ -865,18 +881,16 @@ class _HeroSectionState extends State<HeroSection>
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
-            style: const TextStyle(
+            style: GoogleFonts.oxanium(
               fontSize: 40,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
               color: Colors.white,
-              fontFamily:
-                  'YourFontFamily', // Make sure to add a font if you have one
             ),
-            children: [
-              const TextSpan(text: 'My Professional '),
+            children: const [
+              TextSpan(text: 'My Professional '),
               TextSpan(
                 text: 'Experience',
-                style: TextStyle(color: const Color(0xFFBB86FC)),
+                style: TextStyle(color: Color(0xFFBB86FC)),
               ),
             ],
           ),
@@ -885,7 +899,10 @@ class _HeroSectionState extends State<HeroSection>
         Text(
           'A timeline of my journey as a Flutter Developer, contributing to innovative mobile applications.',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, color: Colors.grey[400]),
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            color: Colors.grey[400],
+          ),
         ),
       ],
     );
@@ -927,10 +944,10 @@ class _HeroSectionState extends State<HeroSection>
   Widget _buildSectionHeader(String title) {
     return Text(
       title,
-      style: const TextStyle(
+      style: GoogleFonts.oxanium(
         fontSize: 28,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFFBB86FC),
+        fontWeight: FontWeight.w500,
+        color: const Color(0xFFBB86FC),
       ),
     );
   }
@@ -986,11 +1003,11 @@ class _HeroSectionState extends State<HeroSection>
   Widget _buildProjectHeader() {
     return Column(
       children: [
-        const Text(
+        Text(
           'My Projects',
-          style: TextStyle(
+          style: GoogleFonts.oxanium(
             fontSize: 42,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w500,
             color: const Color(0xFFBB86FC),
           ),
         ),
@@ -998,7 +1015,10 @@ class _HeroSectionState extends State<HeroSection>
         Text(
           'A selection of my recent work, showcasing my skills and experience in software development.',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, color: Colors.grey[400]),
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            color: Colors.grey[400],
+          ),
         ),
       ],
     );
@@ -1017,19 +1037,19 @@ class _HeroSectionState extends State<HeroSection>
   Widget _buildContactHeader(BuildContext context) {
     return Column(
       children: [
-        const Text(
+        Text(
           'Get in Touch',
-          style: TextStyle(
+          style: GoogleFonts.oxanium(
             fontSize: 42,
             fontWeight: FontWeight.bold,
-            color: Color(0xFFBB86FC),
+            color: const Color(0xFFBB86FC),
           ),
         ),
         const SizedBox(height: 16),
         Text(
           "I'm always open to discussing new projects, creative ideas, or opportunities.\nFeel free to reach out, and I'll get back to you as soon as possible.",
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: GoogleFonts.poppins(
             fontSize: 16,
             color: Colors.grey[400],
             height: 1.5,
@@ -1110,9 +1130,12 @@ class _HeroSectionState extends State<HeroSection>
                 elevation: 4,
                 shadowColor: Colors.indigo.withOpacity(0.4),
               ),
-              child: const Text(
+              child: Text(
                 'Send Message',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: GoogleFonts.poppins(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ),
           ],
@@ -1129,7 +1152,9 @@ class _HeroSectionState extends State<HeroSection>
       maxLines: maxLines,
       decoration: InputDecoration(
         hintText: label,
-        hintStyle: TextStyle(color: Colors.grey[500]),
+        hintStyle: GoogleFonts.poppins(
+          color: Colors.grey[500],
+        ),
         filled: true,
         fillColor: const Color(0xFF2D2D2D),
         contentPadding:
@@ -1144,10 +1169,13 @@ class _HeroSectionState extends State<HeroSection>
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide: BorderSide(color: const Color(0xFFBB86FC), width: 2),
+          borderSide:
+              const BorderSide(color: const Color(0xFFBB86FC), width: 2),
         ),
       ),
-      style: TextStyle(color: Colors.white),
+      style: GoogleFonts.poppins(
+        color: Colors.white,
+      ),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Please enter your $label';
@@ -1178,59 +1206,87 @@ class _HeroSectionState extends State<HeroSection>
       padding: EdgeInsets.symmetric(horizontal: isDesktop ? 0 : 16),
       child: Column(
         children: [
-          SizedBox(
-            height: 30,
-            child: ListView(
-              shrinkWrap: true,
-              scrollDirection: Axis.horizontal,
-              // mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _buildSocialIcon(FontAwesomeIcons.linkedin, () async {
-                  await _launchUrl('https://www.linkedin.com/in/htetwailwin/');
-                }, 'LinkedIn'),
-                const SizedBox(width: 24),
-                _buildSocialIcon(FontAwesomeIcons.github, () async {
-                  await _launchUrl('https://github.com/htetwai18');
-                }, 'Github'),
-                const SizedBox(width: 24),
-                _buildSocialIcon(
-                    FontAwesomeIcons
-                        .reddit, // Phone is available in default Material Icons
-                    () async {
-                  await _launchUrl(
-                      'https://www.reddit.com/user/OkFudge8505/'); // opens phone dialer
-                }, 'Reddit'),
-                const SizedBox(width: 24),
-                _buildSocialIcon(
-                    FontAwesomeIcons
-                        .medium, // Phone is available in default Material Icons
-                    () async {
-                  await _launchUrl(
-                      'https://medium.com/@htetwai.18.lwin'); // opens phone dialer
-                }, 'Medium'),
-                const SizedBox(width: 24),
-                _buildSocialIcon(
-                    FontAwesomeIcons
-                        .youtube, // Phone is available in default Material Icons
-                    () async {
-                  await _launchUrl(
-                      'https://www.youtube.com/@HtetWaiLwin-q1g'); // opens phone dialer
-                }, 'Youtube'),
-                const SizedBox(width: 24),
-                _buildSocialIcon(
-                    FontAwesomeIcons
-                        .stackOverflow, // Phone is available in default Material Icons
-                    () async {
-                  await _launchUrl(
-                      'https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
-                }, 'Stack overflow'),
-              ],
-            ),
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              if (!isDesktop)
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Icon(
+                        Icons.arrow_back_ios,
+                        color: Colors.white,
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+                ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: isDesktop ? 0 : 40),
+                child: SizedBox(
+                  height: 30,
+                  child: ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      _buildSocialIcon(FontAwesomeIcons.linkedin, () async {
+                        await _launchUrl(
+                            'https://www.linkedin.com/in/htetwailwin/');
+                      }, 'LinkedIn'),
+                      const SizedBox(width: 24),
+                      _buildSocialIcon(FontAwesomeIcons.github, () async {
+                        await _launchUrl('https://github.com/htetwai18');
+                      }, 'Github'),
+                      const SizedBox(width: 24),
+                      _buildSocialIcon(
+                          FontAwesomeIcons
+                              .reddit, // Phone is available in default Material Icons
+                          () async {
+                        await _launchUrl(
+                            'https://www.reddit.com/user/OkFudge8505/'); // opens phone dialer
+                      }, 'Reddit'),
+                      const SizedBox(width: 24),
+                      _buildSocialIcon(
+                          FontAwesomeIcons
+                              .medium, // Phone is available in default Material Icons
+                          () async {
+                        await _launchUrl(
+                            'https://medium.com/@htetwai.18.lwin'); // opens phone dialer
+                      }, 'Medium'),
+                      const SizedBox(width: 24),
+                      _buildSocialIcon(
+                          FontAwesomeIcons
+                              .youtube, // Phone is available in default Material Icons
+                          () async {
+                        await _launchUrl(
+                            'https://www.youtube.com/@HtetWaiLwin-q1g'); // opens phone dialer
+                      }, 'Youtube'),
+                      const SizedBox(width: 24),
+                      _buildSocialIcon(
+                          FontAwesomeIcons
+                              .stackOverflow, // Phone is available in default Material Icons
+                          () async {
+                        await _launchUrl(
+                            'https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
+                      }, 'Stack overflow'),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
           const SizedBox(height: 24),
           Text(
             '© 2025 Htet Wai Lwin. Created with Flutter 3.35.4',
-            style: TextStyle(color: Colors.grey[400]),
+            style: GoogleFonts.oxanium(
+              color: Colors.grey[400],
+            ),
           ),
         ],
       ),

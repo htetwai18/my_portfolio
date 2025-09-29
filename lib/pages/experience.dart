@@ -167,7 +167,7 @@ class _ExperienceCard extends StatelessWidget {
                   experience.title,
                   style: const TextStyle(
                       fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       color: Colors.white),
                 ),
               ),
@@ -190,7 +190,7 @@ class _ExperienceCard extends StatelessWidget {
                   style: TextStyle(
                     color: const Color(0xFFBB86FC),
                     fontWeight: FontWeight.w600,
-                    decoration: TextDecoration.underline,
+                    // decoration: TextDecoration.underline,
                   ),
                 ),
                 const SizedBox(width: 4),

@@ -76,7 +76,7 @@ class EducationTile extends StatelessWidget {
                         style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w400,
                           color: Colors.white,
                         ),
                       ),
@@ -137,7 +137,7 @@ class EducationTile extends StatelessWidget {
                         style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
                         textAlign: TextAlign.right,
@@ -202,7 +202,7 @@ class EducationTile extends StatelessWidget {
                         style: const TextStyle(
                           decoration: TextDecoration.underline,
                           fontSize: 18,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                           color: Colors.white,
                         ),
                       ),

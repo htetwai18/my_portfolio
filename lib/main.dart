@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hwl_portforlio/pages/hero_section.dart';
 
 void main() {
@@ -66,7 +67,7 @@ class _NavLinkState extends State<NavLink> {
             duration: const Duration(milliseconds: 200),
             child: Text(
               widget.title,
-              style: const TextStyle(
+              style:  GoogleFonts.poppins(
                 color: Colors.white,
                 fontSize: 16, // Increased base font size
                 fontWeight: FontWeight.w500,
