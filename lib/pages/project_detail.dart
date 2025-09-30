@@ -1,7 +1,9 @@
 import 'dart:async'; // Import async library for Timer
 import 'package:flutter/material.dart';
 import 'package:device_frame_plus/device_frame_plus.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'dart:math' as math;
 
 // --- Converted to a StatefulWidget ---
 class ProjectDetailPage extends StatefulWidget {
@@ -133,7 +135,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                   ),
                 ),
                 const SizedBox(height: 40),
-
                 // --- Animated Curved HORIZONTAL Image Carousel ---
                 SizedBox(
                   height: 300,
@@ -183,24 +184,13 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 const SizedBox(height: 40),
 
                 // --- Action Buttons ---
-                Center(
-                  child: ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.visibility),
-                    label: Text(
-                      'View Live App',
-                      style: GoogleFonts.poppins(),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFBB86FC),
-                      foregroundColor: const Color(0xFF121212),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 24, vertical: 16),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                    ),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildTechIcon(FontAwesomeIcons.appStoreIos),
+                    const SizedBox(width: 8),
+                    _buildTechIcon(FontAwesomeIcons.googlePlay),
+                  ],
                 ),
                 const SizedBox(height: 40),
 
@@ -215,7 +205,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 _buildFeatureList(),
                 const SizedBox(height: 20),
                 _buildSectionTitle('Technical Challenges & Solutions'),
-                // _buildChallengeExpansion(),
                 _buildFeatureList(),
                 const SizedBox(height: 40),
               ],
@@ -239,6 +228,21 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
         ),
         const SizedBox(height: 14),
       ],
+    );
+  }
+
+  Widget _buildTechIcon(IconData iconData) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 8.0),
+      child: CircleAvatar(
+        radius: 14,
+        backgroundColor: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+            .withOpacity(0.2),
+        child: Icon(iconData,
+            color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
+                .withOpacity(1.0),
+            size: 16),
+      ),
     );
   }
 

@@ -57,16 +57,6 @@ class _ProjectCardState extends State<ProjectCard> {
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(color: Colors.grey.shade700),
           boxShadow:
-              // _isHovered
-              //     ? [
-              //         BoxShadow(
-              //           color: Colors.black.withOpacity(0.1),
-              //           spreadRadius: 4,
-              //           blurRadius: 20,
-              //           offset: const Offset(0, 10),
-              //         ),
-              //       ]
-              //     :
               [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
@@ -134,27 +124,12 @@ class _ProjectCardState extends State<ProjectCard> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // ElevatedButton(
-                      //   onPressed: () {},
-                      //   style: ElevatedButton.styleFrom(
-                      //     backgroundColor:
-                      //         const Color(0xFF1A237E), // Deep indigo
-                      //     foregroundColor: Colors.white,
-                      //     padding: const EdgeInsets.symmetric(
-                      //         horizontal: 24, vertical: 16),
-                      //     shape: RoundedRectangleBorder(
-                      //       borderRadius: BorderRadius.circular(8.0),
-                      //     ),
-                      //   ),
-                      //   child: const Text('GitHub'),
-                      // ),
-                      // const SizedBox(width: 12),
                       TextButton(
                         onPressed: () {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => ProjectDetailPage()));
+                                  builder: (context) => const ProjectDetailPage()));
                         },
                         style: TextButton.styleFrom(
                           backgroundColor: const Color(0xFF2D2D2D),
