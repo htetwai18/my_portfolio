@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:device_frame_plus/device_frame_plus.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'dart:math' as math;
 
 // --- Converted to a StatefulWidget ---
 class ProjectDetailPage extends StatefulWidget {
@@ -184,29 +183,69 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 const SizedBox(height: 40),
 
                 // --- Action Buttons ---
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildTechIcon(FontAwesomeIcons.appStoreIos),
-                    const SizedBox(width: 8),
-                    _buildTechIcon(FontAwesomeIcons.googlePlay),
+                    _HoverTechIcon(iconData: FontAwesomeIcons.appStoreIos),
+                    SizedBox(width: 20),
+                    _HoverTechIcon(iconData: FontAwesomeIcons.googlePlay),
                   ],
                 ),
-                const SizedBox(height: 40),
+                SizedBox(height: (isDesktop) ? 100 : 40),
 
                 // --- Technical Sections ---
-                _buildSectionTitle('Technical Deep Dive'),
+                Center(child: _buildSectionTitle('Technical Deep Dive')),
                 Align(
                   alignment: Alignment.center,
                   child: _buildTechnicalGrid(),
                 ),
+                const SizedBox(height: 60),
+                Container(
+                  padding: EdgeInsets.symmetric(
+                      horizontal: isDesktop ? 50 : 16,
+                      vertical: isDesktop ? 50 : 16),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF1E1E1E),
+                    borderRadius: BorderRadius.circular(24),
+                    border: Border.all(color: Colors.grey[700]!),
+                  ),
+                  width: MediaQuery.sizeOf(context).width,
+                  child: (MediaQuery.sizeOf(context).width > 800)
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _buildSectionTitle(
+                                    'Problem Solved & Key Features'),
+                                _buildFeatureList(),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _buildSectionTitle(
+                                    'Technical Challenges & Solutions'),
+                                _buildFeatureList(),
+                              ],
+                            ),
+                          ],
+                        )
+                      : Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _buildSectionTitle('Problem Solved & Key Features'),
+                            _buildFeatureList(),
+                            const SizedBox(height: 30),
+                            _buildSectionTitle(
+                                'Technical Challenges & Solutions'),
+                            _buildFeatureList(),
+                          ],
+                        ),
+                ),
+
                 const SizedBox(height: 20),
-                _buildSectionTitle('Problem Solved & Key Features'),
-                _buildFeatureList(),
-                const SizedBox(height: 20),
-                _buildSectionTitle('Technical Challenges & Solutions'),
-                _buildFeatureList(),
-                const SizedBox(height: 40),
               ],
             ),
           ),
@@ -231,20 +270,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
     );
   }
 
-  Widget _buildTechIcon(IconData iconData) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 8.0),
-      child: CircleAvatar(
-        radius: 14,
-        backgroundColor: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-            .withOpacity(0.2),
-        child: Icon(iconData,
-            color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
-                .withOpacity(1.0),
-            size: 16),
-      ),
-    );
-  }
+  // Removed random-color tech icon helper in favor of a hover-reactive widget below
 
   Widget _buildTechnicalGrid() {
     return LayoutBuilder(
@@ -261,6 +287,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 children: _getTechInfoCards(),
               )
             : Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: _getTechInfoCards()
                     .map((card) => Padding(
                           padding: const EdgeInsets.only(bottom: 16.0),
@@ -314,31 +341,6 @@ class _ScreenshotItem extends StatelessWidget {
         ),
       ),
     );
-    // return Container(
-    //   height: 260,
-    //   width: 140,
-    //   decoration: BoxDecoration(
-    //     borderRadius: BorderRadius.circular(12),
-    //     boxShadow: [
-    //       BoxShadow(
-    //         color: Colors.black.withOpacity(0.1),
-    //         blurRadius: 15,
-    //         spreadRadius: 2,
-    //         offset: const Offset(0, 5),
-    //       )
-    //     ],
-    //   ),
-    //   child: ClipRRect(
-    //     borderRadius: BorderRadius.circular(12),
-    //     child: Image.asset(
-    //       imagePath,
-    //       fit: BoxFit.cover,
-    //       errorBuilder: (context, error, stackTrace) {
-    //         return const _ImagePlaceholder();
-    //       },
-    //     ),
-    //   ),
-    // );
   }
 }
 
@@ -351,7 +353,7 @@ class _ImagePlaceholder extends StatelessWidget {
       height: 260,
       width: 140,
       decoration: BoxDecoration(
-        color: Color(0xFF2D2D2D),
+        color: const Color(0xFF2D2D2D),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: Colors.grey[700]!),
       ),
@@ -380,13 +382,14 @@ class TechInfoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: const Color(0xFF1E1E1E),
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey[700]!),
-      ),
+      // decoration: BoxDecoration(
+      //   shape: BoxShape.circle,
+      //   color: const Color(0xFF1E1E1E),
+      //   // borderRadius: BorderRadius.circular(8),
+      //   border: Border.all(color: Colors.grey[700]!),
+      // ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
@@ -415,7 +418,10 @@ class FeatureListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isDesktop = screenSize.width > 800;
+    return Container(
+      width: (isDesktop) ? screenSize.width / 3.2 : screenSize.width,
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
         children: [
@@ -431,6 +437,62 @@ class FeatureListItem extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// Hover-reactive tech icon (matches project.dart behavior but localized)
+class _HoverTechIcon extends StatefulWidget {
+  final IconData iconData;
+  const _HoverTechIcon({required this.iconData});
+
+  @override
+  State<_HoverTechIcon> createState() => _HoverTechIconState();
+}
+
+class _HoverTechIconState extends State<_HoverTechIcon> {
+  bool _isHovered = false;
+  bool isPlayStore (){
+    if(widget.iconData == FontAwesomeIcons.googlePlay){
+      return true;
+    }
+    return false;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+     Color baseColor = (isPlayStore())? Colors.green: Colors.blue;
+    final Color bg =
+        _isHovered ? baseColor.withOpacity(0.25) : const Color(0xFF2D2D2D);
+    final Color fg = !_isHovered
+        ? baseColor
+        : (isPlayStore())
+            ? Colors.greenAccent
+            : Colors.blueAccent;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 180),
+        curve: Curves.easeOut,
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color: bg,
+          shape: BoxShape.circle,
+          boxShadow: _isHovered
+              ? [
+                  BoxShadow(
+                    color: baseColor.withOpacity(0.35),
+                    blurRadius: 16,
+                    spreadRadius: 1,
+                    offset: const Offset(0, 4),
+                  ),
+                ]
+              : [],
+        ),
+        child: Icon(widget.iconData, color: fg, size: 24),
       ),
     );
   }
