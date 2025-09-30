@@ -1,5 +1,7 @@
 import 'dart:async'; // Import async library for Timer
 import 'package:flutter/material.dart';
+import 'package:device_frame_plus/device_frame_plus.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // --- Converted to a StatefulWidget ---
 class ProjectDetailPage extends StatefulWidget {
@@ -70,10 +72,11 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
     final Size screenSize = MediaQuery.of(context).size;
     final bool isDesktop = screenSize.width > 800; // Arbitrary breakpoint
     return WillPopScope(
-      onWillPop: ()async{
+      onWillPop: () async {
         return false;
       },
       child: Scaffold(
+        backgroundColor: const Color(0xFF121212),
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
@@ -88,7 +91,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                     },
                     icon: const Icon(
                       Icons.arrow_back,
-                      color: Colors.black,
+                      color: Colors.white,
                       size: 24,
                     )),
                 // --- Header Section ---
@@ -96,10 +99,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                   alignment: Alignment.center,
                   child: Text(
                     'Project: TaskMaster',
-                    style: TextStyle(
-                      fontSize: 42,
+                    style: GoogleFonts.oxanium(
+                      fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF6B4EEA),
+                      color: const Color(0xFFBB86FC),
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -109,9 +112,9 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                   alignment: Alignment.center,
                   child: Text(
                     'A productivity app for managing daily tasks and goals.',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
-                      color: Colors.grey[700],
+                      color: Colors.grey[400],
                       height: 1.5,
                     ),
                     textAlign: TextAlign.center,
@@ -120,11 +123,11 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 const SizedBox(height: 8),
                 Align(
                   alignment: Alignment.center,
-                  child: const Text(
+                  child: Text(
                     'Role: Lead Developer',
-                    style: TextStyle(
+                    style: GoogleFonts.poppins(
                       fontSize: 16,
-                      color: Colors.black87,
+                      color: Colors.grey,
                       fontWeight: FontWeight.w500,
                     ),
                   ),
@@ -184,10 +187,13 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                   child: ElevatedButton.icon(
                     onPressed: () {},
                     icon: const Icon(Icons.visibility),
-                    label: const Text('View Live App'),
+                    label: Text(
+                      'View Live App',
+                      style: GoogleFonts.poppins(),
+                    ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6B4EEA),
-                      foregroundColor: Colors.white,
+                      backgroundColor: const Color(0xFFBB86FC),
+                      foregroundColor: const Color(0xFF121212),
                       padding: const EdgeInsets.symmetric(
                           horizontal: 24, vertical: 16),
                       shape: RoundedRectangleBorder(
@@ -200,7 +206,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
 
                 // --- Technical Sections ---
                 _buildSectionTitle('Technical Deep Dive'),
-                _buildTechnicalGrid(),
+                Align(
+                  alignment: Alignment.center,
+                  child: _buildTechnicalGrid(),
+                ),
                 const SizedBox(height: 20),
                 _buildSectionTitle('Problem Solved & Key Features'),
                 _buildFeatureList(),
@@ -222,10 +231,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
       children: [
         Text(
           title,
-          style: const TextStyle(
-            fontSize: 22,
+          style: GoogleFonts.oxanium(
+            fontSize: 20,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF1a2533),
+            color: const Color(0xFFBB86FC),
           ),
         ),
         const SizedBox(height: 14),
@@ -279,34 +288,6 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
       ],
     );
   }
-
-  Widget _buildChallengeExpansion() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey[300]!),
-      ),
-      child: const ExpansionTile(
-        title: Text(
-          'Challenge Faced: Real-time Data Synchronization',
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF1a2533),
-          ),
-        ),
-        children: [
-          Padding(
-            padding: EdgeInsets.all(16.0),
-            child: Text(
-              'Solution: Leveraged Firebase Firestore\'s real-time listeners to subscribe to data changes. Implemented Combine publishers to efficiently propagate updates throughout the app\'s UI, ensuring a reactive and consistent state across all connected devices with minimal latency.',
-              style: TextStyle(color: Colors.black87, height: 1.5),
-            ),
-          )
-        ],
-      ),
-    );
-  }
 }
 
 class _ScreenshotItem extends StatelessWidget {
@@ -315,21 +296,10 @@ class _ScreenshotItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 260,
-      width: 140,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 15,
-            spreadRadius: 2,
-            offset: const Offset(0, 5),
-          )
-        ],
-      ),
-      child: ClipRRect(
+    return DeviceFrame(
+      device: Devices.ios.iPhone13, // You can choose other iPhone models
+      isFrameVisible: true,
+      screen: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: Image.asset(
           imagePath,
@@ -340,6 +310,31 @@ class _ScreenshotItem extends StatelessWidget {
         ),
       ),
     );
+    // return Container(
+    //   height: 260,
+    //   width: 140,
+    //   decoration: BoxDecoration(
+    //     borderRadius: BorderRadius.circular(12),
+    //     boxShadow: [
+    //       BoxShadow(
+    //         color: Colors.black.withOpacity(0.1),
+    //         blurRadius: 15,
+    //         spreadRadius: 2,
+    //         offset: const Offset(0, 5),
+    //       )
+    //     ],
+    //   ),
+    //   child: ClipRRect(
+    //     borderRadius: BorderRadius.circular(12),
+    //     child: Image.asset(
+    //       imagePath,
+    //       fit: BoxFit.cover,
+    //       errorBuilder: (context, error, stackTrace) {
+    //         return const _ImagePlaceholder();
+    //       },
+    //     ),
+    //   ),
+    // );
   }
 }
 
@@ -352,15 +347,15 @@ class _ImagePlaceholder extends StatelessWidget {
       height: 260,
       width: 140,
       decoration: BoxDecoration(
-        color: Colors.grey[300],
+        color: Color(0xFF2D2D2D),
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: Colors.grey[400]!),
+        border: Border.all(color: Colors.grey[700]!),
       ),
       child: const Center(
         child: Text(
-          'Add image to\nassets/ folder',
+          'Error loading image',
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.black54),
+          style: TextStyle(color: Colors.grey),
         ),
       ),
     );
@@ -382,9 +377,9 @@ class TechInfoCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: const Color(0xFF1E1E1E),
         borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey[300]!),
+        border: Border.all(color: Colors.grey[700]!),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -392,15 +387,15 @@ class TechInfoCard extends StatelessWidget {
         children: [
           Text(
             title,
-            style: const TextStyle(color: Colors.black54, fontSize: 14),
+            style: GoogleFonts.oxanium(color: Colors.grey, fontSize: 14),
           ),
           const SizedBox(height: 4),
           Text(
             value,
-            style: const TextStyle(
-              fontWeight: FontWeight.bold,
+            style: GoogleFonts.oxanium(
+              fontWeight: FontWeight.w600,
               fontSize: 18,
-              color: Color(0xFF1a2533),
+              color: Colors.white,
             ),
           ),
         ],
@@ -421,14 +416,14 @@ class FeatureListItem extends StatelessWidget {
       child: Row(
         children: [
           const Icon(
-            Icons.check_circle_outline,
-            color: Color(0xFF007BFF),
+            Icons.check_circle,
+            color: Color(0xFFBB86FC),
           ),
           const SizedBox(width: 12),
           Expanded(
             child: Text(
               text,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
             ),
           ),
         ],
