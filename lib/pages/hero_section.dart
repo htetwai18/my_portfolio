@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,9 +52,6 @@ class _HeroSectionState extends State<HeroSection>
   late AnimationController _contactController;
 
   // Main animations
-  late Animation<Offset> _nameSlideAnimation;
-  late Animation<Offset> _titleSlideAnimation;
-  late Animation<Offset> _descriptionSlideAnimation;
   late Animation<double> _imageScaleAnimation;
   late Animation<double> _navbarFadeAnimation;
 
@@ -272,21 +270,6 @@ class _HeroSectionState extends State<HeroSection>
     });
 
     // Main animations
-    _nameSlideAnimation =
-        Tween<Offset>(begin: const Offset(-0.2, 0), end: Offset.zero).animate(
-            CurvedAnimation(
-                parent: _mainController,
-                curve: const Interval(0.0, 0.6, curve: Curves.easeOutCubic)));
-    _titleSlideAnimation =
-        Tween<Offset>(begin: const Offset(-0.2, 0), end: Offset.zero).animate(
-            CurvedAnimation(
-                parent: _mainController,
-                curve: const Interval(0.1, 0.7, curve: Curves.easeOutCubic)));
-    _descriptionSlideAnimation =
-        Tween<Offset>(begin: const Offset(-0.2, 0), end: Offset.zero).animate(
-            CurvedAnimation(
-                parent: _mainController,
-                curve: const Interval(0.2, 0.8, curve: Curves.easeOutCubic)));
     _imageScaleAnimation = Tween<double>(begin: 0.7, end: 1.0).animate(
         CurvedAnimation(
             parent: _mainController,
@@ -461,7 +444,7 @@ class _HeroSectionState extends State<HeroSection>
         // --- FIX #1: REMOVE PINK/PURPLE TINT FROM GRADIENT ---
         // Replaced the previous colors with a cleaner, more neutral gradient.
         decoration: const BoxDecoration(
-          color: const Color.fromRGBO(1, 0, 0, 1),
+          color:  Color.fromRGBO(1, 0, 0, 1),
         ),
         child: SingleChildScrollView(
           controller: _scrollController,
@@ -530,108 +513,97 @@ class _HeroSectionState extends State<HeroSection>
                               : CrossAxisAlignment.center,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            SlideTransition(
-                              position: _nameSlideAnimation,
-                              child: Text(
-                                'Htet Wai Lwin...',
-                                style: GoogleFonts.oxanium(
-                                  fontSize: isDesktop ? 55 : 34,
-                                  fontWeight: FontWeight.bold,
-                                  color: const Color(0xFFBB86FC),
-                                ),
-                                textAlign: isDesktop
-                                    ? TextAlign.start
-                                    : TextAlign.center,
+                            Text(
+                              'Hello, welcome...',
+                              style: GoogleFonts.oxanium(
+                                fontSize: isDesktop ? 33 : 24,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.white,
                               ),
+                              textAlign: isDesktop
+                                  ? TextAlign.start
+                                  : TextAlign.center,
+                            ),
+                            Text(
+                              'I am Htet Wai Lwin',
+                              style: GoogleFonts.oxanium(
+                                fontSize: isDesktop ? 55 : 34,
+                                fontWeight: FontWeight.bold,
+                                color: const Color(0xFFBB86FC),
+                              ),
+                              textAlign: isDesktop
+                                  ? TextAlign.start
+                                  : TextAlign.center,
                             ),
                             const SizedBox(height: 8),
-                            SlideTransition(
-                              position: _titleSlideAnimation,
-                              child: Text(
-                                'Mobile Application Developer(Flutter)',
-                                style: GoogleFonts.oxanium(
-                                  fontSize: isDesktop ? 32 : 22,
-                                  color: Colors.white,
+                            AnimatedTextKit(
+                              animatedTexts: [
+                                TypewriterAnimatedText(
+                                  'Mobile Application Developer(Flutter)',
+                                  textStyle: GoogleFonts.oxanium(
+                                    fontSize: isDesktop ? 32 : 22,
+                                    color: Colors.white,
+                                  ),
+                                  speed: const Duration(milliseconds: 100),
+                                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
                                 ),
-                                textAlign: isDesktop
-                                    ? TextAlign.start
-                                    : TextAlign.center,
-                              ),
+                              ],
+                              totalRepeatCount: 1,
+                              pause: const Duration(milliseconds: 1000),
+                              displayFullTextOnTap: true,
                             ),
                             const SizedBox(height: 16),
-                            SlideTransition(
-                              position: _descriptionSlideAnimation,
-                              child: Text(
-                                'Building cross-platform apps with Flutter & Dart.',
-                                style: GoogleFonts.poppins(
-                                  fontSize: isDesktop ? 20 : 14,
-                                  color: Colors.grey[400],
-                                ),
-                                textAlign: isDesktop
-                                    ? TextAlign.start
-                                    : TextAlign.center,
+                            Text(
+                              'Building cross-platform apps with Flutter & Dart.',
+                              style: GoogleFonts.poppins(
+                                fontSize: isDesktop ? 20 : 14,
+                                color: Colors.grey[400],
                               ),
+                              textAlign: isDesktop
+                                  ? TextAlign.start
+                                  : TextAlign.center,
                             ),
                             const SizedBox(height: 32),
-                            SlideTransition(
-                              position: _descriptionSlideAnimation,
-                              child: Text(
-                                "I'm a passionate Mobile developer with a focus on creating beautiful and functional cross-platform applications. I have over 3 years of experience in mobile app development, specializing in Flutter and Dart.",
-                                style: GoogleFonts.poppins(
-                                  fontSize: isDesktop ? 16 : 12,
-                                  color: Colors.white,
-                                ),
-                                textAlign: isDesktop
-                                    ? TextAlign.start
-                                    : TextAlign.center,
+                            Text(
+                              "I'm a passionate Mobile developer with a focus on creating beautiful and functional cross-platform applications. I have over 3 years of experience in mobile app development, specializing in Flutter and Dart.",
+                              style: GoogleFonts.poppins(
+                                fontSize: isDesktop ? 16 : 12,
+                                color: Colors.white,
                               ),
+                              textAlign: isDesktop
+                                  ? TextAlign.start
+                                  : TextAlign.center,
                             ),
                             const SizedBox(height: 24),
-                            SlideTransition(
-                              position: _descriptionSlideAnimation,
-                              child: ElevatedButton.icon(
-                                onPressed: () {
-                                  _downloadResume();
-                                },
-                                icon: const Icon(Icons.download),
-                                label: Text(
-                                  'Download Resume',
-                                  style: GoogleFonts.oxanium(fontSize: 14),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color(0xFFBB86FC),
-                                  foregroundColor: const Color(0xFF121212),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 24, vertical: 16),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12)),
-                                  elevation: 2,
-                                ),
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                _downloadResume();
+                              },
+                              icon: const Icon(Icons.download),
+                              label: Text(
+                                'Download Resume',
+                                style: GoogleFonts.oxanium(fontSize: 14),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xFFBB86FC),
+                                foregroundColor: const Color(0xFF121212),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 24, vertical: 16),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12)),
+                                elevation: 2,
                               ),
                             ),
                             const SizedBox(height: 32),
-                            SlideTransition(
-                              position: _descriptionSlideAnimation,
-                              child: Text(
-                                'My Skills',
-                                style: GoogleFonts.oxanium(
-                                  fontSize: 24,
-                                  color: Colors.white,
-                                ),
-                                // style: Theme.of(context)
-                                //     .textTheme
-                                //     .headlineSmall
-                                //     ?.copyWith(
-                                //       fontWeight: FontWeight.bold,
-                                //       color: Colors.white,
-                                //     ),
+                            Text(
+                              'My Skills',
+                              style: GoogleFonts.oxanium(
+                                fontSize: 24,
+                                color: Colors.white,
                               ),
                             ),
                             const SizedBox(height: 16),
-                            SlideTransition(
-                              position: _descriptionSlideAnimation,
-                              child: buildSkillsWrap(isDesktop),
-                            ),
+                            buildSkillsWrap(isDesktop),
                           ],
                         ),
                       ),
@@ -1209,23 +1181,6 @@ class _HeroSectionState extends State<HeroSection>
           Stack(
             alignment: Alignment.bottomCenter,
             children: [
-              if (!isDesktop)
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(
-                        Icons.arrow_back_ios,
-                        color: Colors.white,
-                      ),
-                      Icon(
-                        Icons.arrow_forward_ios,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: isDesktop ? 0 : 40),
                 child: SizedBox(
@@ -1235,46 +1190,30 @@ class _HeroSectionState extends State<HeroSection>
                     scrollDirection: Axis.horizontal,
                     // mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      _buildSocialIcon(FontAwesomeIcons.github, () async {
+                        await _launchUrl('https://github.com/htetwai18');
+                      }, 'Github'),
+                      const SizedBox(width: 24),
                       _buildSocialIcon(FontAwesomeIcons.linkedin, () async {
                         await _launchUrl(
                             'https://www.linkedin.com/in/htetwailwin/');
                       }, 'LinkedIn'),
                       const SizedBox(width: 24),
-                      _buildSocialIcon(FontAwesomeIcons.github, () async {
-                        await _launchUrl('https://github.com/htetwai18');
-                      }, 'Github'),
+                      _buildSocialIcon(
+                          FontAwesomeIcons
+                              .whatsapp, // Phone is available in default Material Icons
+                          () async {
+                        await _launchUrl(
+                            'https://wa.me/+660917073034'); // opens phone dialer
+                      }, 'Whatsapp'),
                       const SizedBox(width: 24),
                       _buildSocialIcon(
                           FontAwesomeIcons
-                              .reddit, // Phone is available in default Material Icons
+                              .line, // Phone is available in default Material Icons
                           () async {
                         await _launchUrl(
-                            'https://www.reddit.com/user/OkFudge8505/'); // opens phone dialer
-                      }, 'Reddit'),
-                      const SizedBox(width: 24),
-                      _buildSocialIcon(
-                          FontAwesomeIcons
-                              .medium, // Phone is available in default Material Icons
-                          () async {
-                        await _launchUrl(
-                            'https://medium.com/@htetwai.18.lwin'); // opens phone dialer
-                      }, 'Medium'),
-                      const SizedBox(width: 24),
-                      _buildSocialIcon(
-                          FontAwesomeIcons
-                              .youtube, // Phone is available in default Material Icons
-                          () async {
-                        await _launchUrl(
-                            'https://www.youtube.com/@HtetWaiLwin-q1g'); // opens phone dialer
-                      }, 'Youtube'),
-                      const SizedBox(width: 24),
-                      _buildSocialIcon(
-                          FontAwesomeIcons
-                              .stackOverflow, // Phone is available in default Material Icons
-                          () async {
-                        await _launchUrl(
-                            'https://stackoverflow.com/users/27296718/htet-wai-lwin'); // opens phone dialer
-                      }, 'Stack overflow'),
+                            'https://line.me/ti/p/_uU9xGhxNP'); // opens phone dialer
+                      }, 'Line'),
                     ],
                   ),
                 ),

@@ -71,7 +71,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    final bool isDesktop = screenSize.width > 800; // Arbitrary breakpoint
+    final bool isDesktop = screenSize.width > 400; // Arbitrary breakpoint
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -81,8 +81,9 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: (isDesktop) ? 60 : 24.0,
-                vertical: (isDesktop) ? 40.0 : 20),
+              horizontal: (isDesktop) ? 60 : 24.0,
+              vertical: (isDesktop) ? 40.0 : 20,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -202,8 +203,8 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 const SizedBox(height: 60),
                 Container(
                   padding: EdgeInsets.symmetric(
-                      horizontal: isDesktop ? 50 : 16,
-                      vertical: isDesktop ? 50 : 16),
+                      horizontal: isDesktop ? 40 : 16,
+                      vertical: isDesktop ? 40 : 16),
                   decoration: BoxDecoration(
                     color: const Color(0xFF1E1E1E),
                     borderRadius: BorderRadius.circular(24),
@@ -275,8 +276,9 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
   Widget _buildTechnicalGrid() {
     return LayoutBuilder(
       builder: (context, constraints) {
-        bool isWide = constraints.maxWidth > 600;
-        return isWide
+        final Size screenSize = MediaQuery.of(context).size;
+        final bool isDesktop = screenSize.width > 820;
+        return isDesktop
             ? GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
@@ -380,16 +382,13 @@ class TechInfoCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isDesktop = screenSize.width > 800;
     return Container(
-      padding: const EdgeInsets.all(16),
-      // decoration: BoxDecoration(
-      //   shape: BoxShape.circle,
-      //   color: const Color(0xFF1E1E1E),
-      //   // borderRadius: BorderRadius.circular(8),
-      //   border: Border.all(color: Colors.grey[700]!),
-      // ),
+      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment:
+            (!isDesktop) ? CrossAxisAlignment.start : CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
@@ -453,8 +452,8 @@ class _HoverTechIcon extends StatefulWidget {
 
 class _HoverTechIconState extends State<_HoverTechIcon> {
   bool _isHovered = false;
-  bool isPlayStore (){
-    if(widget.iconData == FontAwesomeIcons.googlePlay){
+  bool isPlayStore() {
+    if (widget.iconData == FontAwesomeIcons.googlePlay) {
       return true;
     }
     return false;
@@ -462,7 +461,7 @@ class _HoverTechIconState extends State<_HoverTechIcon> {
 
   @override
   Widget build(BuildContext context) {
-     Color baseColor = (isPlayStore())? Colors.green: Colors.blue;
+    Color baseColor = (isPlayStore()) ? Colors.green : Colors.blue;
     final Color bg =
         _isHovered ? baseColor.withOpacity(0.25) : const Color(0xFF2D2D2D);
     final Color fg = !_isHovered

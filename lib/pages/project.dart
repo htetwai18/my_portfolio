@@ -29,7 +29,6 @@ class Project {
   });
 }
 
-
 // --- Project Card Widget ---
 class ProjectCard extends StatefulWidget {
   final Project project;
@@ -56,8 +55,7 @@ class _ProjectCardState extends State<ProjectCard> {
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(16.0),
           border: Border.all(color: Colors.grey.shade700),
-          boxShadow:
-              [
+          boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
               spreadRadius: 1,
@@ -129,7 +127,8 @@ class _ProjectCardState extends State<ProjectCard> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const ProjectDetailPage()));
+                                  builder: (context) =>
+                                      const ProjectDetailPage()));
                         },
                         style: TextButton.styleFrom(
                           backgroundColor: const Color(0xFF2D2D2D),
