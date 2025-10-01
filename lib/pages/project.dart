@@ -9,22 +9,22 @@ class Project {
   final String imagePath;
   final String title;
   final String description;
-  // final String role;
+  final String role;
   // final List<String> images;
-  // final List<String> techStacks;
-  // final List<String> psAndKf;
-  // final List<String> challenges;
+  final List<String> techStacks;
+  final List<String> psAndKf;
+  final List<String> challenges;
   final List<IconData> techIcons; // Using IconData for simplicity
 
   const Project({
     required this.imagePath,
     required this.title,
     required this.description,
-    // required this.role,
+    required this.role,
     // required this.images,
-    // required this.techStacks,
-    // required this.psAndKf,
-    // required this.challenges,
+    required this.techStacks,
+    required this.psAndKf,
+    required this.challenges,
     required this.techIcons,
   });
 }
@@ -127,8 +127,9 @@ class _ProjectCardState extends State<ProjectCard> {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      const ProjectDetailPage()));
+                                  builder: (context) => ProjectDetailPage(
+                                        project: widget.project,
+                                      )));
                         },
                         style: TextButton.styleFrom(
                           backgroundColor: const Color(0xFF2D2D2D),

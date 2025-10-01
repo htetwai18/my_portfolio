@@ -141,34 +141,94 @@ class _HeroSectionState extends State<HeroSection>
     ),
   ];
 
-  final List<Project> _projects = [
+  final List<Project> _projects = const [
     Project(
       imagePath: 'assets/images/digicraft_main.png',
       title: 'Digicraft Home',
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
       techIcons: [FontAwesomeIcons.flutter],
+      role: 'Code refactoring of legacy project, bug fixing on spot',
+      techStacks: ["Flutter", "MVC", "Flutx", "MQTT broker"],
+      psAndKf: [
+        "Remote monitoring and control of smart appliances",
+        "Real-time device status updates through MQTT",
+        "Unified dashboard for managing multiple IoT devices",
+        "Lightweight and efficient communication for low-power devices"
+      ],
+      challenges: [
+        "Refactoring legacy Flutter codebase into a maintainable MVC structure",
+        "Fixing critical bugs in device connectivity and real-time updates",
+        "Ensuring smooth MQTT communication across different device types",
+        "Improving UI consistency and responsiveness within Flutx framework"
+      ],
     ),
     Project(
       imagePath: 'assets/images/zcultures_main.png',
       title: 'Zcultures',
       description:
-          'A global AI-powered social commerce platform that uses an O2O strategy to connect brands, creators, nightlife venues.',
+          'A global AI-powered social commerce platform that leverages an O2O strategy to connect brands, creators, and nightlife venues for smarter engagement and commerce.',
       techIcons: [FontAwesomeIcons.flutter],
+      role: 'Code refactoring of legacy project, bug fixing on spot',
+      techStacks: ["Flutter", "MVC", "Provider", "Flutx"],
+      psAndKf: [
+        "AI-powered recommendations for products, events, and venues",
+        "Seamless O2O (Online-to-Offline) integration for social and commercial activities",
+        "Interactive platform connecting brands, creators, and nightlife venues",
+        "Personalized user experiences through smart data-driven features"
+      ],
+      challenges: [
+        "Refactoring legacy Flutter codebase for improved maintainability",
+        "Fixing UI inconsistencies and optimizing state management with Provider",
+        "Resolving performance issues in real-time feed and recommendation rendering",
+        "Enhancing app stability and scalability within the MVC + Flutx structure"
+      ],
     ),
+
     Project(
       imagePath: 'assets/images/suzuki_main.png',
       title: 'Suzuki Smart Order',
       description:
           'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
       techIcons: [FontAwesomeIcons.flutter],
+      role:
+          'Led mobile team, Meet with Suzuki clients for analysis,meet with designer to facilitate design and feature compact',
+      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      psAndKf: [
+        "Streamlined product ordering with an intuitive mobile interface",
+        "Smart notifications to keep dealers updated on order status",
+        "Secure Google Sign-In for simplified authentication",
+        "Real-time catalog browsing and stock availability"
+      ],
+      challenges: [
+        "Ensuring seamless data synchronization between mobile app and backend",
+        "Implementing MVVM architecture for scalable and maintainable code",
+        "Integrating secure authentication with Google Sign-In",
+        "Optimizing app performance for large product catalogs and multiple dealers"
+      ],
     ),
+
     Project(
       imagePath: 'assets/images/weday_main.png',
       title: 'Weday',
       description:
-          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by agora sdk',
+          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
       techIcons: [FontAwesomeIcons.flutter],
+      role:
+          'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
+      techStacks: ["Flutter", "MVVM", "Riverpod", "Java"],
+      psAndKf: [
+        "Live streaming feature enabling vendors to sell products online in real-time",
+        "Integrated comments with nested replies for structured discussions",
+        "Reactions system to boost user engagement during posts and streams",
+        "Seamless Agora SDK integration for stable and low-latency video streaming"
+      ],
+      challenges: [
+        "Integrating and troubleshooting Agora SDK with Flutter for smooth streaming",
+        "Designing scalable comments and nested replies structure for real-time interaction",
+        "Managing complex state with Riverpod for dynamic social features",
+        "Ensuring low-latency video and chat synchronization during live sales"
+      ],
     ),
 
     Project(
@@ -177,21 +237,69 @@ class _HeroSectionState extends State<HeroSection>
       description:
           'A mobile e-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
       techIcons: [FontAwesomeIcons.flutter],
+      role:
+          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
+      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      psAndKf: [
+        "Product catalog with categories and detailed product views",
+        "Customer order management with real-time status updates",
+        "Secure online payments and transaction handling",
+        "Brand owner dashboard for managing inventory and sales"
+      ],
+      challenges: [
+        "Designing a scalable MVVM architecture for maintainability",
+        "Integrating secure payment gateways with backend Node.js APIs",
+        "Managing real-time order updates between customers and brand owners",
+        "Optimizing performance for large product catalogs with images"
+      ],
     ),
+
     Project(
       imagePath: 'assets/images/dr_rej_main.png',
       title: 'Dr Rejvue Clinic Membership',
       description:
           'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
       techIcons: [FontAwesomeIcons.flutter],
+      role:
+          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
+      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      psAndKf: [
+        "Subscription management for clinic patients with tier-based plans",
+        "Loyalty points system to earn, track, and redeem rewards",
+        "Real-time updates on membership status and clinic services",
+        "Seamless integration with backend APIs for patient data and transactions"
+      ],
+      challenges: [
+        "Implementing a flexible MVVM architecture for membership features",
+        "Developing a secure and scalable points/rewards system",
+        "Synchronizing patient membership data in real time with Node.js backend",
+        "Optimizing performance while handling large patient data and transactions"
+      ],
     ),
+
     Project(
       imagePath: 'assets/images/hrm_main.png',
       title: 'Kwin HR Management',
       description:
           'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
       techIcons: [FontAwesomeIcons.flutter],
+      role:
+          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
+      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      psAndKf: [
+        "Employee management with detailed profiles and role-based access",
+        "Leave request and approval workflow with real-time notifications",
+        "Performance tracking and evaluation tools for HR departments",
+        "Seamless integration with backend APIs for centralized HR data"
+      ],
+      challenges: [
+        "Designing scalable MVVM architecture for complex HR workflows",
+        "Implementing secure role-based access for employees and HR managers",
+        "Synchronizing employee data and leave requests in real time",
+        "Optimizing performance with large datasets of employee records"
+      ],
     ),
+
     // Project(
     //   imagePath: 'assets/placeholder.png',
     //   title: 'Yankin Bubble Tea POS App',
@@ -212,13 +320,46 @@ class _HeroSectionState extends State<HeroSection>
       description:
           'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
       techIcons: [FontAwesomeIcons.laravel],
+      role:
+          'Develop full stack dashboard together under a lead senior fullstack developer',
+      techStacks: ["Laravel", "MVC", "Controller", "PostGraphQl"],
+      psAndKf: [
+        "Centralized management of financial transactions and user accounts for online casinos.",
+        "Streamlined admin workflows by providing all modules in a single dashboard.",
+        "User account management including roles, permissions, and settings.",
+        "Detailed log tracking and activity monitoring for security compliance.",
+        "Modular dashboard design for easy navigation between different backoffice sections."
+      ],
+      challenges: [
+        "Integrating multiple financial APIs securely and efficiently.",
+        "Ensuring real-time updates for transactions and banking data.",
+        "Maintaining high security and access control for sensitive casino data.",
+        "Coordinating development with a team under tight project deadlines."
+      ],
     ),
+
     Project(
       imagePath: 'assets/images/infinity_main.jpg',
       title: 'Infinity 688 Backoffice',
       description:
           'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
       techIcons: [FontAwesomeIcons.laravel],
+      role:
+          'Develop full stack dashboard together under a lead senior fullstack developer',
+      techStacks: ["Laravel", "MVC", "Controller", "PostGraphQl"],
+      psAndKf: [
+        "Centralized management of financial transactions and user accounts for online casinos.",
+        "Streamlined admin workflows by providing all modules in a single dashboard.",
+        "User account management including roles, permissions, and settings.",
+        "Detailed log tracking and activity monitoring for security compliance.",
+        "Modular dashboard design for easy navigation between different backoffice sections."
+      ],
+      challenges: [
+        "Integrating multiple financial APIs securely and efficiently.",
+        "Ensuring real-time updates for transactions and banking data.",
+        "Maintaining high security and access control for sensitive casino data.",
+        "Coordinating development with a team under tight project deadlines."
+      ],
     ),
   ];
   @override
@@ -427,10 +568,71 @@ class _HeroSectionState extends State<HeroSection>
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    final bool isDesktop = screenSize.width > 960;
+    final bool isDesktop = screenSize.width > 800;
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(1, 0, 0, 1),
+      appBar: (!isDesktop)
+          ? AppBar(
+              elevation: 0,
+              backgroundColor: const Color.fromRGBO(1, 0, 0, 1),
+              iconTheme: const IconThemeData(color: Colors.white),
+            )
+          : null,
+      drawer: (!isDesktop)
+          ? Drawer(
+              elevation: 0,
+              width: 160,
+              backgroundColor: const Color.fromRGBO(1, 0, 0, 1),
+              child: SafeArea(
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  children: [
+                    ListTile(
+                      title: Text('Home',
+                          style: GoogleFonts.poppins(color: Colors.white)),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _scrollToTop();
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Projects',
+                          style: GoogleFonts.poppins(color: Colors.white)),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _scrollToSection('Projects');
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Experiences',
+                          style: GoogleFonts.poppins(color: Colors.white)),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _scrollToSection('Experiences');
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Education',
+                          style: GoogleFonts.poppins(color: Colors.white)),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _scrollToSection('Education');
+                      },
+                    ),
+                    ListTile(
+                      title: Text('Contact',
+                          style: GoogleFonts.poppins(color: Colors.white)),
+                      onTap: () {
+                        Navigator.pop(context);
+                        _scrollToSection('Contact');
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            )
+          : null,
       floatingActionButton: _showBackToTop
           ? FloatingActionButton(
               onPressed: _scrollToTop,
@@ -444,52 +646,47 @@ class _HeroSectionState extends State<HeroSection>
         // --- FIX #1: REMOVE PINK/PURPLE TINT FROM GRADIENT ---
         // Replaced the previous colors with a cleaner, more neutral gradient.
         decoration: const BoxDecoration(
-          color:  Color.fromRGBO(1, 0, 0, 1),
+          color: Color.fromRGBO(1, 0, 0, 1),
         ),
         child: SingleChildScrollView(
           controller: _scrollController,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: Container(
-                  margin: EdgeInsets.only(
-                    top: isDesktop
-                        ? 40
-                        : 20, // Adjust padding for desktop/mobile
-                    right: isDesktop ? 60 : 12,
-                    left: 12,
-                  ),
-                  height: 50,
-                  child: FadeTransition(
-                    opacity: _navbarFadeAnimation,
-                    child: ListView(
-                      shrinkWrap: true,
-                      physics: const AlwaysScrollableScrollPhysics(),
-                      scrollDirection: Axis.horizontal,
-                      children: [
-                        NavLink(
-                            title: 'Projects',
-                            page: widget.page,
-                            onSectionClick: _scrollToSection),
-                        NavLink(
-                            title: 'Experiences',
-                            page: widget.page,
-                            onSectionClick: _scrollToSection),
-                        NavLink(
-                            title: 'Education',
-                            page: widget.page,
-                            onSectionClick: _scrollToSection),
-                        NavLink(
-                            title: 'Contact',
-                            page: widget.page,
-                            onSectionClick: _scrollToSection),
-                      ],
+              if (isDesktop)
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 40, right: 60),
+                    height: 50,
+                    child: FadeTransition(
+                      opacity: _navbarFadeAnimation,
+                      child: ListView(
+                        shrinkWrap: true,
+                        physics: const AlwaysScrollableScrollPhysics(),
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          NavLink(
+                              title: 'Projects',
+                              page: widget.page,
+                              onSectionClick: _scrollToSection),
+                          NavLink(
+                              title: 'Experiences',
+                              page: widget.page,
+                              onSectionClick: _scrollToSection),
+                          NavLink(
+                              title: 'Education',
+                              page: widget.page,
+                              onSectionClick: _scrollToSection),
+                          NavLink(
+                              title: 'Contact',
+                              page: widget.page,
+                              onSectionClick: _scrollToSection),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
               const SizedBox(height: 40),
               Padding(
                 padding: EdgeInsets.symmetric(
@@ -541,11 +738,13 @@ class _HeroSectionState extends State<HeroSection>
                                 TypewriterAnimatedText(
                                   'Mobile Application Developer(Flutter)',
                                   textStyle: GoogleFonts.oxanium(
-                                    fontSize: isDesktop ? 32 : 22,
+                                    fontSize: isDesktop ? 32 : 18,
                                     color: Colors.white,
                                   ),
                                   speed: const Duration(milliseconds: 100),
-                                  textAlign: isDesktop ? TextAlign.start : TextAlign.center,
+                                  textAlign: isDesktop
+                                      ? TextAlign.start
+                                      : TextAlign.center,
                                 ),
                               ],
                               totalRepeatCount: 1,

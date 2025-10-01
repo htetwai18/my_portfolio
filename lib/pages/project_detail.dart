@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:device_frame_plus/device_frame_plus.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hwl_portforlio/pages/project.dart';
 
 // --- Converted to a StatefulWidget ---
 class ProjectDetailPage extends StatefulWidget {
-  const ProjectDetailPage({super.key});
+  final Project project;
+  const ProjectDetailPage({
+    super.key,
+    required this.project,
+  });
 
   @override
   State<ProjectDetailPage> createState() => _ProjectDetailPageState();
@@ -385,7 +390,7 @@ class TechInfoCard extends StatelessWidget {
     final Size screenSize = MediaQuery.of(context).size;
     final bool isDesktop = screenSize.width > 800;
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
       child: Column(
         crossAxisAlignment:
             (!isDesktop) ? CrossAxisAlignment.start : CrossAxisAlignment.center,
