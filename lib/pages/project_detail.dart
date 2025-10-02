@@ -71,11 +71,11 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
     }
   }
 
-  void _precacheImages() {
-    for (final imagePath in screenshotImages) {
-      precacheImage(AssetImage(imagePath), context);
-    }
-  }
+  // void _precacheImages() {
+  //   for (final imagePath in screenshotImages) {
+  //     precacheImage(AssetImage(imagePath), context);
+  //   }
+  // }
 
   void _startAutoScroll() {
     if (screenshotImages.length > 1 && _timer == null) {
