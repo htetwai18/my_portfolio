@@ -10,22 +10,32 @@ class Project {
   final String title;
   final String description;
   final String role;
-  // final List<String> images;
-  final List<String> techStacks;
+  final String platform;
+  final String iosLink;
+  final String androidLink;
+  final String webLink;
+  final List<String> images;
+  final List<Map<String, String>> techStacks;
   final List<String> psAndKf;
   final List<String> challenges;
-  final List<IconData> techIcons; // Using IconData for simplicity
+  final List<IconData> techIcons;
+  final String? status;
 
   const Project({
     required this.imagePath,
     required this.title,
     required this.description,
     required this.role,
-    // required this.images,
+    required this.platform,
+    required this.iosLink,
+    required this.androidLink,
+    required this.webLink,
+    required this.images,
     required this.techStacks,
     required this.psAndKf,
     required this.challenges,
     required this.techIcons,
+    this.status,
   });
 }
 

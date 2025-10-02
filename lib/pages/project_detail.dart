@@ -4,6 +4,7 @@ import 'package:device_frame_plus/device_frame_plus.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hwl_portforlio/pages/project.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 // --- Converted to a StatefulWidget ---
 class ProjectDetailPage extends StatefulWidget {
@@ -31,6 +32,16 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
     'assets/screenshot4.png',
     'assets/screenshot5.png',
   ];
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw "Cannot launch url";
+    }
+  }
 
   @override
   void initState() {
@@ -105,7 +116,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'Project: TaskMaster',
+                    widget.project.title,
                     style: GoogleFonts.oxanium(
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
@@ -118,7 +129,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'A productivity app for managing daily tasks and goals.',
+                    widget.project.description,
                     style: GoogleFonts.poppins(
                       fontSize: 16,
                       color: Colors.grey[400],
@@ -131,7 +142,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 Align(
                   alignment: Alignment.center,
                   child: Text(
-                    'Role: Lead Developer',
+                    'Role: ${widget.project.role}',
                     style: GoogleFonts.poppins(
                       fontSize: 16,
                       color: Colors.grey,
@@ -175,6 +186,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                             return RotatedBox(
                               quarterTurns: 1,
                               child: _ScreenshotItem(
+                                platform: widget.project.platform,
                                 imagePath: screenshotImages[
                                     index % screenshotImages.length],
                               ),
@@ -189,12 +201,49 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 const SizedBox(height: 40),
 
                 // --- Action Buttons ---
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    _HoverTechIcon(iconData: FontAwesomeIcons.appStoreIos),
-                    SizedBox(width: 20),
-                    _HoverTechIcon(iconData: FontAwesomeIcons.googlePlay),
+                    if (widget.project.iosLink != "")
+                      InkWell(
+                        onTap: () async {
+                          await _launchUrl(widget.project.iosLink);
+                        },
+                        child: const _HoverTechIcon(
+                            iconData: FontAwesomeIcons.appStoreIos),
+                      ),
+                    if (widget.project.androidLink != "")
+                      InkWell(
+                        onTap: () async {
+                          await _launchUrl(widget.project.androidLink);
+                        },
+                        child: const _HoverTechIcon(
+                            iconData: FontAwesomeIcons.googlePlay),
+                      ),
+                    if (widget.project.webLink != "")
+                      InkWell(
+                        onTap: () async {
+                          await _launchUrl(widget.project.webLink);
+                        },
+                        child: const _HoverTechIcon(
+                            iconData: FontAwesomeIcons.desktop),
+                      ),
+                    if (widget.project.status != null)
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade900,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          "${widget.project.status}",
+                          style: GoogleFonts.oxanium(
+                            color: Colors.purple,
+                            fontSize: 18,
+                          ),
+                        ),
+                      ),
                   ],
                 ),
                 SizedBox(height: (isDesktop) ? 100 : 40),
@@ -233,7 +282,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                               children: [
                                 _buildSectionTitle(
                                     'Technical Challenges & Solutions'),
-                                _buildFeatureList(),
+                                _buildChallengesList(),
                               ],
                             ),
                           ],
@@ -246,7 +295,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                             const SizedBox(height: 30),
                             _buildSectionTitle(
                                 'Technical Challenges & Solutions'),
-                            _buildFeatureList(),
+                            _buildChallengesList(),
                           ],
                         ),
                 ),
@@ -307,35 +356,43 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
   }
 
   List<Widget> _getTechInfoCards() {
-    return const [
-      TechInfoCard(title: 'Language/Framework', value: 'SwiftUI'),
-      TechInfoCard(title: 'Architecture Pattern', value: 'MVVM'),
-      TechInfoCard(title: 'State Management', value: 'Combine'),
-      TechInfoCard(title: 'Database/Backend', value: 'Firebase'),
-    ];
+    return widget.project.techStacks
+        .map((techMap) => TechInfoCard(
+            title: techMap.keys.first, value: techMap.values.first))
+        .toList();
   }
 
   Widget _buildFeatureList() {
-    return const Column(
-      children: [
-        FeatureListItem(text: 'Intuitive task creation and management'),
-        FeatureListItem(text: 'Seamless synchronization across devices'),
-        FeatureListItem(
-            text: 'Personalized goal setting and progress tracking'),
-        FeatureListItem(text: 'Gamified rewards system for task completion'),
-      ],
+    return Column(
+      children: widget.project.psAndKf
+          .map((feature) => FeatureListItem(text: feature))
+          .toList(),
+    );
+  }
+
+  Widget _buildChallengesList() {
+    return Column(
+      children: widget.project.challenges
+          .map((challenge) => FeatureListItem(text: challenge))
+          .toList(),
     );
   }
 }
 
 class _ScreenshotItem extends StatelessWidget {
+  final String platform;
   final String imagePath;
-  const _ScreenshotItem({required this.imagePath});
+  const _ScreenshotItem({
+    required this.imagePath,
+    required this.platform,
+  });
 
   @override
   Widget build(BuildContext context) {
     return DeviceFrame(
-      device: Devices.ios.iPhone13, // You can choose other iPhone models
+      device: (platform == 'mobile')
+          ? Devices.ios.iPhone13
+          : Devices.macOS.macBookPro, // You can choose other iPhone models
       isFrameVisible: true,
       screen: ClipRRect(
         borderRadius: BorderRadius.circular(12),
@@ -482,8 +539,9 @@ class _HoverTechIconState extends State<_HoverTechIcon> {
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOut,
         padding: const EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: bg,
+          color: Colors.transparent,
           shape: BoxShape.circle,
           boxShadow: _isHovered
               ? [
@@ -496,7 +554,7 @@ class _HoverTechIconState extends State<_HoverTechIcon> {
                 ]
               : [],
         ),
-        child: Icon(widget.iconData, color: fg, size: 24),
+        child: Center(child: Icon(widget.iconData, color: fg, size: 30)),
       ),
     );
   }

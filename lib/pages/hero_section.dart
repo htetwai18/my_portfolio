@@ -143,13 +143,30 @@ class _HeroSectionState extends State<HeroSection>
 
   final List<Project> _projects = const [
     Project(
+      images: [
+        "assets/images/digi_5.png",
+        "assets/images/digi_1.png",
+        "assets/images/digi_2.png",
+        "assets/images/digi_3.png",
+        "assets/images/digi_4.png",
+      ],
       imagePath: 'assets/images/digicraft_main.png',
       title: 'Digicraft Home',
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
       techIcons: [FontAwesomeIcons.flutter],
       role: 'Code refactoring of legacy project, bug fixing on spot',
-      techStacks: ["Flutter", "MVC", "Flutx", "MQTT broker"],
+      platform: "mobile",
+      iosLink: "https://apps.apple.com/th/app/digicraft-home/id6443853027",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.whatif.mobile.homesecurity&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVC"},
+        {"State Management": "Flutx"},
+        {"Backend": "MQTT broker"},
+      ],
       psAndKf: [
         "Remote monitoring and control of smart appliances",
         "Real-time device status updates through MQTT",
@@ -164,13 +181,31 @@ class _HeroSectionState extends State<HeroSection>
       ],
     ),
     Project(
+      images: [
+        "assets/images/zcul_1.png",
+        "assets/images/zcul_2.png",
+        "assets/images/zcul_3.png",
+        "assets/images/zcul_4.png",
+        "assets/images/zcul_5.png",
+        "assets/images/zcul_6.png",
+      ],
       imagePath: 'assets/images/zcultures_main.png',
       title: 'Zcultures',
       description:
-          'A global AI-powered social commerce platform that leverages an O2O strategy to connect brands, creators, and nightlife venues for smarter engagement and commerce.',
+          'A global AI-powered social commerce platform that leverages an O2O strategy to connect brands, creators, and nightlife venues for engagement.',
       techIcons: [FontAwesomeIcons.flutter],
       role: 'Code refactoring of legacy project, bug fixing on spot',
-      techStacks: ["Flutter", "MVC", "Provider", "Flutx"],
+      platform: "mobile",
+      iosLink: "https://apps.apple.com/th/app/zcultures/id6747009373",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.zcultures.friends&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVC"},
+        {"State Management": "Flutx"},
+        {"Backend": "PHP"},
+      ],
       psAndKf: [
         "AI-powered recommendations for products, events, and venues",
         "Seamless O2O (Online-to-Offline) integration for social and commercial activities",
@@ -184,8 +219,14 @@ class _HeroSectionState extends State<HeroSection>
         "Enhancing app stability and scalability within the MVC + Flutx structure"
       ],
     ),
-
     Project(
+      images: [
+        "assets/images/suzuki_1.png",
+        "assets/images/suzuki_2.png",
+        "assets/images/suzuki_3.png",
+        "assets/images/suzuki_4.png",
+        "assets/images/suzuki_5.png",
+      ],
       imagePath: 'assets/images/suzuki_main.png',
       title: 'Suzuki Smart Order',
       description:
@@ -193,7 +234,17 @@ class _HeroSectionState extends State<HeroSection>
       techIcons: [FontAwesomeIcons.flutter],
       role:
           'Led mobile team, Meet with Suzuki clients for analysis,meet with designer to facilitate design and feature compact',
-      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      platform: "mobile",
+      iosLink: "",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.kwinhwl.suzuki_project&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
       psAndKf: [
         "Streamlined product ordering with an intuitive mobile interface",
         "Smart notifications to keep dealers updated on order status",
@@ -207,8 +258,14 @@ class _HeroSectionState extends State<HeroSection>
         "Optimizing app performance for large product catalogs and multiple dealers"
       ],
     ),
-
     Project(
+      images: [
+        "assets/images/weday_1.png",
+        "assets/images/weday_2.png",
+        "assets/images/weday_3.png",
+        "assets/images/weday_4.png",
+        "assets/images/weday_5.png",
+      ],
       imagePath: 'assets/images/weday_main.png',
       title: 'Weday',
       description:
@@ -216,7 +273,18 @@ class _HeroSectionState extends State<HeroSection>
       techIcons: [FontAwesomeIcons.flutter],
       role:
           'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
-      techStacks: ["Flutter", "MVVM", "Riverpod", "Java"],
+      platform: "mobile",
+      iosLink:
+          "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Riverpod"},
+        {"Backend": "Java"},
+      ],
       psAndKf: [
         "Live streaming feature enabling vendors to sell products online in real-time",
         "Integrated comments with nested replies for structured discussions",
@@ -230,8 +298,14 @@ class _HeroSectionState extends State<HeroSection>
         "Ensuring low-latency video and chat synchronization during live sales"
       ],
     ),
-
     Project(
+      images: [
+        "assets/images/hrm_1.png",
+        "assets/images/hrm_2.png",
+        "assets/images/hrm_3.png",
+        "assets/images/hrm_4.png",
+        "assets/images/hrm_5.png",
+      ],
       imagePath: 'assets/images/arfi_main.png',
       title: 'ARFI Ecommerce',
       description:
@@ -239,7 +313,17 @@ class _HeroSectionState extends State<HeroSection>
       techIcons: [FontAwesomeIcons.flutter],
       role:
           'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Archive",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "PHP"},
+      ],
       psAndKf: [
         "Product catalog with categories and detailed product views",
         "Customer order management with real-time status updates",
@@ -255,6 +339,13 @@ class _HeroSectionState extends State<HeroSection>
     ),
 
     Project(
+      images: [
+        "assets/images/wallet_1.png",
+        "assets/images/wallet_2.png",
+        "assets/images/wallet_3.png",
+        "assets/images/wallet_4.png",
+        "assets/images/wallet_5.png",
+      ],
       imagePath: 'assets/images/dr_rej_main.png',
       title: 'Dr Rejvue Clinic Membership',
       description:
@@ -262,7 +353,17 @@ class _HeroSectionState extends State<HeroSection>
       techIcons: [FontAwesomeIcons.flutter],
       role:
           'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Archive",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
       psAndKf: [
         "Subscription management for clinic patients with tier-based plans",
         "Loyalty points system to earn, track, and redeem rewards",
@@ -278,6 +379,13 @@ class _HeroSectionState extends State<HeroSection>
     ),
 
     Project(
+      images: [
+        "assets/images/hrm_1.png",
+        "assets/images/hrm_2.png",
+        "assets/images/hrm_3.png",
+        "assets/images/hrm_4.png",
+        "assets/images/hrm_5.png",
+      ],
       imagePath: 'assets/images/hrm_main.png',
       title: 'Kwin HR Management',
       description:
@@ -285,7 +393,17 @@ class _HeroSectionState extends State<HeroSection>
       techIcons: [FontAwesomeIcons.flutter],
       role:
           'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      techStacks: ["Flutter", "MVVM", "Provider", "Node JS"],
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Internal",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
       psAndKf: [
         "Employee management with detailed profiles and role-based access",
         "Leave request and approval workflow with real-time notifications",
@@ -315,6 +433,13 @@ class _HeroSectionState extends State<HeroSection>
     //   techIcons: [],
     // ),
     Project(
+      images: [
+        "assets/images/hrm_1.png",
+        "assets/images/hrm_2.png",
+        "assets/images/hrm_3.png",
+        "assets/images/hrm_4.png",
+        "assets/images/hrm_5.png",
+      ],
       imagePath: 'assets/images/tiger_main.png',
       title: 'Tiger Backoffice',
       description:
@@ -322,7 +447,18 @@ class _HeroSectionState extends State<HeroSection>
       techIcons: [FontAwesomeIcons.laravel],
       role:
           'Develop full stack dashboard together under a lead senior fullstack developer',
-      techStacks: ["Laravel", "MVC", "Controller", "PostGraphQl"],
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      // webLink: "https://admin.bluescreen.site/",
+      webLink: "",
+      status: "Internal",
+      techStacks: [
+        {"Framework/Language": "Laravel/PHP"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Controller"},
+        {"Backend": "PostGraphQl"},
+      ],
       psAndKf: [
         "Centralized management of financial transactions and user accounts for online casinos.",
         "Streamlined admin workflows by providing all modules in a single dashboard.",
@@ -339,6 +475,13 @@ class _HeroSectionState extends State<HeroSection>
     ),
 
     Project(
+      images: [
+        "assets/images/hrm_1.png",
+        "assets/images/hrm_2.png",
+        "assets/images/hrm_3.png",
+        "assets/images/hrm_4.png",
+        "assets/images/hrm_5.png",
+      ],
       imagePath: 'assets/images/infinity_main.jpg',
       title: 'Infinity 688 Backoffice',
       description:
@@ -346,7 +489,18 @@ class _HeroSectionState extends State<HeroSection>
       techIcons: [FontAwesomeIcons.laravel],
       role:
           'Develop full stack dashboard together under a lead senior fullstack developer',
-      techStacks: ["Laravel", "MVC", "Controller", "PostGraphQl"],
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Internal",
+      // webLink: "https://mmk.infinitynow.biz/login",
+      techStacks: [
+        {"Framework/Language": "Laravel/PHP"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Controller"},
+        {"Backend": "PostGraphQl"},
+      ],
       psAndKf: [
         "Centralized management of financial transactions and user accounts for online casinos.",
         "Streamlined admin workflows by providing all modules in a single dashboard.",
