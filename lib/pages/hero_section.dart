@@ -144,6 +144,7 @@ class _HeroSectionState extends State<HeroSection>
 
   final List<Project> _projects = const [
     Project(
+      company: "Whatif Solutions Sdn Bhd",
       images: [
         "assets/images/digi_5.png",
         "assets/images/digi_1.png",
@@ -155,7 +156,7 @@ class _HeroSectionState extends State<HeroSection>
       title: 'Digicraft Home',
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
-      techIcons: [FontAwesomeIcons.flutter],
+      techIcons: FontAwesomeIcons.flutter,
       role: 'Code refactoring of legacy project, bug fixing on spot',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/digicraft-home/id6443853027",
@@ -182,6 +183,7 @@ class _HeroSectionState extends State<HeroSection>
       ],
     ),
     Project(
+      company: "Whatif Solutions Sdn Bhd",
       images: [
         "assets/images/zcul_1.png",
         "assets/images/zcul_2.png",
@@ -194,7 +196,7 @@ class _HeroSectionState extends State<HeroSection>
       title: 'Zcultures',
       description:
           'A global AI-powered social commerce platform that leverages an O2O strategy to connect brands, creators, and nightlife venues for engagement.',
-      techIcons: [FontAwesomeIcons.flutter],
+      techIcons: FontAwesomeIcons.flutter,
       role: 'Code refactoring of legacy project, bug fixing on spot',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/zcultures/id6747009373",
@@ -221,203 +223,7 @@ class _HeroSectionState extends State<HeroSection>
       ],
     ),
     Project(
-      images: [
-        "assets/images/suzuki_1.png",
-        "assets/images/suzuki_2.png",
-        "assets/images/suzuki_3.png",
-        "assets/images/suzuki_4.png",
-        "assets/images/suzuki_5.png",
-      ],
-      imagePath: 'assets/images/suzuki_main.png',
-      title: 'Suzuki Smart Order',
-      description:
-          'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
-      techIcons: [FontAwesomeIcons.flutter],
-      role:
-          'Led mobile team, Meet with Suzuki clients for analysis,meet with designer to facilitate design and feature compact',
-      platform: "mobile",
-      iosLink: "",
-      androidLink:
-          "https://play.google.com/store/apps/details?id=com.kwinhwl.suzuki_project&pcampaignid=web_share",
-      webLink: "",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "Node JS"},
-      ],
-      psAndKf: [
-        "Streamlined product ordering with an intuitive mobile interface",
-        "Smart notifications to keep dealers updated on order status",
-        "Secure Google Sign-In for simplified authentication",
-        "Real-time catalog browsing and stock availability"
-      ],
-      challenges: [
-        "Ensuring seamless data synchronization between mobile app and backend",
-        "Implementing MVVM architecture for scalable and maintainable code",
-        "Integrating secure authentication with Google Sign-In",
-        "Optimizing app performance for large product catalogs and multiple dealers"
-      ],
-    ),
-    Project(
-      images: [
-        "assets/images/weday_1.png",
-        "assets/images/weday_2.png",
-        "assets/images/weday_3.png",
-        "assets/images/weday_4.png",
-        "assets/images/weday_5.png",
-      ],
-      imagePath: 'assets/images/weday_main.png',
-      title: 'Weday',
-      description:
-          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
-      techIcons: [FontAwesomeIcons.flutter],
-      role:
-          'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
-      platform: "mobile",
-      iosLink:
-          "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
-      androidLink:
-          "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
-      webLink: "",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Riverpod"},
-        {"Backend": "Java"},
-      ],
-      psAndKf: [
-        "Live streaming feature enabling vendors to sell products online in real-time",
-        "Integrated comments with nested replies for structured discussions",
-        "Reactions system to boost user engagement during posts and streams",
-        "Seamless Agora SDK integration for stable and low-latency video streaming"
-      ],
-      challenges: [
-        "Integrating and troubleshooting Agora SDK with Flutter for smooth streaming",
-        "Designing scalable comments and nested replies structure for real-time interaction",
-        "Managing complex state with Riverpod for dynamic social features",
-        "Ensuring low-latency video and chat synchronization during live sales"
-      ],
-    ),
-    Project(
-      images: [
-        "assets/images/arfi_1.png",
-        "assets/images/arfi_2.png",
-        "assets/images/arfi_3.png",
-        "assets/images/arfi_4.png",
-        "assets/images/arfi_5.png",
-        "assets/images/arfi_6.png",
-      ],
-      imagePath: 'assets/images/arfi_main.png',
-      title: 'ARFI Ecommerce',
-      description:
-          'A mobile e-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
-      techIcons: [FontAwesomeIcons.flutter],
-      role:
-          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "",
-      status: "Archive",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "PHP"},
-      ],
-      psAndKf: [
-        "Product catalog with categories and detailed product views",
-        "Customer order management with real-time status updates",
-        "Secure online payments and transaction handling",
-        "Brand owner dashboard for managing inventory and sales"
-      ],
-      challenges: [
-        "Designing a scalable MVVM architecture for maintainability",
-        "Integrating secure payment gateways with backend Node.js APIs",
-        "Managing real-time order updates between customers and brand owners",
-        "Optimizing performance for large product catalogs with images"
-      ],
-    ),
-    Project(
-      images: [
-        "assets/images/wallet_1.png",
-        "assets/images/wallet_2.png",
-        "assets/images/wallet_3.png",
-        "assets/images/wallet_4.png",
-        "assets/images/wallet_5.png",
-      ],
-      imagePath: 'assets/images/dr_rej_main.png',
-      title: 'Dr Rejvue Clinic Membership',
-      description:
-          'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
-      techIcons: [FontAwesomeIcons.flutter],
-      role:
-          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "",
-      status: "Archive",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "Node JS"},
-      ],
-      psAndKf: [
-        "Subscription management for clinic patients with tier-based plans",
-        "Loyalty points system to earn, track, and redeem rewards",
-        "Real-time updates on membership status and clinic services",
-        "Seamless integration with backend APIs for patient data and transactions"
-      ],
-      challenges: [
-        "Implementing a flexible MVVM architecture for membership features",
-        "Developing a secure and scalable points/rewards system",
-        "Synchronizing patient membership data in real time with Node.js backend",
-        "Optimizing performance while handling large patient data and transactions"
-      ],
-    ),
-    Project(
-      images: [
-        "assets/images/hrm_1.png",
-        "assets/images/hrm_2.png",
-        "assets/images/hrm_3.png",
-        "assets/images/hrm_4.png",
-        "assets/images/hrm_5.png",
-      ],
-      imagePath: 'assets/images/hrm_main.png',
-      title: 'Kwin HR Management',
-      description:
-          'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
-      techIcons: [FontAwesomeIcons.flutter],
-      role:
-          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "",
-      status: "Internal",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "Node JS"},
-      ],
-      psAndKf: [
-        "Employee management with detailed profiles and role-based access",
-        "Leave request and approval workflow with real-time notifications",
-        "Performance tracking and evaluation tools for HR departments",
-        "Seamless integration with backend APIs for centralized HR data"
-      ],
-      challenges: [
-        "Designing scalable MVVM architecture for complex HR workflows",
-        "Implementing secure role-based access for employees and HR managers",
-        "Synchronizing employee data and leave requests in real time",
-        "Optimizing performance with large datasets of employee records"
-      ],
-    ),
-    Project(
+      company: "Whatif Solutions Sdn Bhd",
       images: [
         "assets/images/tiger_1.png",
         "assets/images/tiger_2.png",
@@ -429,7 +235,7 @@ class _HeroSectionState extends State<HeroSection>
       title: 'Tiger Backoffice',
       description:
           'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
-      techIcons: [FontAwesomeIcons.laravel],
+      techIcons: FontAwesomeIcons.laravel,
       role:
           'Develop full stack dashboard together under a lead senior fullstack developer',
       platform: "web",
@@ -459,6 +265,7 @@ class _HeroSectionState extends State<HeroSection>
       ],
     ),
     Project(
+      company: "Whatif Solutions Sdn Bhd",
       images: [
         "assets/images/infinity_1.png",
         "assets/images/infinity_2.png",
@@ -471,7 +278,7 @@ class _HeroSectionState extends State<HeroSection>
       title: 'Infinity 688 Backoffice',
       description:
           'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
-      techIcons: [FontAwesomeIcons.laravel],
+      techIcons: FontAwesomeIcons.laravel,
       role:
           'Develop full stack dashboard together under a lead senior fullstack developer',
       platform: "web",
@@ -498,6 +305,208 @@ class _HeroSectionState extends State<HeroSection>
         "Ensuring real-time updates for transactions and banking data.",
         "Maintaining high security and access control for sensitive casino data.",
         "Coordinating development with a team under tight project deadlines."
+      ],
+    ),
+    Project(
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/suzuki_1.png",
+        "assets/images/suzuki_2.png",
+        "assets/images/suzuki_3.png",
+        "assets/images/suzuki_4.png",
+        "assets/images/suzuki_5.png",
+      ],
+      imagePath: 'assets/images/suzuki_main.png',
+      title: 'Suzuki Smart Order',
+      description:
+          'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Led mobile team, Meet with Suzuki clients for analysis,meet with designer to facilitate design and feature compact',
+      platform: "mobile",
+      iosLink: "",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.kwinhwl.suzuki_project&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
+      psAndKf: [
+        "Streamlined product ordering with an intuitive mobile interface",
+        "Smart notifications to keep dealers updated on order status",
+        "Secure Google Sign-In for simplified authentication",
+        "Real-time catalog browsing and stock availability"
+      ],
+      challenges: [
+        "Ensuring seamless data synchronization between mobile app and backend",
+        "Implementing MVVM architecture for scalable and maintainable code",
+        "Integrating secure authentication with Google Sign-In",
+        "Optimizing app performance for large product catalogs and multiple dealers"
+      ],
+    ),
+    Project(
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/arfi_1.png",
+        "assets/images/arfi_2.png",
+        "assets/images/arfi_3.png",
+        "assets/images/arfi_4.png",
+        "assets/images/arfi_5.png",
+        "assets/images/arfi_6.png",
+      ],
+      imagePath: 'assets/images/arfi_main.png',
+      title: 'ARFI Ecommerce',
+      description:
+          'A mobile e-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Archive",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "PHP"},
+      ],
+      psAndKf: [
+        "Product catalog with categories and detailed product views",
+        "Customer order management with real-time status updates",
+        "Secure online payments and transaction handling",
+        "Brand owner dashboard for managing inventory and sales"
+      ],
+      challenges: [
+        "Designing a scalable MVVM architecture for maintainability",
+        "Integrating secure payment gateways with backend Node.js APIs",
+        "Managing real-time order updates between customers and brand owners",
+        "Optimizing performance for large product catalogs with images"
+      ],
+    ),
+    Project(
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/wallet_1.png",
+        "assets/images/wallet_2.png",
+        "assets/images/wallet_3.png",
+        "assets/images/wallet_4.png",
+        "assets/images/wallet_5.png",
+      ],
+      imagePath: 'assets/images/dr_rej_main.png',
+      title: 'Dr Rejvue Clinic Membership',
+      description:
+          'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Archive",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
+      psAndKf: [
+        "Subscription management for clinic patients with tier-based plans",
+        "Loyalty points system to earn, track, and redeem rewards",
+        "Real-time updates on membership status and clinic services",
+        "Seamless integration with backend APIs for patient data and transactions"
+      ],
+      challenges: [
+        "Implementing a flexible MVVM architecture for membership features",
+        "Developing a secure and scalable points/rewards system",
+        "Synchronizing patient membership data in real time with Node.js backend",
+        "Optimizing performance while handling large patient data and transactions"
+      ],
+    ),
+    Project(
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/hrm_1.png",
+        "assets/images/hrm_2.png",
+        "assets/images/hrm_3.png",
+        "assets/images/hrm_4.png",
+        "assets/images/hrm_5.png",
+      ],
+      imagePath: 'assets/images/hrm_main.png',
+      title: 'Kwin HR Management',
+      description:
+          'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Internal",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
+      psAndKf: [
+        "Employee management with detailed profiles and role-based access",
+        "Leave request and approval workflow with real-time notifications",
+        "Performance tracking and evaluation tools for HR departments",
+        "Seamless integration with backend APIs for centralized HR data"
+      ],
+      challenges: [
+        "Designing scalable MVVM architecture for complex HR workflows",
+        "Implementing secure role-based access for employees and HR managers",
+        "Synchronizing employee data and leave requests in real time",
+        "Optimizing performance with large datasets of employee records"
+      ],
+    ),
+    Project(
+      company: "My Day Thu Kywal.co ltd",
+      images: [
+        "assets/images/weday_1.png",
+        "assets/images/weday_2.png",
+        "assets/images/weday_3.png",
+        "assets/images/weday_4.png",
+        "assets/images/weday_5.png",
+      ],
+      imagePath: 'assets/images/weday_main.png',
+      title: 'Weday',
+      description:
+          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
+      platform: "mobile",
+      iosLink:
+          "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Riverpod"},
+        {"Backend": "Java"},
+      ],
+      psAndKf: [
+        "Live streaming feature enabling vendors to sell products online in real-time",
+        "Integrated comments with nested replies for structured discussions",
+        "Reactions system to boost user engagement during posts and streams",
+        "Seamless Agora SDK integration for stable and low-latency video streaming"
+      ],
+      challenges: [
+        "Integrating and troubleshooting Agora SDK with Flutter for smooth streaming",
+        "Designing scalable comments and nested replies structure for real-time interaction",
+        "Managing complex state with Riverpod for dynamic social features",
+        "Ensuring low-latency video and chat synchronization during live sales"
       ],
     ),
   ];

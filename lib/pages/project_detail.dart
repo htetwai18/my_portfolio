@@ -84,7 +84,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
       Future.delayed(const Duration(milliseconds: 500), () {
         if (mounted) {
           // Check if the widget is still in the tree
-          _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+          _timer = Timer.periodic(const Duration(microseconds: 2000), (timer) {
             if (!mounted) {
               timer.cancel();
               return;

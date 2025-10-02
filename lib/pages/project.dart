@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hwl_portforlio/main.dart';
 import 'dart:math' as math;
 import 'package:hwl_portforlio/pages/project_detail.dart';
@@ -10,6 +11,7 @@ class Project {
   final String title;
   final String description;
   final String role;
+  final String company;
   final String platform;
   final String iosLink;
   final String androidLink;
@@ -18,7 +20,7 @@ class Project {
   final List<Map<String, String>> techStacks;
   final List<String> psAndKf;
   final List<String> challenges;
-  final List<IconData> techIcons;
+  final IconData techIcons;
   final String? status;
 
   const Project({
@@ -26,6 +28,7 @@ class Project {
     required this.title,
     required this.description,
     required this.role,
+    required this.company,
     required this.platform,
     required this.iosLink,
     required this.androidLink,
@@ -63,7 +66,7 @@ class _ProjectCardState extends State<ProjectCard> {
         width: 300,
         decoration: BoxDecoration(
           color: Colors.transparent,
-          borderRadius: BorderRadius.circular(16.0),
+          borderRadius: BorderRadius.circular(12.0),
           border: Border.all(color: Colors.grey.shade700),
           boxShadow: [
             BoxShadow(
@@ -109,6 +112,21 @@ class _ProjectCardState extends State<ProjectCard> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildTechIcon(widget.project.techIcons),
+                     // const SizedBox(width: 4),
+                      Text(
+                        widget.project.company,
+                        style: GoogleFonts.poppins(
+                          color: Colors.grey[400],
+                          fontSize: 12,
+                        ),
+                      )
+                    ],
+                  ),
+                  const SizedBox(height: 20),
                   Text(
                     widget.project.title,
                     style: const TextStyle(
@@ -123,12 +141,6 @@ class _ProjectCardState extends State<ProjectCard> {
                     style: TextStyle(color: Colors.grey[400], height: 1.5),
                   ),
                   const SizedBox(height: 16),
-                  Row(
-                    children: widget.project.techIcons
-                        .map((icon) => _buildTechIcon(icon))
-                        .toList(),
-                  ),
-                  const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
