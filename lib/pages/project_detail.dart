@@ -24,14 +24,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
   Timer? _timer;
   int _currentItemIndex = 0;
 
-  // Replace these with your actual screenshot assets
-  final List<String> screenshotImages = [
-    'assets/screenshot1.png',
-    'assets/screenshot2.png',
-    'assets/screenshot3.png',
-    'assets/screenshot4.png',
-    'assets/screenshot5.png',
-  ];
+  bool _areImagesPrecached = false;
+
+  // Use project's images instead of hardcoded screenshots
+  List<String> get screenshotImages => widget.project.images;
 
   Future<void> _launchUrl(String url) async {
     final Uri uri = Uri.parse(url);
@@ -47,26 +43,59 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
   void initState() {
     super.initState();
     _scrollController = FixedExtentScrollController();
-    // Start auto-scrolling after the first frame is built
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _startAutoScroll();
+      // Call our new async function to handle loading
+      _precacheImagesAndStartScroll();
     });
   }
 
+  // --- NEW: Async function to handle pre-caching ---
+  Future<void> _precacheImagesAndStartScroll() async {
+    if (screenshotImages.isEmpty || !mounted) return;
+
+    // Create a list of futures for all the precaching operations
+    final List<Future<void>> precacheFutures = screenshotImages
+        .map((imagePath) => precacheImage(AssetImage(imagePath), context))
+        .toList();
+
+    // Wait for all images to be loaded into the cache
+    await Future.wait(precacheFutures);
+    await Future.delayed(const Duration(seconds: 1));
+
+    // Once loading is complete, update the state and start the scroll
+    if (mounted) {
+      setState(() {
+        _areImagesPrecached = true;
+      });
+      _startAutoScroll();
+    }
+  }
+
+  void _precacheImages() {
+    for (final imagePath in screenshotImages) {
+      precacheImage(AssetImage(imagePath), context);
+    }
+  }
+
   void _startAutoScroll() {
-    // Ensure there are images to scroll and timer isn't already active
     if (screenshotImages.length > 1 && _timer == null) {
-      _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
-        if (!mounted) {
-          timer.cancel();
-          return;
+      // Add a short delay before starting the auto-scroll
+      Future.delayed(const Duration(milliseconds: 500), () {
+        if (mounted) {
+          // Check if the widget is still in the tree
+          _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+            if (!mounted) {
+              timer.cancel();
+              return;
+            }
+            _currentItemIndex++;
+            _scrollController.animateToItem(
+              _currentItemIndex,
+              duration: const Duration(milliseconds: 800),
+              curve: Curves.easeInOut,
+            );
+          });
         }
-        _currentItemIndex++;
-        _scrollController.animateToItem(
-          _currentItemIndex,
-          duration: const Duration(milliseconds: 800),
-          curve: Curves.easeInOut,
-        );
       });
     }
   }
@@ -154,14 +183,13 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                 // --- Animated Curved HORIZONTAL Image Carousel ---
                 SizedBox(
                   height: 300,
-                  child: NotificationListener<ScrollNotification>(
+                  // --- NEW: Conditional builder ---
+                  child: _areImagesPrecached
+                      ? NotificationListener<ScrollNotification>(
                     onNotification: (notification) {
-                      // Stop auto-scroll on user interaction
                       if (notification is ScrollStartNotification) {
                         _stopAutoScroll();
-                      }
-                      // Resume auto-scroll when user stops scrolling
-                      else if (notification is ScrollEndNotification) {
+                      } else if (notification is ScrollEndNotification) {
                         _startAutoScroll();
                       }
                       return true;
@@ -169,14 +197,15 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                     child: RotatedBox(
                       quarterTurns: 3,
                       child: ListWheelScrollView.useDelegate(
-                        controller: _scrollController, // Attach controller
+                        controller: _scrollController,
                         itemExtent: 250,
                         offAxisFraction: 0.4,
                         diameterRatio: 2.0,
                         perspective: 0.004,
-                        physics: const FixedExtentScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         childDelegate: ListWheelChildBuilderDelegate(
                           builder: (context, index) {
+                            // No need for an empty check here anymore, but it's safe to keep
                             if (screenshotImages.isEmpty) {
                               return const RotatedBox(
                                 quarterTurns: 1,
@@ -188,13 +217,19 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                               child: _ScreenshotItem(
                                 platform: widget.project.platform,
                                 imagePath: screenshotImages[
-                                    index % screenshotImages.length],
+                                index % screenshotImages.length],
                               ),
                             );
                           },
                           childCount: screenshotImages.isNotEmpty ? null : 1,
                         ),
                       ),
+                    ),
+                  )
+                      : const Center(
+                    // Show a loading indicator while pre-caching
+                    child: CircularProgressIndicator(
+                      color: Color(0xFFBB86FC),
                     ),
                   ),
                 ),
@@ -231,7 +266,8 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                       ),
                     if (widget.project.status != null)
                       Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 6),
                         decoration: BoxDecoration(
                           color: Colors.grey.shade900,
                           borderRadius: BorderRadius.circular(12),
@@ -524,8 +560,6 @@ class _HoverTechIconState extends State<_HoverTechIcon> {
   @override
   Widget build(BuildContext context) {
     Color baseColor = (isPlayStore()) ? Colors.green : Colors.blue;
-    final Color bg =
-        _isHovered ? baseColor.withOpacity(0.25) : const Color(0xFF2D2D2D);
     final Color fg = !_isHovered
         ? baseColor
         : (isPlayStore())
