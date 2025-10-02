@@ -504,6 +504,7 @@ class _HeroSectionState extends State<HeroSection>
 
   bool _isProfilePrecached = false;
   bool _typewriterDone = false;
+  bool _isSending = false;
   @override
   void initState() {
     super.initState();
@@ -550,7 +551,6 @@ class _HeroSectionState extends State<HeroSection>
 
       _triggerSectionAnimations();
     });
-
 
     // Section animations
     _experiencesFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -664,43 +664,76 @@ class _HeroSectionState extends State<HeroSection>
 
   Future<void> _sendEmail() async {
     if (_formKey.currentState!.validate()) {
-      final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
-      const serviceId = 'service_dx6jkwf';
-      const templateId = 'template_dsbktpk';
-      const userId = 'nEOpcklJoxm-lX5As';
+      setState(() {
+        _isSending = true;
+      });
 
-      final response = await http.post(
-        url,
-        headers: {
-          'Content-Type': 'application/json',
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (ctx) {
+          return Center(
+            child: LoadingAnimationWidget.twistingDots(
+              leftDotColor: const Color(0xFF1A1A3F),
+              rightDotColor: const Color(0xFFEA3799),
+              size: 100,
+            ),
+          );
         },
-        body: json.encode({
-          'service_id': serviceId,
-          'template_id': templateId,
-          'user_id': userId,
-          'template_params': {
-            'name': _nameController.text,
-            'email': _emailController.text,
-            'message': _messageController.text,
-          }
-        }),
       );
 
-      if (response.statusCode == 200) {
-        // Clear the form fields
-        _nameController.clear();
-        _emailController.clear();
-        _messageController.clear();
-        // Show a success message
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Message sent successfully!')),
+      try {
+        final url = Uri.parse('https://api.emailjs.com/api/v1.0/email/send');
+        const serviceId = 'service_dx6jkwf';
+        const templateId = 'template_dsbktpk';
+        const userId = 'nEOpcklJoxm-lX5As';
+
+        final response = await http.post(
+          url,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: json.encode({
+            'service_id': serviceId,
+            'template_id': templateId,
+            'user_id': userId,
+            'template_params': {
+              'name': _nameController.text,
+              'email': _emailController.text,
+              'message': _messageController.text,
+            }
+          }),
         );
-      } else {
-        // Show an error message
+
+        Navigator.of(context, rootNavigator: true).pop();
+
+        if (response.statusCode == 200) {
+          _nameController.clear();
+          _emailController.clear();
+          _messageController.clear();
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Message sent successfully!')),
+          );
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                  'Failed to send message. (${response.statusCode}) Please try again.'),
+            ),
+          );
+        }
+      } catch (e) {
+        Navigator.of(context, rootNavigator: true).pop();
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-              content: Text('Failed to send message. Please try again.')),
+              content: Text('An error occurred. Please try again later.')),
         );
+      } finally {
+        if (mounted) {
+          setState(() {
+            _isSending = false;
+          });
+        }
       }
     }
   }
@@ -1473,7 +1506,7 @@ class _HeroSectionState extends State<HeroSection>
                 maxLines: 5, controller: _messageController),
             const SizedBox(height: 32),
             ElevatedButton(
-              onPressed: _sendEmail, // Call the new function here
+              onPressed: _isSending ? null : _sendEmail,
               style: ElevatedButton.styleFrom(
                 backgroundColor: const Color(0xFFBB86FC),
                 foregroundColor: const Color(0xFF121212),
