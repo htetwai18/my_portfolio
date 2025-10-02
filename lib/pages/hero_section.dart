@@ -54,7 +54,7 @@ class _HeroSectionState extends State<HeroSection>
 
   // Main animations
   // late Animation<double> _imageScaleAnimation;
-  late Animation<double> _navbarFadeAnimation;
+  // late Animation<double> _navbarFadeAnimation;
 
   // Section animations
   late Animation<double> _experiencesFadeAnimation;
@@ -519,6 +519,7 @@ class _HeroSectionState extends State<HeroSection>
   ];
 
   bool _isProfilePrecached = false;
+  bool _typewriterDone = false;
   @override
   void initState() {
     super.initState();
@@ -566,10 +567,6 @@ class _HeroSectionState extends State<HeroSection>
       _triggerSectionAnimations();
     });
 
-    _navbarFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
-        CurvedAnimation(
-            parent: _mainController,
-            curve: const Interval(0.6, 1.0, curve: Curves.easeOut)));
 
     // Section animations
     _experiencesFadeAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
@@ -592,7 +589,7 @@ class _HeroSectionState extends State<HeroSection>
   Future<void> _precacheProfileImage() async {
     const imagePath = "assets/images/me_profile.png";
     await precacheImage(const AssetImage(imagePath), context);
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     if (mounted) {
       setState(() {
@@ -842,31 +839,28 @@ class _HeroSectionState extends State<HeroSection>
                         child: Container(
                           margin: const EdgeInsets.only(top: 40, right: 60),
                           height: 50,
-                          child: FadeTransition(
-                            opacity: _navbarFadeAnimation,
-                            child: ListView(
-                              shrinkWrap: true,
-                              physics: const AlwaysScrollableScrollPhysics(),
-                              scrollDirection: Axis.horizontal,
-                              children: [
-                                NavLink(
-                                    title: 'Projects',
-                                    page: widget.page,
-                                    onSectionClick: _scrollToSection),
-                                NavLink(
-                                    title: 'Experiences',
-                                    page: widget.page,
-                                    onSectionClick: _scrollToSection),
-                                NavLink(
-                                    title: 'Education',
-                                    page: widget.page,
-                                    onSectionClick: _scrollToSection),
-                                NavLink(
-                                    title: 'Contact',
-                                    page: widget.page,
-                                    onSectionClick: _scrollToSection),
-                              ],
-                            ),
+                          child: ListView(
+                            shrinkWrap: true,
+                            physics: const AlwaysScrollableScrollPhysics(),
+                            scrollDirection: Axis.horizontal,
+                            children: [
+                              NavLink(
+                                  title: 'Projects',
+                                  page: widget.page,
+                                  onSectionClick: _scrollToSection),
+                              NavLink(
+                                  title: 'Experiences',
+                                  page: widget.page,
+                                  onSectionClick: _scrollToSection),
+                              NavLink(
+                                  title: 'Education',
+                                  page: widget.page,
+                                  onSectionClick: _scrollToSection),
+                              NavLink(
+                                  title: 'Contact',
+                                  page: widget.page,
+                                  onSectionClick: _scrollToSection),
+                            ],
                           ),
                         ),
                       ),
@@ -933,8 +927,15 @@ class _HeroSectionState extends State<HeroSection>
                                       ),
                                     ],
                                     totalRepeatCount: 1,
-                                    pause: const Duration(milliseconds: 1000),
+                                    pause: const Duration(milliseconds: 500),
                                     displayFullTextOnTap: true,
+                                    onFinished: () {
+                                      if (mounted) {
+                                        setState(() {
+                                          _typewriterDone = true;
+                                        });
+                                      }
+                                    },
                                   ),
                                   const SizedBox(height: 16),
                                   Text(
@@ -999,32 +1000,47 @@ class _HeroSectionState extends State<HeroSection>
                             // --- Right Section: Profile Picture ---
                             Flexible(
                               flex: isDesktop ? 2 : 0,
-                              child: Container(
-                                width: isDesktop
-                                    ? 380
-                                    : 200, // Slightly larger on desktop
-                                height: isDesktop ? 380 : 200,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: const Color(0xFF1E1E1E),
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.08),
-                                        blurRadius: 40,
-                                        offset: const Offset(0, 15))
-                                  ],
-                                  border: Border.all(
-                                      color: const Color(0xFFBB86FC)
-                                          .withOpacity(0.3),
-                                      width: 6),
-                                ),
-                                child: ClipOval(
-                                  child: Image.asset(
-                                    'assets/images/me_profile.png',
-                                    fit: BoxFit.cover,
-                                    errorBuilder:
-                                        (context, error, stackTrace) =>
+                              child: AnimatedOpacity(
+                                duration: const Duration(milliseconds: 1000),
+                                curve: Curves.easeOut,
+                                opacity:
+                                    (_typewriterDone && _isProfilePrecached)
+                                        ? 1.0
+                                        : 0.0,
+                                child: AnimatedScale(
+                                  duration: const Duration(milliseconds: 600),
+                                  curve: Curves.easeOutBack,
+                                  scale:
+                                      (_typewriterDone && _isProfilePrecached)
+                                          ? 1.0
+                                          : 0.85,
+                                  child: Container(
+                                    width: isDesktop ? 380 : 200,
+                                    height: isDesktop ? 380 : 200,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: const Color(0xFF1E1E1E),
+                                      boxShadow: [
+                                        BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.08),
+                                            blurRadius: 40,
+                                            offset: const Offset(0, 15))
+                                      ],
+                                      border: Border.all(
+                                          color: const Color(0xFFBB86FC)
+                                              .withOpacity(0.3),
+                                          width: 6),
+                                    ),
+                                    child: ClipOval(
+                                      child: Image.asset(
+                                        'assets/images/me_profile.png',
+                                        fit: BoxFit.cover,
+                                        errorBuilder: (context, error,
+                                                stackTrace) =>
                                             const Icon(Icons.person, size: 100),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),

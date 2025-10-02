@@ -4,6 +4,7 @@ import 'package:device_frame_plus/device_frame_plus.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hwl_portforlio/pages/project.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // --- Converted to a StatefulWidget ---
@@ -186,52 +187,55 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                   // --- NEW: Conditional builder ---
                   child: _areImagesPrecached
                       ? NotificationListener<ScrollNotification>(
-                    onNotification: (notification) {
-                      if (notification is ScrollStartNotification) {
-                        _stopAutoScroll();
-                      } else if (notification is ScrollEndNotification) {
-                        _startAutoScroll();
-                      }
-                      return true;
-                    },
-                    child: RotatedBox(
-                      quarterTurns: 3,
-                      child: ListWheelScrollView.useDelegate(
-                        controller: _scrollController,
-                        itemExtent: 250,
-                        offAxisFraction: 0.4,
-                        diameterRatio: 2.0,
-                        perspective: 0.004,
-                        physics: const NeverScrollableScrollPhysics(),
-                        childDelegate: ListWheelChildBuilderDelegate(
-                          builder: (context, index) {
-                            // No need for an empty check here anymore, but it's safe to keep
-                            if (screenshotImages.isEmpty) {
-                              return const RotatedBox(
-                                quarterTurns: 1,
-                                child: _ImagePlaceholder(),
-                              );
+                          onNotification: (notification) {
+                            if (notification is ScrollStartNotification) {
+                              _stopAutoScroll();
+                            } else if (notification is ScrollEndNotification) {
+                              _startAutoScroll();
                             }
-                            return RotatedBox(
-                              quarterTurns: 1,
-                              child: _ScreenshotItem(
-                                platform: widget.project.platform,
-                                imagePath: screenshotImages[
-                                index % screenshotImages.length],
-                              ),
-                            );
+                            return true;
                           },
-                          childCount: screenshotImages.isNotEmpty ? null : 1,
+                          child: RotatedBox(
+                            quarterTurns: 3,
+                            child: ListWheelScrollView.useDelegate(
+                              controller: _scrollController,
+                              itemExtent: 250,
+                              offAxisFraction: 0.4,
+                              diameterRatio: 2.0,
+                              perspective: 0.004,
+                              physics: const NeverScrollableScrollPhysics(),
+                              childDelegate: ListWheelChildBuilderDelegate(
+                                builder: (context, index) {
+                                  // No need for an empty check here anymore, but it's safe to keep
+                                  if (screenshotImages.isEmpty) {
+                                    return const RotatedBox(
+                                      quarterTurns: 1,
+                                      child: _ImagePlaceholder(),
+                                    );
+                                  }
+                                  return RotatedBox(
+                                    quarterTurns: 1,
+                                    child: _ScreenshotItem(
+                                      platform: widget.project.platform,
+                                      imagePath: screenshotImages[
+                                          index % screenshotImages.length],
+                                    ),
+                                  );
+                                },
+                                childCount:
+                                    screenshotImages.isNotEmpty ? null : 1,
+                              ),
+                            ),
+                          ),
+                        )
+                      :  Center(
+                          // Show a loading indicator while pre-caching
+                          child: LoadingAnimationWidget.twistingDots(
+                            leftDotColor: const Color(0xFF1A1A3F),
+                            rightDotColor: const Color(0xFFEA3799),
+                            size: 50,
+                          ),
                         ),
-                      ),
-                    ),
-                  )
-                      : const Center(
-                    // Show a loading indicator while pre-caching
-                    child: CircularProgressIndicator(
-                      color: Color(0xFFBB86FC),
-                    ),
-                  ),
                 ),
                 const SizedBox(height: 40),
 
