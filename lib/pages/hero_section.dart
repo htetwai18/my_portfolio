@@ -301,11 +301,12 @@ class _HeroSectionState extends State<HeroSection>
     ),
     Project(
       images: [
-        "assets/images/hrm_1.png",
-        "assets/images/hrm_2.png",
-        "assets/images/hrm_3.png",
-        "assets/images/hrm_4.png",
-        "assets/images/hrm_5.png",
+        "assets/images/arfi_1.png",
+        "assets/images/arfi_2.png",
+        "assets/images/arfi_3.png",
+        "assets/images/arfi_4.png",
+        "assets/images/arfi_5.png",
+        "assets/images/arfi_6.png",
       ],
       imagePath: 'assets/images/arfi_main.png',
       title: 'ARFI Ecommerce',
@@ -338,7 +339,6 @@ class _HeroSectionState extends State<HeroSection>
         "Optimizing performance for large product catalogs with images"
       ],
     ),
-
     Project(
       images: [
         "assets/images/wallet_1.png",
@@ -378,7 +378,6 @@ class _HeroSectionState extends State<HeroSection>
         "Optimizing performance while handling large patient data and transactions"
       ],
     ),
-
     Project(
       images: [
         "assets/images/hrm_1.png",
@@ -418,28 +417,13 @@ class _HeroSectionState extends State<HeroSection>
         "Optimizing performance with large datasets of employee records"
       ],
     ),
-
-    // Project(
-    //   imagePath: 'assets/placeholder.png',
-    //   title: 'Yankin Bubble Tea POS App',
-    //   description:
-    //   'A point-of-sale application redesigned from a legacy system, supporting offline data storage, order tracking, and efficient daily operations.',
-    //   techIcons: [],
-    // ),
-    // Project(
-    //   imagePath: 'assets/placeholder.png',
-    //   title: 'Kwin Client Management App',
-    //   description:
-    //   'A lightweight client management tool that automates subscription expiry tracking and provides easy manual access control for customers.',
-    //   techIcons: [],
-    // ),
     Project(
       images: [
-        "assets/images/hrm_1.png",
-        "assets/images/hrm_2.png",
-        "assets/images/hrm_3.png",
-        "assets/images/hrm_4.png",
-        "assets/images/hrm_5.png",
+        "assets/images/tiger_1.png",
+        "assets/images/tiger_2.png",
+        "assets/images/tiger_3.png",
+        "assets/images/tiger_4.png",
+        "assets/images/tiger_5.png",
       ],
       imagePath: 'assets/images/tiger_main.png',
       title: 'Tiger Backoffice',
@@ -474,14 +458,14 @@ class _HeroSectionState extends State<HeroSection>
         "Coordinating development with a team under tight project deadlines."
       ],
     ),
-
     Project(
       images: [
-        "assets/images/hrm_1.png",
-        "assets/images/hrm_2.png",
-        "assets/images/hrm_3.png",
-        "assets/images/hrm_4.png",
-        "assets/images/hrm_5.png",
+        "assets/images/infinity_1.png",
+        "assets/images/infinity_2.png",
+        "assets/images/infinity_3.png",
+        "assets/images/infinity_4.png",
+        "assets/images/infinity_5.png",
+        "assets/images/infinity_6.png",
       ],
       imagePath: 'assets/images/infinity_main.jpg',
       title: 'Infinity 688 Backoffice',

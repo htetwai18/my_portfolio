@@ -61,7 +61,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
 
     // Wait for all images to be loaded into the cache
     await Future.wait(precacheFutures);
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(microseconds: 1500));
 
     // Once loading is complete, update the state and start the scroll
     if (mounted) {
@@ -433,7 +433,7 @@ class _ScreenshotItem extends StatelessWidget {
       device: (platform == 'mobile')
           ? Devices.ios.iPhone13
           : Devices.macOS.macBookPro, // You can choose other iPhone models
-      isFrameVisible: true,
+      isFrameVisible: (platform == 'mobile'),
       screen: ClipRRect(
         borderRadius: BorderRadius.circular(12),
         child: Image.asset(
