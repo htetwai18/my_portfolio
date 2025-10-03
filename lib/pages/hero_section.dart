@@ -145,6 +145,7 @@ class _HeroSectionState extends State<HeroSection>
   final List<Project> _projects = const [
     Project(
       company: "Whatif Solutions Sdn Bhd",
+      status: "Live on Google Play/App Store",
       images: [
         "assets/images/digi_5.png",
         "assets/images/digi_1.png",
@@ -183,6 +184,7 @@ class _HeroSectionState extends State<HeroSection>
       ],
     ),
     Project(
+      status: "Live on Google Play/App Store",
       company: "Whatif Solutions Sdn Bhd",
       images: [
         "assets/images/zcul_1.png",
@@ -243,7 +245,7 @@ class _HeroSectionState extends State<HeroSection>
       androidLink: "",
       // webLink: "https://admin.bluescreen.site/",
       webLink: "",
-      status: "Internal",
+      status: "Internal use application",
       techStacks: [
         {"Framework/Language": "Laravel/PHP"},
         {"Architecture": "MVVM"},
@@ -285,7 +287,7 @@ class _HeroSectionState extends State<HeroSection>
       iosLink: "",
       androidLink: "",
       webLink: "",
-      status: "Internal",
+      status: "Internal use application",
       // webLink: "https://mmk.infinitynow.biz/login",
       techStacks: [
         {"Framework/Language": "Laravel/PHP"},
@@ -308,6 +310,7 @@ class _HeroSectionState extends State<HeroSection>
       ],
     ),
     Project(
+      status: "Live on Google Play",
       company: "Kwin Technologies.co ltd",
       images: [
         "assets/images/suzuki_1.png",
@@ -368,7 +371,7 @@ class _HeroSectionState extends State<HeroSection>
       iosLink: "",
       androidLink: "",
       webLink: "",
-      status: "Archive",
+      status: "Archive Project",
       techStacks: [
         {"Framework/Language": "Flutter/Dart"},
         {"Architecture": "MVVM"},
@@ -408,7 +411,7 @@ class _HeroSectionState extends State<HeroSection>
       iosLink: "",
       androidLink: "",
       webLink: "",
-      status: "Archive",
+      status: "Archive Project",
       techStacks: [
         {"Framework/Language": "Flutter/Dart"},
         {"Architecture": "MVVM"},
@@ -448,7 +451,7 @@ class _HeroSectionState extends State<HeroSection>
       iosLink: "",
       androidLink: "",
       webLink: "",
-      status: "Internal",
+      status: "Internal use application",
       techStacks: [
         {"Framework/Language": "Flutter/Dart"},
         {"Architecture": "MVVM"},
@@ -469,6 +472,7 @@ class _HeroSectionState extends State<HeroSection>
       ],
     ),
     Project(
+      status: "Live on Google Play/App Store",
       company: "My Day Thu Kywal.co ltd",
       images: [
         "assets/images/weday_1.png",
@@ -917,7 +921,7 @@ class _HeroSectionState extends State<HeroSection>
                                   Text(
                                     'Hello, welcome...',
                                     style: GoogleFonts.oxanium(
-                                      fontSize: isDesktop ? 33 : 24,
+                                      fontSize: isDesktop ? 23 : 16,
                                       fontWeight: FontWeight.w500,
                                       color: Colors.white,
                                     ),

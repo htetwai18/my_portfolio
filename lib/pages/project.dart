@@ -116,7 +116,7 @@ class _ProjectCardState extends State<ProjectCard> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _buildTechIcon(widget.project.techIcons),
-                     // const SizedBox(width: 4),
+                      // const SizedBox(width: 4),
                       Text(
                         widget.project.company,
                         style: GoogleFonts.poppins(

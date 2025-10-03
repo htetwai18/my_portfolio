@@ -180,7 +180,71 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 40),
+                const SizedBox(height: 18),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    if (widget.project.status == "Internal use application")
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(
+                          FontAwesomeIcons.lock,
+                          color: Colors.brown,
+                          size: 20,
+                        ),
+                      ),
+                    if (widget.project.status == "Archive Project")
+                      const Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(
+                          FontAwesomeIcons.box,
+                          color: Colors.brown,
+                          size: 20,
+                        ),
+                      ),
+                    Text(
+                      "${widget.project.status}",
+                      style: GoogleFonts.oxanium(
+                        color: Colors.white,
+                        fontSize: 18,
+                        textStyle: const TextStyle(fontStyle: FontStyle.italic),
+                      ),
+                    ),
+                  ],
+                ),
+                // const SizedBox(height: 10),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    if (widget.project.androidLink != "")
+                      InkWell(
+                        onTap: () async {
+                          await _launchUrl(widget.project.androidLink);
+                        },
+                        child: const _HoverTechIcon(
+                            iconData: FontAwesomeIcons.googlePlay),
+                      ),
+                    if (widget.project.iosLink != "")
+                      InkWell(
+                        onTap: () async {
+                          await _launchUrl(widget.project.iosLink);
+                        },
+                        child: const _HoverTechIcon(
+                            iconData: FontAwesomeIcons.appStoreIos),
+                      ),
+                    if (widget.project.webLink != "")
+                      InkWell(
+                        onTap: () async {
+                          await _launchUrl(widget.project.webLink);
+                        },
+                        child: const _HoverTechIcon(
+                            iconData: FontAwesomeIcons.desktop),
+                      ),
+                  ],
+                ),
+                const SizedBox(height: 60),
                 // --- Animated Curved HORIZONTAL Image Carousel ---
                 SizedBox(
                   height: 300,
@@ -228,7 +292,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                             ),
                           ),
                         )
-                      :  Center(
+                      : Center(
                           // Show a loading indicator while pre-caching
                           child: LoadingAnimationWidget.twistingDots(
                             leftDotColor: const Color(0xFF1A1A3F),
@@ -237,56 +301,10 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                           ),
                         ),
                 ),
-                const SizedBox(height: 40),
 
                 // --- Action Buttons ---
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    if (widget.project.iosLink != "")
-                      InkWell(
-                        onTap: () async {
-                          await _launchUrl(widget.project.iosLink);
-                        },
-                        child: const _HoverTechIcon(
-                            iconData: FontAwesomeIcons.appStoreIos),
-                      ),
-                    if (widget.project.androidLink != "")
-                      InkWell(
-                        onTap: () async {
-                          await _launchUrl(widget.project.androidLink);
-                        },
-                        child: const _HoverTechIcon(
-                            iconData: FontAwesomeIcons.googlePlay),
-                      ),
-                    if (widget.project.webLink != "")
-                      InkWell(
-                        onTap: () async {
-                          await _launchUrl(widget.project.webLink);
-                        },
-                        child: const _HoverTechIcon(
-                            iconData: FontAwesomeIcons.desktop),
-                      ),
-                    if (widget.project.status != null)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 6),
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade900,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: Text(
-                          "${widget.project.status}",
-                          style: GoogleFonts.oxanium(
-                            color: Colors.purple,
-                            fontSize: 18,
-                          ),
-                        ),
-                      ),
-                  ],
-                ),
-                SizedBox(height: (isDesktop) ? 100 : 40),
+
+                SizedBox(height: (isDesktop) ? 120 : 60),
 
                 // --- Technical Sections ---
                 Center(child: _buildSectionTitle('Technical Deep Dive')),
