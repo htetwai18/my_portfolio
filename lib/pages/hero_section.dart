@@ -363,7 +363,7 @@ class _HeroSectionState extends State<HeroSection>
       imagePath: 'assets/images/arfi_main.png',
       title: 'ARFI Ecommerce',
       description:
-          'A mobile e-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
+          'E-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
       techIcons: FontAwesomeIcons.flutter,
       role:
           'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
@@ -1435,7 +1435,7 @@ class _HeroSectionState extends State<HeroSection>
 
     if (isDesktop) {
       return Wrap(
-        spacing: 30,
+        spacing: 34,
         runSpacing: 0,
         alignment: WrapAlignment.center,
         children:

@@ -325,6 +325,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                   width: MediaQuery.sizeOf(context).width,
                   child: (MediaQuery.sizeOf(context).width > 800)
                       ? Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Column(
