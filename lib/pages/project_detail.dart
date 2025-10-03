@@ -117,7 +117,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    final bool isDesktop = screenSize.width > 400; // Arbitrary breakpoint
+    final bool isDesktop = screenSize.width > 800; // Arbitrary breakpoint
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -389,7 +389,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         final Size screenSize = MediaQuery.of(context).size;
-        final bool isDesktop = screenSize.width > 820;
+        final bool isDesktop = screenSize.width > 800;
         return isDesktop
             ? GridView.count(
                 crossAxisCount: 2,

@@ -518,6 +518,8 @@ class _HeroSectionState extends State<HeroSection>
   bool _isProfilePrecached = false;
   bool _typewriterDone = false;
   bool _isSending = false;
+  PageController? _projectsPageController;
+  int _currentProjectIndex = 0;
   @override
   void initState() {
     super.initState();
@@ -581,6 +583,8 @@ class _HeroSectionState extends State<HeroSection>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _precacheProfileImage();
     });
+
+    _projectsPageController = PageController(viewportFraction: 0.85);
   }
 
   Future<void> _precacheProfileImage() async {
@@ -630,6 +634,7 @@ class _HeroSectionState extends State<HeroSection>
     _educationController.dispose();
     _projectsController.dispose();
     _contactController.dispose();
+    _projectsPageController?.dispose();
     _scrollController.dispose();
     _nameController.dispose();
     _emailController.dispose();
@@ -1145,7 +1150,7 @@ class _HeroSectionState extends State<HeroSection>
                         ),
                       ),
                     ),
-                    const SizedBox(height: 100),
+                    const SizedBox(height: 60),
                     // Contact section
                     Container(
                       key: _contactKey,
@@ -1425,12 +1430,65 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   Widget _buildProjectsGrid() {
-    return Wrap(
-      spacing: 24, // Horizontal space between cards
-      runSpacing: 24, // Vertical space between cards
-      alignment: WrapAlignment.center,
-      children:
-          _projects.map((project) => ProjectCard(project: project)).toList(),
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isDesktop = screenSize.width > 800;
+
+    if (isDesktop) {
+      return Wrap(
+        spacing: 30,
+        runSpacing: 0,
+        alignment: WrapAlignment.center,
+        children:
+            _projects.map((project) => ProjectCard(project: project)).toList(),
+      );
+    }
+
+    // Mobile: horizontal pager with indicator
+    return Column(
+      children: [
+        SizedBox(
+          height: 500,
+          child: PageView.builder(
+            controller: _projectsPageController,
+            itemCount: _projects.length,
+            onPageChanged: (index) {
+              setState(() {
+                _currentProjectIndex = index;
+              });
+            },
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: ProjectCard(project: _projects[index]),
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: 12),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(_projects.length, (i) {
+            final bool isActive = i == _currentProjectIndex;
+            return AnimatedContainer(
+              duration: const Duration(milliseconds: 250),
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              width: isActive ? 20 : 8,
+              height: 8,
+              decoration: BoxDecoration(
+                color: isActive
+                    ? const Color(0xFFBB86FC)
+                    : const Color(0xFFBB86FC).withOpacity(0.3),
+                borderRadius: BorderRadius.circular(8),
+              ),
+            );
+          }),
+        ),
+        const SizedBox(height: 4),
+        Text(
+          '${_currentProjectIndex + 1} / ${_projects.length}',
+          style: GoogleFonts.poppins(color: Colors.grey[400], fontSize: 12),
+        ),
+      ],
     );
   }
 
@@ -1461,7 +1519,7 @@ class _HeroSectionState extends State<HeroSection>
 
   Widget _buildFormCard(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    final bool isDesktop = screenSize.width > 960;
+    final bool isDesktop = screenSize.width > 800;
     return Container(
       width: isDesktop ? (screenSize.width) / 2 : null,
       margin: isDesktop
@@ -1589,7 +1647,7 @@ class _HeroSectionState extends State<HeroSection>
 
   Widget _buildContactFooter(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
-    final bool isDesktop = screenSize.width > 960;
+    final bool isDesktop = screenSize.width > 800;
 
     Future<void> _launchUrl(String url) async {
       final Uri uri = Uri.parse(url);

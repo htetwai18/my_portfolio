@@ -57,6 +57,8 @@ class _ProjectCardState extends State<ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isDesktop = screenSize.width > 800;
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
       onExit: (_) => setState(() => _isHovered = false),
@@ -64,10 +66,11 @@ class _ProjectCardState extends State<ProjectCard> {
         duration: const Duration(milliseconds: 200),
         curve: Curves.easeInOut,
         width: 300,
+        height: 500,
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(12.0),
-          border: Border.all(color: Colors.grey.shade700),
+          // border: Border.all(color: Colors.grey.shade700),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.3),
@@ -84,8 +87,8 @@ class _ProjectCardState extends State<ProjectCard> {
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(16.0),
-                topRight: Radius.circular(16.0),
+                topLeft: Radius.circular(12.0),
+                topRight: Radius.circular(12.0),
               ),
               child: Image.asset(
                 widget.project.imagePath,
@@ -103,11 +106,12 @@ class _ProjectCardState extends State<ProjectCard> {
               ),
             ),
             Container(
+              height: isDesktop ? null : 300,
               decoration: const BoxDecoration(
                   color: Color(0xFF1E1E1E),
                   borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(16),
-                      bottomLeft: Radius.circular(16))),
+                      bottomRight: Radius.circular(12),
+                      bottomLeft: Radius.circular(12))),
               padding: const EdgeInsets.all(20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -141,6 +145,7 @@ class _ProjectCardState extends State<ProjectCard> {
                     style: TextStyle(color: Colors.grey[400], height: 1.5),
                   ),
                   const SizedBox(height: 16),
+                  if (!isDesktop) const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

@@ -208,8 +208,8 @@ class _ExperienceCard extends StatelessWidget {
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Icon(Icons.check_circle,
-                        color: const Color(0xFFBB86FC), size: 16),
+                    const Icon(Icons.check_circle,
+                        color:  Color(0xFFBB86FC), size: 16),
                     const SizedBox(width: 8),
                     Expanded(
                         child: Text(resp,
