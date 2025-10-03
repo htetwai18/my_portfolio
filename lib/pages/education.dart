@@ -299,7 +299,7 @@ class CertificationCard extends StatelessWidget {
 
   final CertificationItem item;
 
-  const CertificationCard({required this.item});
+  const CertificationCard({super.key, required this.item});
 
   @override
   Widget build(BuildContext context) {

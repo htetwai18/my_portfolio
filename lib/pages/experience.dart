@@ -106,8 +106,8 @@ class _TimelineCenterNode extends StatelessWidget {
           Container(
             width: 12,
             height: 12,
-            decoration: BoxDecoration(
-              color: const Color(0xFFBB86FC),
+            decoration: const BoxDecoration(
+              color: Color(0xFFBB86FC),
               shape: BoxShape.circle,
             ),
           ),
@@ -209,7 +209,7 @@ class _ExperienceCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Icon(Icons.check_circle,
-                        color:  Color(0xFFBB86FC), size: 16),
+                        color: Color(0xFFBB86FC), size: 16),
                     const SizedBox(width: 8),
                     Expanded(
                         child: Text(resp,

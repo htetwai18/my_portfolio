@@ -1626,8 +1626,7 @@ class _HeroSectionState extends State<HeroSection>
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12.0),
-          borderSide:
-              const BorderSide(color: const Color(0xFFBB86FC), width: 2),
+          borderSide: const BorderSide(color: Color(0xFFBB86FC), width: 2),
         ),
       ),
       style: GoogleFonts.poppins(
