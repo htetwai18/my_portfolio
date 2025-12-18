@@ -68,10 +68,11 @@ class _HeroSectionState extends State<HeroSection>
       company: 'Whatif Solutions Sdn Bhd',
       duration: 'May 2025 - Sep 2025',
       responsibilities: [
-        'Digicraft Home App',
-        'Zcultures App',
-        'Tiger Online Casino Backoffice',
-        'Infinity 688 Casino Backoffice',
+        'Maintain and scale production Flutter applications used by real users',
+        'Handle critical bug fixes, crash resolution, and performance optimization',
+        'Improve CI/CD pipelines for smoother builds and faster releases',
+        'Ensure app stability across Flutter, Android, and iOS updates',
+        'Collaborate with cross-functional teams to deliver reliable updates'
       ],
       link: 'https://www.whatifsolutions.my/',
     ),
@@ -80,7 +81,10 @@ class _HeroSectionState extends State<HeroSection>
       company: 'My Day Thu Kywal',
       duration: 'Sep 2024 - Jan 2025',
       responsibilities: [
-        'Weday App',
+        'Developed live streaming features with Agora for a social commerce platform',
+        'Implemented real-time comments, replies, and reaction systems',
+        'Optimized streaming performance and user engagement features',
+        'Collaborated remotely with product teams, backend teams and Agora support teams'
       ],
       link: 'https://myday.com.mm/',
     ),
@@ -89,12 +93,11 @@ class _HeroSectionState extends State<HeroSection>
       company: 'Kwin Technologies',
       duration: 'Sep 2022 - Apr 2025',
       responsibilities: [
-        'Suzuki Smart Order App',
-        'Kwin HR Management App',
-        'ARFI Ecommerce App',
-        'Dr Rejvue Aesthetic Clinic Membership App',
-        'Yankin Bubble Tea POS App',
-        'Kwin Client Management App',
+        'Started as a Junior Flutter Developer and promoted to Mobile Team Lead',
+        'Led the mobile development team and managed feature planning and delivery',
+        'Designed scalable app architecture and enforced clean coding standards',
+        'Mentored junior developers and conducted code reviews',
+        'Delivered multiple production-ready Android & iOS applications'
       ],
       link: 'http://kwintechnologies.com/',
     ),
@@ -143,6 +146,48 @@ class _HeroSectionState extends State<HeroSection>
   ];
 
   final List<Project> _projects = const [
+    Project(
+      company: "Mya Satt Yaung Co., Ltd",
+      images: [
+        "assets/images/jade1.jpeg",
+        "assets/images/jade2.jpeg",
+        "assets/images/jade3.jpeg",
+        "assets/images/jade4.jpeg",
+        "assets/images/jade5.jpeg",
+        "assets/images/jade6.jpeg",
+      ],
+      imagePath: 'assets/images/jademain.jpeg',
+      title: 'Jade Property',
+      description:
+      'Highly Secured Real Estate Application with biometric authentications for managing properties, agents, clients, and transactions efficiently.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+      'Co-developed and maintained the mobile application with a fellow mobile developer, including feature implementation, legacy refactoring, bug fixes, and performance optimization',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      // webLink: "https://admin.bluescreen.site/",
+      webLink: "",
+      status: "Not launched yet",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVC"},
+        {"State Management": "GetX"},
+        {"Backend": "PHP"},
+      ],
+      psAndKf: [
+        "Property listing creation and management, enabling agents and administrators to add, update, and manage real estate assets.",
+        "Automated property tax fee calculations based on property type, location, and transaction details.",
+        "AI-powered chatbot providing instant assistance for property inquiries, pricing, and user support.",
+        "Integrated payment processing for property create and advertisement fees.",
+      ],
+      challenges: [
+        "Integrating OneSignal to deliver reliable real-time push notifications across iOS and Android platforms.",
+        "Implementing Pusher for real-time in-app events and live data updates.",
+        "Ensuring message delivery consistency and synchronization between push notifications and in-app states.",
+        "Handling edge cases such as background, foreground, and terminated app states for real-time communication.",
+      ],
+    ),
     Project(
       company: "Whatif Solutions Sdn Bhd",
       status: "Live on Google Play/App Store",
@@ -224,89 +269,132 @@ class _HeroSectionState extends State<HeroSection>
         "Enhancing app stability and scalability within the MVC + Flutx structure"
       ],
     ),
+
+    // Project(
+    //   company: "Whatif Solutions Sdn Bhd",
+    //   images: [
+    //     "assets/images/tiger_1.png",
+    //     "assets/images/tiger_2.png",
+    //     "assets/images/tiger_3.png",
+    //     "assets/images/tiger_4.png",
+    //     "assets/images/tiger_5.png",
+    //   ],
+    //   imagePath: 'assets/images/tiger_main.png',
+    //   title: 'Tiger Backoffice',
+    //   description:
+    //       'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
+    //   techIcons: FontAwesomeIcons.laravel,
+    //   role:
+    //       'Develop full stack dashboard together under a lead senior fullstack developer',
+    //   platform: "web",
+    //   iosLink: "",
+    //   androidLink: "",
+    //   // webLink: "https://admin.bluescreen.site/",
+    //   webLink: "",
+    //   status: "Internal use application",
+    //   techStacks: [
+    //     {"Framework/Language": "Laravel/PHP"},
+    //     {"Architecture": "MVVM"},
+    //     {"State Management": "Controller"},
+    //     {"Backend": "PostGraphQl"},
+    //   ],
+    //   psAndKf: [
+    //     "Centralized management of financial transactions and user accounts for online casinos.",
+    //     "Streamlined admin workflows by providing all modules in a single dashboard.",
+    //     "User account management including roles, permissions, and settings.",
+    //     "Detailed log tracking and activity monitoring for security compliance.",
+    //     "Modular dashboard design for easy navigation between different backoffice sections."
+    //   ],
+    //   challenges: [
+    //     "Integrating multiple financial APIs securely and efficiently.",
+    //     "Ensuring real-time updates for transactions and banking data.",
+    //     "Maintaining high security and access control for sensitive casino data.",
+    //     "Coordinating development with a team under tight project deadlines."
+    //   ],
+    // ),
+    // Project(
+    //   company: "Whatif Solutions Sdn Bhd",
+    //   images: [
+    //     "assets/images/infinity_1.png",
+    //     "assets/images/infinity_2.png",
+    //     "assets/images/infinity_3.png",
+    //     "assets/images/infinity_4.png",
+    //     "assets/images/infinity_5.png",
+    //     "assets/images/infinity_6.png",
+    //   ],
+    //   imagePath: 'assets/images/infinity_main.jpg',
+    //   title: 'Infinity 688 Backoffice',
+    //   description:
+    //       'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
+    //   techIcons: FontAwesomeIcons.laravel,
+    //   role:
+    //       'Develop full stack dashboard together under a lead senior fullstack developer',
+    //   platform: "web",
+    //   iosLink: "",
+    //   androidLink: "",
+    //   webLink: "",
+    //   status: "Internal use application",
+    //   // webLink: "https://mmk.infinitynow.biz/login",
+    //   techStacks: [
+    //     {"Framework/Language": "Laravel/PHP"},
+    //     {"Architecture": "MVVM"},
+    //     {"State Management": "Controller"},
+    //     {"Backend": "PostGraphQl"},
+    //   ],
+    //   psAndKf: [
+    //     "Centralized management of financial transactions and user accounts for online casinos.",
+    //     "Streamlined admin workflows by providing all modules in a single dashboard.",
+    //     "User account management including roles, permissions, and settings.",
+    //     "Detailed log tracking and activity monitoring for security compliance.",
+    //     "Modular dashboard design for easy navigation between different backoffice sections."
+    //   ],
+    //   challenges: [
+    //     "Integrating multiple financial APIs securely and efficiently.",
+    //     "Ensuring real-time updates for transactions and banking data.",
+    //     "Maintaining high security and access control for sensitive casino data.",
+    //     "Coordinating development with a team under tight project deadlines."
+    //   ],
+    // ),
     Project(
-      company: "Whatif Solutions Sdn Bhd",
+      status: "Live on Google Play/App Store",
+      company: "My Day Thu Kywal.co ltd",
       images: [
-        "assets/images/tiger_1.png",
-        "assets/images/tiger_2.png",
-        "assets/images/tiger_3.png",
-        "assets/images/tiger_4.png",
-        "assets/images/tiger_5.png",
+        "assets/images/weday_1.png",
+        "assets/images/weday_2.png",
+        "assets/images/weday_3.png",
+        "assets/images/weday_4.png",
+        "assets/images/weday_5.png",
       ],
-      imagePath: 'assets/images/tiger_main.png',
-      title: 'Tiger Backoffice',
+      imagePath: 'assets/images/weday_main.png',
+      title: 'Weday',
       description:
-          'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
-      techIcons: FontAwesomeIcons.laravel,
+      'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
+      techIcons: FontAwesomeIcons.flutter,
       role:
-          'Develop full stack dashboard together under a lead senior fullstack developer',
-      platform: "web",
-      iosLink: "",
-      androidLink: "",
-      // webLink: "https://admin.bluescreen.site/",
+      'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
+      platform: "mobile",
+      iosLink:
+      "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
+      androidLink:
+      "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
       webLink: "",
-      status: "Internal use application",
       techStacks: [
-        {"Framework/Language": "Laravel/PHP"},
+        {"Framework/Language": "Flutter/Dart"},
         {"Architecture": "MVVM"},
-        {"State Management": "Controller"},
-        {"Backend": "PostGraphQl"},
+        {"State Management": "Riverpod"},
+        {"Backend": "Java"},
       ],
       psAndKf: [
-        "Centralized management of financial transactions and user accounts for online casinos.",
-        "Streamlined admin workflows by providing all modules in a single dashboard.",
-        "User account management including roles, permissions, and settings.",
-        "Detailed log tracking and activity monitoring for security compliance.",
-        "Modular dashboard design for easy navigation between different backoffice sections."
+        "Live streaming feature enabling vendors to sell products online in real-time",
+        "Integrated comments with nested replies for structured discussions",
+        "Reactions system to boost user engagement during posts and streams",
+        "Seamless Agora SDK integration for stable and low-latency video streaming"
       ],
       challenges: [
-        "Integrating multiple financial APIs securely and efficiently.",
-        "Ensuring real-time updates for transactions and banking data.",
-        "Maintaining high security and access control for sensitive casino data.",
-        "Coordinating development with a team under tight project deadlines."
-      ],
-    ),
-    Project(
-      company: "Whatif Solutions Sdn Bhd",
-      images: [
-        "assets/images/infinity_1.png",
-        "assets/images/infinity_2.png",
-        "assets/images/infinity_3.png",
-        "assets/images/infinity_4.png",
-        "assets/images/infinity_5.png",
-        "assets/images/infinity_6.png",
-      ],
-      imagePath: 'assets/images/infinity_main.jpg',
-      title: 'Infinity 688 Backoffice',
-      description:
-          'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
-      techIcons: FontAwesomeIcons.laravel,
-      role:
-          'Develop full stack dashboard together under a lead senior fullstack developer',
-      platform: "web",
-      iosLink: "",
-      androidLink: "",
-      webLink: "",
-      status: "Internal use application",
-      // webLink: "https://mmk.infinitynow.biz/login",
-      techStacks: [
-        {"Framework/Language": "Laravel/PHP"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Controller"},
-        {"Backend": "PostGraphQl"},
-      ],
-      psAndKf: [
-        "Centralized management of financial transactions and user accounts for online casinos.",
-        "Streamlined admin workflows by providing all modules in a single dashboard.",
-        "User account management including roles, permissions, and settings.",
-        "Detailed log tracking and activity monitoring for security compliance.",
-        "Modular dashboard design for easy navigation between different backoffice sections."
-      ],
-      challenges: [
-        "Integrating multiple financial APIs securely and efficiently.",
-        "Ensuring real-time updates for transactions and banking data.",
-        "Maintaining high security and access control for sensitive casino data.",
-        "Coordinating development with a team under tight project deadlines."
+        "Integrating and troubleshooting Agora SDK with Flutter for smooth streaming",
+        "Designing scalable comments and nested replies structure for real-time interaction",
+        "Managing complex state with Riverpod for dynamic social features",
+        "Ensuring low-latency video and chat synchronization during live sales"
       ],
     ),
     Project(
@@ -471,48 +559,7 @@ class _HeroSectionState extends State<HeroSection>
         "Optimizing performance with large datasets of employee records"
       ],
     ),
-    Project(
-      status: "Live on Google Play/App Store",
-      company: "My Day Thu Kywal.co ltd",
-      images: [
-        "assets/images/weday_1.png",
-        "assets/images/weday_2.png",
-        "assets/images/weday_3.png",
-        "assets/images/weday_4.png",
-        "assets/images/weday_5.png",
-      ],
-      imagePath: 'assets/images/weday_main.png',
-      title: 'Weday',
-      description:
-          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
-      platform: "mobile",
-      iosLink:
-          "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
-      androidLink:
-          "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
-      webLink: "",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Riverpod"},
-        {"Backend": "Java"},
-      ],
-      psAndKf: [
-        "Live streaming feature enabling vendors to sell products online in real-time",
-        "Integrated comments with nested replies for structured discussions",
-        "Reactions system to boost user engagement during posts and streams",
-        "Seamless Agora SDK integration for stable and low-latency video streaming"
-      ],
-      challenges: [
-        "Integrating and troubleshooting Agora SDK with Flutter for smooth streaming",
-        "Designing scalable comments and nested replies structure for real-time interaction",
-        "Managing complex state with Riverpod for dynamic social features",
-        "Ensuring low-latency video and chat synchronization during live sales"
-      ],
-    ),
+
   ];
 
   bool _isProfilePrecached = false;
@@ -995,6 +1042,51 @@ class _HeroSectionState extends State<HeroSection>
                                         : TextAlign.center,
                                   ),
                                   const SizedBox(height: 24),
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.email_outlined,
+                                        color: Color(0xFFBB86FC),
+                                      ),
+                                      const SizedBox(width: 20),
+                                      Text(
+                                        "htetwai.18.lwin@gmail.com",
+                                        style: GoogleFonts.oxanium(
+                                            fontSize: 14, color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 14),
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.phone,
+                                        color: Color(0xFFBB86FC),
+                                      ),
+                                      const SizedBox(width: 20),
+                                      Text(
+                                        "+66 917073034",
+                                        style: GoogleFonts.oxanium(
+                                            fontSize: 14, color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 14),
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.location_on_outlined,
+                                        color: Color(0xFFBB86FC),
+                                      ),
+                                      const SizedBox(width: 20),
+                                      Text(
+                                        "Bangkok",
+                                        style: GoogleFonts.oxanium(
+                                            fontSize: 14, color: Colors.white),
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 14),
                                   ElevatedButton.icon(
                                     onPressed: () {
                                       _downloadResume();
