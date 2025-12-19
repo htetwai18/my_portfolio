@@ -203,7 +203,7 @@ class _HeroSectionState extends State<HeroSection>
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
       techIcons: FontAwesomeIcons.flutter,
-      role: 'Code refactoring of legacy project, bug fixing on spot',
+      role: 'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/digicraft-home/id6443853027",
       androidLink:
@@ -244,7 +244,7 @@ class _HeroSectionState extends State<HeroSection>
       description:
           'A global AI-powered social commerce platform that leverages an O2O strategy to connect brands, creators, and nightlife venues for engagement.',
       techIcons: FontAwesomeIcons.flutter,
-      role: 'Code refactoring of legacy project, bug fixing on spot',
+      role: 'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/zcultures/id6747009373",
       androidLink:
