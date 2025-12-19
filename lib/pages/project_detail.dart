@@ -240,7 +240,7 @@ class _ProjectDetailPageState extends State<ProjectDetailPage> {
                           await _launchUrl(widget.project.webLink);
                         },
                         child: const _HoverTechIcon(
-                            iconData: FontAwesomeIcons.desktop),
+                            iconData: FontAwesomeIcons.youtube),
                       ),
                   ],
                 ),
@@ -580,14 +580,27 @@ class _HoverTechIconState extends State<_HoverTechIcon> {
     return false;
   }
 
+  bool isAppStore() {
+    if (widget.iconData == FontAwesomeIcons.appStoreIos) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    Color baseColor = (isPlayStore()) ? Colors.green : Colors.blue;
+    Color baseColor = (isPlayStore())
+        ? Colors.green
+        : (isAppStore())
+            ? Colors.blue
+            : Colors.red;
     final Color fg = !_isHovered
         ? baseColor
         : (isPlayStore())
             ? Colors.greenAccent
-            : Colors.blueAccent;
+            : (isAppStore())
+                ? Colors.blueAccent
+                : Colors.redAccent;
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),

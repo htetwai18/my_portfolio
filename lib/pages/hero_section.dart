@@ -159,10 +159,10 @@ class _HeroSectionState extends State<HeroSection>
       imagePath: 'assets/images/jademain.jpeg',
       title: 'Jade Property',
       description:
-      'Highly Secured Real Estate Application with biometric authentications for managing properties, agents, clients, and transactions efficiently.',
+          'Highly Secured Real Estate Application with biometric authentications for managing properties, agents, clients, and transactions efficiently.',
       techIcons: FontAwesomeIcons.flutter,
       role:
-      'Co-developed and maintained the mobile application with a fellow mobile developer, including feature implementation, legacy refactoring, bug fixes, and performance optimization',
+          'Co-developed and maintained the mobile application with a fellow mobile developer, including feature implementation, legacy refactoring, bug fixes, and performance optimization',
       platform: "mobile",
       iosLink: "",
       androidLink: "",
@@ -368,15 +368,15 @@ class _HeroSectionState extends State<HeroSection>
       imagePath: 'assets/images/weday_main.png',
       title: 'Weday',
       description:
-      'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
+          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
       techIcons: FontAwesomeIcons.flutter,
       role:
-      'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
+          'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
       platform: "mobile",
       iosLink:
-      "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
+          "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
       androidLink:
-      "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
+          "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
       webLink: "",
       techStacks: [
         {"Framework/Language": "Flutter/Dart"},
@@ -557,6 +557,181 @@ class _HeroSectionState extends State<HeroSection>
         "Implementing secure role-based access for employees and HR managers",
         "Synchronizing employee data and leave requests in real time",
         "Optimizing performance with large datasets of employee records"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/sp1.png",
+        "assets/images/sp2.png",
+        "assets/images/sp3.png",
+        "assets/images/sp4.png",
+        "assets/images/sp5.png",
+        "assets/images/sp6.png",
+        "assets/images/sp7.png",
+      ],
+      imagePath: 'assets/images/sp1.png',
+      title: 'SyncPro App',
+      description:
+      "A service management system for handling users, customers, warehouses, parts, service tests, reports, and approvals.",
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+      'Handled full software development life cycle individually – Research requirement analysis,designed UI/UX, generate UML diagrams, structured database and create apis plus complete frontend implementation',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://youtu.be/rUdZglFv0a8",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "MVP"},
+        {"Backend": "PHP/Laravel"},
+      ],
+      psAndKf: [
+        "Admin, engineer, and customer role-based dashboards",
+        "User, customer, warehouse, and parts management",
+        "Service test creation with parts usage tracking",
+        "Test reporting, review, approval, and invoice generation"
+      ],
+      challenges: [
+        "Implementing multi-role workflows with approval logic",
+        "Managing dependencies between customers, buildings, and services",
+        "Ensuring data consistency across tests, parts, and reports",
+        "Designing clear status transitions from pending to approved"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/hiker1.png",
+        "assets/images/hiker2.png",
+        "assets/images/hiker3.png",
+        "assets/images/hiker4.png",
+        "assets/images/hiker5.png",
+        "assets/images/hiker6.png",
+        "assets/images/hiker7.png",
+        "assets/images/hiker8.png",
+        "assets/images/hiker9.png",
+        "assets/images/hiker10.png",
+      ],
+      imagePath: 'assets/images/hikerpp.png',
+      title: 'Hiker(native/hybrid)',
+      description:
+      "A hiking management app for creating, tracking, and managing hikes with observations, search, and data reset features.",
+      techIcons: FontAwesomeIcons.mobile,
+      role:
+      'Frontend Developer – designed UI, implemented features,testing export apk',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://youtu.be/rUdZglFv0a8",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Kotlin/React Native"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Nil"},
+        {"Backend": "Nil"},
+      ],
+      psAndKf: [
+        "Create, edit, delete, and manage hiking adventures",
+        "Observation tracking for each hike",
+        "Search and filter hikes by name and location",
+        "Local data storage with reset and refresh options"
+      ],
+      challenges: [
+        "Designing flexible data models for hikes and observations",
+        "Implementing efficient search and filtering logic",
+        "Managing local data persistence and reset operations",
+        "Maintaining feature parity between native and hybrid versions"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/ewsd1.png",
+        "assets/images/ewsd2.png",
+        "assets/images/ewsd3.png",
+        "assets/images/ewsd4.png",
+        "assets/images/ewsd5.png",
+        "assets/images/ewsd6.png",
+        "assets/images/ewsd7.png",
+        "assets/images/ewsd8.png",
+        "assets/images/ewsd9.png",
+        "assets/images/ewsd10.png",
+        "assets/images/ewsd11.png",
+      ],
+      imagePath: 'assets/images/ewsd1.png',
+      title: 'Article Contribution',
+      description:
+          'A system for managing academic article submissions with role-based access for students, faculty coordinators, admins, and marketing managers.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Frontend Developer – designed UI, implemented features,integrated apis, and deployed on Github',
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://www.youtube.com/watch?v=VE5D7_2tWiA",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Get X"},
+        {"Backend": "PHP"},
+      ],
+      psAndKf: [
+        "Role-based academic article submission and management system",
+        "Student article upload with document and image support",
+        "Faculty review, commenting, approval, and publication workflow",
+        "Automated email notifications and submission deadline management"
+      ],
+      challenges: [
+        "Implementing secure role-based access for multiple user types",
+        "Designing scalable workflows for submission, review, and approval",
+        "Handling document uploads, previews, and resubmissions",
+        "Ensuring reliable email notifications and status synchronization"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/sdm1.png",
+        "assets/images/sdm2.png",
+        "assets/images/sdm3.png",
+        "assets/images/sdm4.png",
+        "assets/images/sdm5.png",
+        "assets/images/sdm6.png",
+        "assets/images/sdm7.png",
+      ],
+      imagePath: 'assets/images/sdm1.png',
+      title: 'Shady Momentum',
+      description:
+          "A two-panel gym management system where admins manage users, classes, memberships, and payments, and clients book programs and classes.",
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Frontend Developer – designed UI, implemented features,integrated apis, and deployed on Github',
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://youtu.be/rUdZglFv0a8",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Get X"},
+        {"Backend": "PHP"},
+      ],
+      psAndKf: [
+        "Admin and client dashboards with role-based access",
+        "User, class, membership, and payment management",
+        "Class and program booking system for clients",
+        "Membership tracking and payment status management"
+      ],
+      challenges: [
+        "Designing clear separation between admin and client panels",
+        "Implementing secure role-based authentication and authorization",
+        "Managing real-time class availability and booking conflicts",
+        "Structuring scalable data models for memberships and payments"
       ],
     ),
 
@@ -1467,9 +1642,10 @@ class _HeroSectionState extends State<HeroSection>
 
         return AnimatedEducationTile(
           onTapLinkDegree: () async {
-            if (_educationItems[index].linkDegree != '') {
-              await _launchUrl(_educationItems[index].linkDegree);
-            }
+            // Todo: will open later
+            // if (_educationItems[index].linkDegree != '') {
+            //   await _launchUrl(_educationItems[index].linkDegree);
+            // }
           },
           item: _educationItems[index],
           isFirst: index == 0,

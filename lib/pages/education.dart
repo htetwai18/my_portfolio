@@ -74,7 +74,8 @@ class EducationTile extends StatelessWidget {
                       child: Text(
                         item.degree,
                         style: const TextStyle(
-                          decoration: TextDecoration.underline,
+                          // Todo: will open later
+                          /// decoration: TextDecoration.underline,
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
@@ -135,7 +136,8 @@ class EducationTile extends StatelessWidget {
                       child: Text(
                         item.degree,
                         style: const TextStyle(
-                          decoration: TextDecoration.underline,
+                          // Todo: will open later
+                          // decoration: TextDecoration.underline,
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
@@ -200,7 +202,8 @@ class EducationTile extends StatelessWidget {
                       child: Text(
                         item.degree,
                         style: const TextStyle(
-                          decoration: TextDecoration.underline,
+                          // Todo: will open later
+                          // decoration: TextDecoration.underline,
                           fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: Colors.white,
