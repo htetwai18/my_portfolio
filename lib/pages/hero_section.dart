@@ -64,15 +64,15 @@ class _HeroSectionState extends State<HeroSection>
 
   final List<Experience> _experiences = const [
     Experience(
-      title: 'Flutter & Laravel Developer',
+      title: 'Software Engineer',
       company: 'Whatif Solutions Sdn Bhd',
-      duration: 'May 2025 - Sep 2025',
+      duration: 'May 2025 - Dec 2025',
       responsibilities: [
-        'Maintain and scale production Flutter applications used by real users',
-        'Handle critical bug fixes, crash resolution, and performance optimization',
-        'Improve CI/CD pipelines for smoother builds and faster releases',
-        'Ensure app stability across Flutter, Android, and iOS updates',
-        'Collaborate with cross-functional teams to deliver reliable updates'
+        "Owned production stability for IoT smart-home and online social mobile applications, supporting user interactions and operational reliability",
+        "Took ownership of legacy codebases, performing targeted refactoring and rapid bug fixes, reducing critical issue resolution time from multiple days to same-day turnaround",
+        "Collaborated with backend and system teams to ensure full reliable data flow and secure transaction handling for business-critical modules",
+        "Improved application responsiveness and performance, shortening average user interaction wait times by 2-3 seconds across key flows",
+        "Supported client-facing delivery timelines by proactively resolving production issues, preventing release delays and minimizing operational disruptions during active contracts"
       ],
       link: 'https://www.whatifsolutions.my/',
     ),
@@ -81,10 +81,11 @@ class _HeroSectionState extends State<HeroSection>
       company: 'My Day Thu Kywal',
       duration: 'Sep 2024 - Jan 2025',
       responsibilities: [
-        'Developed live streaming features with Agora for a social commerce platform',
-        'Implemented real-time comments, replies, and reaction systems',
-        'Optimized streaming performance and user engagement features',
-        'Collaborated remotely with product teams, backend teams and Agora support teams'
+        "Delivered and maintained core mobile features for a social and live-streaming platform, supporting thousands of daily user interactions with stable performance",
+        "Owned end-to-end implementation of engagement features (social interactions and live streaming), ensuring smooth user experience during peak usage periods",
+        "Coordinated directly with Agora (third-party live streaming service provider) to clarify requirements, align technical flows, and reduce integration risks",
+        "Optimized application performance and runtime behavior, reducing live-session interruptions and improving session stability",
+        "Balanced part-time delivery commitments with production-quality standards, ensuring reliable releases and minimal post-deployment issues"
       ],
       link: 'https://myday.com.mm/',
     ),
@@ -93,11 +94,11 @@ class _HeroSectionState extends State<HeroSection>
       company: 'Kwin Technologies',
       duration: 'Sep 2022 - Apr 2025',
       responsibilities: [
-        'Started as a Junior Flutter Developer and promoted to Mobile Team Lead',
-        'Led the mobile development team and managed feature planning and delivery',
-        'Designed scalable app architecture and enforced clean coding standards',
-        'Mentored junior developers and conducted code reviews',
-        'Delivered multiple production-ready Android & iOS applications'
+        "Delivered end-to-end Flutter development across revenue-generating ecommerce, retail POS, clinic membership, and internal management applications, supporting multiple key client businesses simultaneously",
+        "Translated business requirements from brand owners, clinic operators, shop owners, and management teams into scalable mobile workflows, reducing requirement clarification cycles and delivery delays",
+        "Owned mobile-side architecture including UI/UX implementation, API integration, offline data handling, and real-time updates, ensuring full operational reliability in low-connectivity environments",
+        "Improved development efficiency by introducing reusable UI components and structured state management, accelerating feature delivery across projects",
+        "Ensured application stability and production readiness by collaborating closely with backend teams and proactively resolving logic and data consistency issues before release"
       ],
       link: 'http://kwintechnologies.com/',
     ),
@@ -162,7 +163,7 @@ class _HeroSectionState extends State<HeroSection>
           'Highly Secured Real Estate Application with biometric authentications for managing properties, agents, clients, and transactions efficiently.',
       techIcons: FontAwesomeIcons.flutter,
       role:
-          'Co-developed and maintained the mobile application with a fellow mobile developer, including feature implementation, legacy refactoring, bug fixes, and performance optimization',
+          'Co-developed the mobile application with a fellow senior mobile developer',
       platform: "mobile",
       iosLink: "",
       androidLink: "",
@@ -203,7 +204,8 @@ class _HeroSectionState extends State<HeroSection>
       description:
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
       techIcons: FontAwesomeIcons.flutter,
-      role: 'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
+      role:
+          'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/digicraft-home/id6443853027",
       androidLink:
@@ -244,7 +246,8 @@ class _HeroSectionState extends State<HeroSection>
       description:
           'A global AI-powered social commerce platform that leverages an O2O strategy to connect brands, creators, and nightlife venues for engagement.',
       techIcons: FontAwesomeIcons.flutter,
-      role: 'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
+      role:
+          'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/zcultures/id6747009373",
       androidLink:
@@ -573,10 +576,10 @@ class _HeroSectionState extends State<HeroSection>
       imagePath: 'assets/images/sp1.png',
       title: 'SyncPro App',
       description:
-      "A service management system for handling users, customers, warehouses, parts, service tests, reports, and approvals.",
+          "A service management system for handling users, customers, warehouses, parts, service tests, reports, and approvals.",
       techIcons: FontAwesomeIcons.flutter,
       role:
-      'Handled full software development life cycle individually – Research requirement analysis,designed UI/UX, generate UML diagrams, structured database and create apis plus complete frontend implementation',
+          'Handled full software development life cycle individually – Research requirement analysis,designed UI/UX, generate UML diagrams, structured database and create apis plus complete frontend implementation',
       platform: "mobile",
       iosLink: "",
       androidLink: "",
@@ -618,10 +621,10 @@ class _HeroSectionState extends State<HeroSection>
       imagePath: 'assets/images/hikerpp.png',
       title: 'Hiker(native/hybrid)',
       description:
-      "A hiking management app for creating, tracking, and managing hikes with observations, search, and data reset features.",
+          "A hiking management app for creating, tracking, and managing hikes with observations, search, and data reset features.",
       techIcons: FontAwesomeIcons.mobile,
       role:
-      'Frontend Developer – designed UI, implemented features,testing export apk',
+          'Frontend Developer – designed UI, implemented features,testing export apk',
       platform: "mobile",
       iosLink: "",
       androidLink: "",
@@ -734,7 +737,6 @@ class _HeroSectionState extends State<HeroSection>
         "Structuring scalable data models for memberships and payments"
       ],
     ),
-
   ];
 
   bool _isProfilePrecached = false;
