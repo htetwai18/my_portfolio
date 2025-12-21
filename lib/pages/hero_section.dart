@@ -980,14 +980,24 @@ class _HeroSectionState extends State<HeroSection>
     }
   }
 
-  void _downloadResume() {
-    final uri = Uri.parse(
-      '${Uri.base.origin}${Uri.base.path}assets/resume/Htet_Wai_Lwin_Resume.pdf',
-    );
+  // void _downloadResume() {
+  //   final uri = Uri.parse(
+  //     '${Uri.base.origin}${Uri.base.path}assets/resume/Htet_Wai_Lwin_Resume.pdf',
+  //   );
+  //
+  //   html.AnchorElement(href: uri.toString())
+  //     ..setAttribute('download', 'Htet_Wai_Lwin_Resume.pdf')
+  //     ..click();
+  // }
 
-    html.AnchorElement(href: uri.toString())
-      ..setAttribute('download', 'Htet_Wai_Lwin_Resume.pdf')
-      ..click();
+  Future<void> _downloadResume() async {
+    final Uri uri = Uri.parse('https://www.whatifsolutions.my/');
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw "Cannot launch url";
+    }
   }
 
 
