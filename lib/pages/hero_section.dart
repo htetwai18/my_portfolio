@@ -991,7 +991,7 @@ class _HeroSectionState extends State<HeroSection>
   // }
 
   Future<void> _downloadResume() async {
-    final Uri uri = Uri.parse('https://www.whatifsolutions.my/');
+    final Uri uri = Uri.parse('https://drive.google.com/file/d/1YHUTzEtqxcwILWsvZhVN8lYZmwU3gAYE/view?usp=sharing');
     if (!await launchUrl(
       uri,
       mode: LaunchMode.externalApplication,
