@@ -981,13 +981,15 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   void _downloadResume() {
-    const String assetPath =
-        'assets/resume/Htet_Wai_Lwin_Resume.pdf';
+    final uri = Uri.parse(
+      '${Uri.base.origin}${Uri.base.path}assets/resume/Htet_Wai_Lwin_Resume.pdf',
+    );
 
-    html.AnchorElement(href: assetPath)
+    html.AnchorElement(href: uri.toString())
       ..setAttribute('download', 'Htet_Wai_Lwin_Resume.pdf')
       ..click();
   }
+
 
 
   @override
