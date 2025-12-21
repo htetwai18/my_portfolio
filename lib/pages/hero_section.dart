@@ -163,7 +163,7 @@ class _HeroSectionState extends State<HeroSection>
           'Highly Secured Real Estate Application with biometric authentications for managing properties, agents, clients, and transactions efficiently.',
       techIcons: FontAwesomeIcons.flutter,
       role:
-          'Co-developed the mobile application with a fellow senior mobile developer',
+          'Collaborated with a senior mobile developer to implement required features, refine UI/UX, integrate backend APIs, and polish the application.',
       platform: "mobile",
       iosLink: "",
       androidLink: "",
@@ -205,7 +205,7 @@ class _HeroSectionState extends State<HeroSection>
           'A smart home control app that connects users with their IoT devices, allowing them to monitor and manage appliances remotely.',
       techIcons: FontAwesomeIcons.flutter,
       role:
-          'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
+          'Flutter Developer responsible for maintaining and refactoring legacy code, improving device connectivity reliability, and optimizing real-time control performance.',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/digicraft-home/id6443853027",
       androidLink:
@@ -247,7 +247,7 @@ class _HeroSectionState extends State<HeroSection>
           'A global AI-powered social commerce platform that leverages an O2O strategy to connect brands, creators, and nightlife venues for engagement.',
       techIcons: FontAwesomeIcons.flutter,
       role:
-          'Maintenance, Code refactoring of legacy project, bug fixing on spot, adding new features as required',
+          'Flutter Developer focused on legacy code refactoring, feature enhancements, performance optimization, and production bug fixes for live iOS and Android releases.',
       platform: "mobile",
       iosLink: "https://apps.apple.com/th/app/zcultures/id6747009373",
       androidLink:
@@ -270,6 +270,385 @@ class _HeroSectionState extends State<HeroSection>
         "Fixing UI inconsistencies and optimizing state management with Provider",
         "Resolving performance issues in real-time feed and recommendation rendering",
         "Enhancing app stability and scalability within the MVC + Flutx structure"
+      ],
+    ),
+    Project(
+      status: "Live on Google Play/App Store",
+      company: "My Day Thu Kywal.co ltd",
+      images: [
+        "assets/images/weday_1.png",
+        "assets/images/weday_2.png",
+        "assets/images/weday_3.png",
+        "assets/images/weday_4.png",
+        "assets/images/weday_5.png",
+      ],
+      imagePath: 'assets/images/weday_main.png',
+      title: 'Weday',
+      description:
+          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Flutter Developer delivering core social features, integrating live-streaming services, and optimizing real-time interaction and streaming performance.',
+      platform: "mobile",
+      iosLink:
+          "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Riverpod"},
+        {"Backend": "Java"},
+      ],
+      psAndKf: [
+        "Live streaming feature enabling vendors to sell products online in real-time",
+        "Integrated comments with nested replies for structured discussions",
+        "Reactions system to boost user engagement during posts and streams",
+        "Seamless Agora SDK integration for stable and low-latency video streaming"
+      ],
+      challenges: [
+        "Integrating and troubleshooting Agora SDK with Flutter for smooth streaming",
+        "Designing scalable comments and nested replies structure for real-time interaction",
+        "Managing complex state with Riverpod for dynamic social features",
+        "Ensuring low-latency video and chat synchronization during live sales"
+      ],
+    ),
+    Project(
+      status: "Live on Google Play",
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/suzuki_1.png",
+        "assets/images/suzuki_2.png",
+        "assets/images/suzuki_3.png",
+        "assets/images/suzuki_4.png",
+        "assets/images/suzuki_5.png",
+      ],
+      imagePath: 'assets/images/suzuki_main.png',
+      title: 'Suzuki Smart Order',
+      description:
+          'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Flutter Developer and mobile team lead responsible for core framework development, API integrations, and real-time order notification workflows.',
+      platform: "mobile",
+      iosLink: "",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.kwinhwl.suzuki_project&pcampaignid=web_share",
+      webLink: "",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
+      psAndKf: [
+        "Streamlined product ordering with an intuitive mobile interface",
+        "Smart notifications to keep dealers updated on order status",
+        "Secure Google Sign-In for simplified authentication",
+        "Real-time catalog browsing and stock availability"
+      ],
+      challenges: [
+        "Ensuring seamless data synchronization between mobile app and backend",
+        "Implementing MVVM architecture for scalable and maintainable code",
+        "Integrating secure authentication with Google Sign-In",
+        "Optimizing app performance for large product catalogs and multiple dealers"
+      ],
+    ),
+    Project(
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/arfi_1.png",
+        "assets/images/arfi_2.png",
+        "assets/images/arfi_3.png",
+        "assets/images/arfi_4.png",
+        "assets/images/arfi_5.png",
+        "assets/images/arfi_6.png",
+      ],
+      imagePath: 'assets/images/arfi_main.png',
+      title: 'ARFI Ecommerce',
+      description:
+          'E-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Flutter Developer responsible for building end-to-end ecommerce workflows, optimizing checkout performance, and implementing offline-ready state management.',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Archive Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "PHP"},
+      ],
+      psAndKf: [
+        "Product catalog with categories and detailed product views",
+        "Customer order management with real-time status updates",
+        "Secure online payments and transaction handling",
+        "Brand owner dashboard for managing inventory and sales"
+      ],
+      challenges: [
+        "Designing a scalable MVVM architecture for maintainability",
+        "Integrating secure payment gateways with backend Node.js APIs",
+        "Managing real-time order updates between customers and brand owners",
+        "Optimizing performance for large product catalogs with images"
+      ],
+    ),
+    Project(
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/wallet_1.png",
+        "assets/images/wallet_2.png",
+        "assets/images/wallet_3.png",
+        "assets/images/wallet_4.png",
+        "assets/images/wallet_5.png",
+      ],
+      imagePath: 'assets/images/dr_rej_main.png',
+      title: 'Dr Rejvue Clinic Membership',
+      description:
+          'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Flutter Developer delivering membership, booking, and loyalty features with real-time synchronization and offline-first data handling.',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Archive Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
+      psAndKf: [
+        "Subscription management for clinic patients with tier-based plans",
+        "Loyalty points system to earn, track, and redeem rewards",
+        "Real-time updates on membership status and clinic services",
+        "Seamless integration with backend APIs for patient data and transactions"
+      ],
+      challenges: [
+        "Implementing a flexible MVVM architecture for membership features",
+        "Developing a secure and scalable points/rewards system",
+        "Synchronizing patient membership data in real time with Node.js backend",
+        "Optimizing performance while handling large patient data and transactions"
+      ],
+    ),
+    Project(
+      company: "Kwin Technologies.co ltd",
+      images: [
+        "assets/images/hrm_1.png",
+        "assets/images/hrm_2.png",
+        "assets/images/hrm_3.png",
+        "assets/images/hrm_4.png",
+        "assets/images/hrm_5.png",
+      ],
+      imagePath: 'assets/images/hrm_main.png',
+      title: 'Kwin HR Management',
+      description:
+          'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Flutter Developer who independently designed and built the mobile application, delivering attendance tracking and payroll visibility features.',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Internal use application",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Provider"},
+        {"Backend": "Node JS"},
+      ],
+      psAndKf: [
+        "Employee management with detailed profiles and role-based access",
+        "Leave request and approval workflow with real-time notifications",
+        "Performance tracking and evaluation tools for HR departments",
+        "Seamless integration with backend APIs for centralized HR data"
+      ],
+      challenges: [
+        "Designing scalable MVVM architecture for complex HR workflows",
+        "Implementing secure role-based access for employees and HR managers",
+        "Synchronizing employee data and leave requests in real time",
+        "Optimizing performance with large datasets of employee records"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/sp1.png",
+        "assets/images/sp2.png",
+        "assets/images/sp3.png",
+        "assets/images/sp4.png",
+        "assets/images/sp5.png",
+        "assets/images/sp6.png",
+        "assets/images/sp7.png",
+      ],
+      imagePath: 'assets/images/sp1.png',
+      title: 'SyncPro App',
+      description:
+          "A service management system for handling users, customers, warehouses, parts, service tests, reports, and approvals.",
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Individually handled the full software development lifecycle, including requirements analysis, UI/UX design, UML modeling, database structuring, backend API development, and complete Flutter frontend implementation.',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://youtu.be/rUdZglFv0a8",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "MVP"},
+        {"Backend": "PHP/Laravel"},
+      ],
+      psAndKf: [
+        "Admin, engineer, and customer role-based dashboards",
+        "User, customer, warehouse, and parts management",
+        "Service test creation with parts usage tracking",
+        "Test reporting, review, approval, and invoice generation"
+      ],
+      challenges: [
+        "Implementing multi-role workflows with approval logic",
+        "Managing dependencies between customers, buildings, and services",
+        "Ensuring data consistency across tests, parts, and reports",
+        "Designing clear status transitions from pending to approved"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/hiker1.png",
+        "assets/images/hiker2.png",
+        "assets/images/hiker3.png",
+        "assets/images/hiker4.png",
+        "assets/images/hiker5.png",
+        "assets/images/hiker6.png",
+        "assets/images/hiker7.png",
+        "assets/images/hiker8.png",
+        "assets/images/hiker9.png",
+        "assets/images/hiker10.png",
+      ],
+      imagePath: 'assets/images/hikerpp.png',
+      title: 'Hiker(native/hybrid)',
+      description:
+          "A hiking management app for creating, tracking, and managing hikes with observations, search, and data reset features.",
+      techIcons: FontAwesomeIcons.mobile,
+      role:
+          'Frontend Developer responsible for UI design, feature implementation, testing, and APK export for both native and hybrid versions of the application.',
+      platform: "mobile",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://youtu.be/rUdZglFv0a8",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Kotlin/React Native"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Nil"},
+        {"Backend": "Nil"},
+      ],
+      psAndKf: [
+        "Create, edit, delete, and manage hiking adventures",
+        "Observation tracking for each hike",
+        "Search and filter hikes by name and location",
+        "Local data storage with reset and refresh options"
+      ],
+      challenges: [
+        "Designing flexible data models for hikes and observations",
+        "Implementing efficient search and filtering logic",
+        "Managing local data persistence and reset operations",
+        "Maintaining feature parity between native and hybrid versions"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/ewsd1.png",
+        "assets/images/ewsd2.png",
+        "assets/images/ewsd3.png",
+        "assets/images/ewsd4.png",
+        "assets/images/ewsd5.png",
+        "assets/images/ewsd6.png",
+        "assets/images/ewsd7.png",
+        "assets/images/ewsd8.png",
+        "assets/images/ewsd9.png",
+        "assets/images/ewsd10.png",
+        "assets/images/ewsd11.png",
+      ],
+      imagePath: 'assets/images/ewsd1.png',
+      title: 'Article Contribution',
+      description:
+          'A system for managing academic article submissions with role-based access for students, faculty coordinators, admins, and marketing managers.',
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Frontend Developer responsible for UI design, feature implementation, API integration, and project deployment using Flutter for web.',
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://www.youtube.com/watch?v=VE5D7_2tWiA",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Get X"},
+        {"Backend": "PHP"},
+      ],
+      psAndKf: [
+        "Role-based academic article submission and management system",
+        "Student article upload with document and image support",
+        "Faculty review, commenting, approval, and publication workflow",
+        "Automated email notifications and submission deadline management"
+      ],
+      challenges: [
+        "Implementing secure role-based access for multiple user types",
+        "Designing scalable workflows for submission, review, and approval",
+        "Handling document uploads, previews, and resubmissions",
+        "Ensuring reliable email notifications and status synchronization"
+      ],
+    ),
+    Project(
+      company: "Greenwich University",
+      images: [
+        "assets/images/sdm1.png",
+        "assets/images/sdm2.png",
+        "assets/images/sdm3.png",
+        "assets/images/sdm4.png",
+        "assets/images/sdm5.png",
+        "assets/images/sdm6.png",
+        "assets/images/sdm7.png",
+      ],
+      imagePath: 'assets/images/sdm1.png',
+      title: 'Shady Momentum',
+      description:
+          "A two-panel gym management system where admins manage users, classes, memberships, and payments, and clients book programs and classes.",
+      techIcons: FontAwesomeIcons.flutter,
+      role:
+          'Frontend Developer responsible for designing user interfaces, implementing role-based features, integrating backend APIs, and deploying the web application.',
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      webLink: "https://youtu.be/rUdZglFv0a8",
+      status: "University Project",
+      techStacks: [
+        {"Framework/Language": "Flutter/Dart"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Get X"},
+        {"Backend": "PHP"},
+      ],
+      psAndKf: [
+        "Admin and client dashboards with role-based access",
+        "User, class, membership, and payment management",
+        "Class and program booking system for clients",
+        "Membership tracking and payment status management"
+      ],
+      challenges: [
+        "Designing clear separation between admin and client panels",
+        "Implementing secure role-based authentication and authorization",
+        "Managing real-time class availability and booking conflicts",
+        "Structuring scalable data models for memberships and payments"
       ],
     ),
 
@@ -358,385 +737,6 @@ class _HeroSectionState extends State<HeroSection>
     //     "Coordinating development with a team under tight project deadlines."
     //   ],
     // ),
-    Project(
-      status: "Live on Google Play/App Store",
-      company: "My Day Thu Kywal.co ltd",
-      images: [
-        "assets/images/weday_1.png",
-        "assets/images/weday_2.png",
-        "assets/images/weday_3.png",
-        "assets/images/weday_4.png",
-        "assets/images/weday_5.png",
-      ],
-      imagePath: 'assets/images/weday_main.png',
-      title: 'Weday',
-      description:
-          'A social app with features for posts, comments, nested replies, reactions, and live streaming for online vendor live sales powered by Agora SDK.',
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Developed live streaming feature for online selling, integrated Agora SDK, implemented comments with nested replies and reactions',
-      platform: "mobile",
-      iosLink:
-          "https://apps.apple.com/th/app/weday-social-commerce/id6743930076",
-      androidLink:
-          "https://play.google.com/store/apps/details?id=com.markethub.businesscenter&pcampaignid=web_share",
-      webLink: "",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Riverpod"},
-        {"Backend": "Java"},
-      ],
-      psAndKf: [
-        "Live streaming feature enabling vendors to sell products online in real-time",
-        "Integrated comments with nested replies for structured discussions",
-        "Reactions system to boost user engagement during posts and streams",
-        "Seamless Agora SDK integration for stable and low-latency video streaming"
-      ],
-      challenges: [
-        "Integrating and troubleshooting Agora SDK with Flutter for smooth streaming",
-        "Designing scalable comments and nested replies structure for real-time interaction",
-        "Managing complex state with Riverpod for dynamic social features",
-        "Ensuring low-latency video and chat synchronization during live sales"
-      ],
-    ),
-    Project(
-      status: "Live on Google Play",
-      company: "Kwin Technologies.co ltd",
-      images: [
-        "assets/images/suzuki_1.png",
-        "assets/images/suzuki_2.png",
-        "assets/images/suzuki_3.png",
-        "assets/images/suzuki_4.png",
-        "assets/images/suzuki_5.png",
-      ],
-      imagePath: 'assets/images/suzuki_main.png',
-      title: 'Suzuki Smart Order',
-      description:
-          'An order management system developed for Suzuki, featuring product catalog, smart notifications, and Google Sign-In for easy access.',
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Led mobile team, Meet with Suzuki clients for analysis,meet with designer to facilitate design and feature compact',
-      platform: "mobile",
-      iosLink: "",
-      androidLink:
-          "https://play.google.com/store/apps/details?id=com.kwinhwl.suzuki_project&pcampaignid=web_share",
-      webLink: "",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "Node JS"},
-      ],
-      psAndKf: [
-        "Streamlined product ordering with an intuitive mobile interface",
-        "Smart notifications to keep dealers updated on order status",
-        "Secure Google Sign-In for simplified authentication",
-        "Real-time catalog browsing and stock availability"
-      ],
-      challenges: [
-        "Ensuring seamless data synchronization between mobile app and backend",
-        "Implementing MVVM architecture for scalable and maintainable code",
-        "Integrating secure authentication with Google Sign-In",
-        "Optimizing app performance for large product catalogs and multiple dealers"
-      ],
-    ),
-    Project(
-      company: "Kwin Technologies.co ltd",
-      images: [
-        "assets/images/arfi_1.png",
-        "assets/images/arfi_2.png",
-        "assets/images/arfi_3.png",
-        "assets/images/arfi_4.png",
-        "assets/images/arfi_5.png",
-        "assets/images/arfi_6.png",
-      ],
-      imagePath: 'assets/images/arfi_main.png',
-      title: 'ARFI Ecommerce',
-      description:
-          'E-commerce platform that enables brand owners to showcase products, manage customer orders, and handle online transactions seamlessly.',
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "",
-      status: "Archive Project",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "PHP"},
-      ],
-      psAndKf: [
-        "Product catalog with categories and detailed product views",
-        "Customer order management with real-time status updates",
-        "Secure online payments and transaction handling",
-        "Brand owner dashboard for managing inventory and sales"
-      ],
-      challenges: [
-        "Designing a scalable MVVM architecture for maintainability",
-        "Integrating secure payment gateways with backend Node.js APIs",
-        "Managing real-time order updates between customers and brand owners",
-        "Optimizing performance for large product catalogs with images"
-      ],
-    ),
-    Project(
-      company: "Kwin Technologies.co ltd",
-      images: [
-        "assets/images/wallet_1.png",
-        "assets/images/wallet_2.png",
-        "assets/images/wallet_3.png",
-        "assets/images/wallet_4.png",
-        "assets/images/wallet_5.png",
-      ],
-      imagePath: 'assets/images/dr_rej_main.png',
-      title: 'Dr Rejvue Clinic Membership',
-      description:
-          'A membership management app for clinic patients to manage subscriptions, earn and redeem points, and access services with real-time updates.',
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "",
-      status: "Archive Project",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "Node JS"},
-      ],
-      psAndKf: [
-        "Subscription management for clinic patients with tier-based plans",
-        "Loyalty points system to earn, track, and redeem rewards",
-        "Real-time updates on membership status and clinic services",
-        "Seamless integration with backend APIs for patient data and transactions"
-      ],
-      challenges: [
-        "Implementing a flexible MVVM architecture for membership features",
-        "Developing a secure and scalable points/rewards system",
-        "Synchronizing patient membership data in real time with Node.js backend",
-        "Optimizing performance while handling large patient data and transactions"
-      ],
-    ),
-    Project(
-      company: "Kwin Technologies.co ltd",
-      images: [
-        "assets/images/hrm_1.png",
-        "assets/images/hrm_2.png",
-        "assets/images/hrm_3.png",
-        "assets/images/hrm_4.png",
-        "assets/images/hrm_5.png",
-      ],
-      imagePath: 'assets/images/hrm_main.png',
-      title: 'Kwin HR Management',
-      description:
-          'A complete HR solution providing employee management, leave requests, and performance tracking in one unified mobile platform.',
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Sole Developer – designed architecture, implemented features, and deployed app end-to-end',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "",
-      status: "Internal use application",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Provider"},
-        {"Backend": "Node JS"},
-      ],
-      psAndKf: [
-        "Employee management with detailed profiles and role-based access",
-        "Leave request and approval workflow with real-time notifications",
-        "Performance tracking and evaluation tools for HR departments",
-        "Seamless integration with backend APIs for centralized HR data"
-      ],
-      challenges: [
-        "Designing scalable MVVM architecture for complex HR workflows",
-        "Implementing secure role-based access for employees and HR managers",
-        "Synchronizing employee data and leave requests in real time",
-        "Optimizing performance with large datasets of employee records"
-      ],
-    ),
-    Project(
-      company: "Greenwich University",
-      images: [
-        "assets/images/sp1.png",
-        "assets/images/sp2.png",
-        "assets/images/sp3.png",
-        "assets/images/sp4.png",
-        "assets/images/sp5.png",
-        "assets/images/sp6.png",
-        "assets/images/sp7.png",
-      ],
-      imagePath: 'assets/images/sp1.png',
-      title: 'SyncPro App',
-      description:
-          "A service management system for handling users, customers, warehouses, parts, service tests, reports, and approvals.",
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Handled full software development life cycle individually – Research requirement analysis,designed UI/UX, generate UML diagrams, structured database and create apis plus complete frontend implementation',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "https://youtu.be/rUdZglFv0a8",
-      status: "University Project",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "MVP"},
-        {"Backend": "PHP/Laravel"},
-      ],
-      psAndKf: [
-        "Admin, engineer, and customer role-based dashboards",
-        "User, customer, warehouse, and parts management",
-        "Service test creation with parts usage tracking",
-        "Test reporting, review, approval, and invoice generation"
-      ],
-      challenges: [
-        "Implementing multi-role workflows with approval logic",
-        "Managing dependencies between customers, buildings, and services",
-        "Ensuring data consistency across tests, parts, and reports",
-        "Designing clear status transitions from pending to approved"
-      ],
-    ),
-    Project(
-      company: "Greenwich University",
-      images: [
-        "assets/images/hiker1.png",
-        "assets/images/hiker2.png",
-        "assets/images/hiker3.png",
-        "assets/images/hiker4.png",
-        "assets/images/hiker5.png",
-        "assets/images/hiker6.png",
-        "assets/images/hiker7.png",
-        "assets/images/hiker8.png",
-        "assets/images/hiker9.png",
-        "assets/images/hiker10.png",
-      ],
-      imagePath: 'assets/images/hikerpp.png',
-      title: 'Hiker(native/hybrid)',
-      description:
-          "A hiking management app for creating, tracking, and managing hikes with observations, search, and data reset features.",
-      techIcons: FontAwesomeIcons.mobile,
-      role:
-          'Frontend Developer – designed UI, implemented features,testing export apk',
-      platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      webLink: "https://youtu.be/rUdZglFv0a8",
-      status: "University Project",
-      techStacks: [
-        {"Framework/Language": "Kotlin/React Native"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Nil"},
-        {"Backend": "Nil"},
-      ],
-      psAndKf: [
-        "Create, edit, delete, and manage hiking adventures",
-        "Observation tracking for each hike",
-        "Search and filter hikes by name and location",
-        "Local data storage with reset and refresh options"
-      ],
-      challenges: [
-        "Designing flexible data models for hikes and observations",
-        "Implementing efficient search and filtering logic",
-        "Managing local data persistence and reset operations",
-        "Maintaining feature parity between native and hybrid versions"
-      ],
-    ),
-    Project(
-      company: "Greenwich University",
-      images: [
-        "assets/images/ewsd1.png",
-        "assets/images/ewsd2.png",
-        "assets/images/ewsd3.png",
-        "assets/images/ewsd4.png",
-        "assets/images/ewsd5.png",
-        "assets/images/ewsd6.png",
-        "assets/images/ewsd7.png",
-        "assets/images/ewsd8.png",
-        "assets/images/ewsd9.png",
-        "assets/images/ewsd10.png",
-        "assets/images/ewsd11.png",
-      ],
-      imagePath: 'assets/images/ewsd1.png',
-      title: 'Article Contribution',
-      description:
-          'A system for managing academic article submissions with role-based access for students, faculty coordinators, admins, and marketing managers.',
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Frontend Developer – designed UI, implemented features,integrated apis, and deployed on Github',
-      platform: "web",
-      iosLink: "",
-      androidLink: "",
-      webLink: "https://www.youtube.com/watch?v=VE5D7_2tWiA",
-      status: "University Project",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Get X"},
-        {"Backend": "PHP"},
-      ],
-      psAndKf: [
-        "Role-based academic article submission and management system",
-        "Student article upload with document and image support",
-        "Faculty review, commenting, approval, and publication workflow",
-        "Automated email notifications and submission deadline management"
-      ],
-      challenges: [
-        "Implementing secure role-based access for multiple user types",
-        "Designing scalable workflows for submission, review, and approval",
-        "Handling document uploads, previews, and resubmissions",
-        "Ensuring reliable email notifications and status synchronization"
-      ],
-    ),
-    Project(
-      company: "Greenwich University",
-      images: [
-        "assets/images/sdm1.png",
-        "assets/images/sdm2.png",
-        "assets/images/sdm3.png",
-        "assets/images/sdm4.png",
-        "assets/images/sdm5.png",
-        "assets/images/sdm6.png",
-        "assets/images/sdm7.png",
-      ],
-      imagePath: 'assets/images/sdm1.png',
-      title: 'Shady Momentum',
-      description:
-          "A two-panel gym management system where admins manage users, classes, memberships, and payments, and clients book programs and classes.",
-      techIcons: FontAwesomeIcons.flutter,
-      role:
-          'Frontend Developer – designed UI, implemented features,integrated apis, and deployed on Github',
-      platform: "web",
-      iosLink: "",
-      androidLink: "",
-      webLink: "https://youtu.be/rUdZglFv0a8",
-      status: "University Project",
-      techStacks: [
-        {"Framework/Language": "Flutter/Dart"},
-        {"Architecture": "MVVM"},
-        {"State Management": "Get X"},
-        {"Backend": "PHP"},
-      ],
-      psAndKf: [
-        "Admin and client dashboards with role-based access",
-        "User, class, membership, and payment management",
-        "Class and program booking system for clients",
-        "Membership tracking and payment status management"
-      ],
-      challenges: [
-        "Designing clear separation between admin and client panels",
-        "Implementing secure role-based authentication and authorization",
-        "Managing real-time class availability and booking conflicts",
-        "Structuring scalable data models for memberships and payments"
-      ],
-    ),
   ];
 
   bool _isProfilePrecached = false;
