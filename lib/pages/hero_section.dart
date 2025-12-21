@@ -981,12 +981,14 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   void _downloadResume() {
-    const String assetPath = "assets/Htet Wai Lwin_Resume.pdf";
+    const String assetPath =
+        'assets/resume/Htet_Wai_Lwin_Resume.pdf';
 
     html.AnchorElement(href: assetPath)
-      ..setAttribute("download", "Htet Wai Lwin_Resume.pdf")
+      ..setAttribute('download', 'Htet_Wai_Lwin_Resume.pdf')
       ..click();
   }
+
 
   @override
   Widget build(BuildContext context) {
