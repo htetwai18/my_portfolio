@@ -981,10 +981,10 @@ class _HeroSectionState extends State<HeroSection>
   }
 
   void _downloadResume() {
-    const String assetPath = "assets/NCCL5_HWL_certificate_1.pdf";
+    const String assetPath = "assets/Htet Wai Lwin_Resume.pdf";
 
     html.AnchorElement(href: assetPath)
-      ..setAttribute("download", "NCCL5_HWL_certificate_1.pdf")
+      ..setAttribute("download", "Htet Wai Lwin_Resume.pdf")
       ..click();
   }
 
