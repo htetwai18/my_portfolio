@@ -934,37 +934,21 @@ class _HeroSectionState extends State<HeroSection>
           url,
           headers: {
             'Content-Type': 'application/json',
-            'Origin': 'https://htetwai18.github.io',
           },
           body: json.encode({
             'service_id': serviceId,
             'template_id': templateId,
-            'public_key': userId,
+            'user_id': userId,
             'template_params': {
               'title': 'Portfolio Contact',
               'name': _nameController.text.trim(),
               'email': _emailController.text.trim(),
+              'time': DateTime.now().minute.toString().trim(),
               'message': _messageController.text.trim(),
             }
           }),
         );
 
-        // final response = await http.post(
-        //   url,
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: json.encode({
-        //     'service_id': serviceId,
-        //     'template_id': templateId,
-        //     'user_id': userId,
-        //     'template_params': {
-        //       'name': _nameController.text,
-        //       'email': _emailController.text,
-        //       'message': _messageController.text,
-        //     }
-        //   }),
-        // );
 
         Navigator.of(context, rootNavigator: true).pop();
 
