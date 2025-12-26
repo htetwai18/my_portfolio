@@ -941,9 +941,10 @@ class _HeroSectionState extends State<HeroSection>
             'template_id': templateId,
             'public_key': userId,
             'template_params': {
-              'from_name': _nameController.text,
-              'from_email': _emailController.text,
-              'message': _messageController.text,
+              'title': 'Portfolio Contact',
+              'name': _nameController.text.trim(),
+              'email': _emailController.text.trim(),
+              'message': _messageController.text.trim(),
             }
           }),
         );
