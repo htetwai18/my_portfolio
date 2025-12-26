@@ -934,18 +934,36 @@ class _HeroSectionState extends State<HeroSection>
           url,
           headers: {
             'Content-Type': 'application/json',
+            'Origin': 'https://htetwai18.github.io',
           },
           body: json.encode({
             'service_id': serviceId,
             'template_id': templateId,
-            'user_id': userId,
+            'public_key': userId,
             'template_params': {
-              'name': _nameController.text,
-              'email': _emailController.text,
+              'from_name': _nameController.text,
+              'from_email': _emailController.text,
               'message': _messageController.text,
             }
           }),
         );
+
+        // final response = await http.post(
+        //   url,
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        //   body: json.encode({
+        //     'service_id': serviceId,
+        //     'template_id': templateId,
+        //     'user_id': userId,
+        //     'template_params': {
+        //       'name': _nameController.text,
+        //       'email': _emailController.text,
+        //       'message': _messageController.text,
+        //     }
+        //   }),
+        // );
 
         Navigator.of(context, rootNavigator: true).pop();
 
@@ -991,7 +1009,8 @@ class _HeroSectionState extends State<HeroSection>
   // }
 
   Future<void> _downloadResume() async {
-    final Uri uri = Uri.parse('https://drive.google.com/file/d/1BJt7LL-Qt4YgSnedOmzWu-OhozmDbg8a/view?usp=sharing');
+    final Uri uri = Uri.parse(
+        'https://drive.google.com/file/d/1BJt7LL-Qt4YgSnedOmzWu-OhozmDbg8a/view?usp=sharing');
     if (!await launchUrl(
       uri,
       mode: LaunchMode.externalApplication,
@@ -999,8 +1018,6 @@ class _HeroSectionState extends State<HeroSection>
       throw "Cannot launch url";
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
