@@ -92,7 +92,7 @@ class _HeroSectionState extends State<HeroSection>
     Experience(
       title: 'Flutter Developer',
       company: 'Kwin Technologies',
-      duration: 'Sep 2022 - Apr 2025',
+      duration: 'Nov 2021 - Apr 2025',
       responsibilities: [
         "Delivered end-to-end Flutter development across revenue-generating ecommerce, retail POS, clinic membership, and internal management applications, supporting multiple key client businesses simultaneously",
         "Translated business requirements from brand owners, clinic operators, shop owners, and management teams into scalable mobile workflows, reducing requirement clarification cycles and delivery delays",
@@ -165,9 +165,9 @@ class _HeroSectionState extends State<HeroSection>
       role:
           'Collaborated with a senior mobile developer to implement required features, refine UI/UX, integrate backend APIs, and polish the application.',
       platform: "mobile",
-      iosLink: "",
-      androidLink: "",
-      // webLink: "https://admin.bluescreen.site/",
+      iosLink: "https://apps.apple.com/th/app/jade-property/id6752909746",
+      androidLink:
+          "https://play.google.com/store/apps/details?id=com.realestate.jadeproperty&pcampaignid=web_share",
       webLink: "",
       status: "Not launched yet",
       techStacks: [
@@ -270,6 +270,89 @@ class _HeroSectionState extends State<HeroSection>
         "Fixing UI inconsistencies and optimizing state management with Provider",
         "Resolving performance issues in real-time feed and recommendation rendering",
         "Enhancing app stability and scalability within the MVC + Flutx structure"
+      ],
+    ),
+    Project(
+      company: "Whatif Solutions Sdn Bhd",
+      images: [
+        "assets/images/tiger_1.png",
+        "assets/images/tiger_2.png",
+        "assets/images/tiger_3.png",
+        "assets/images/tiger_4.png",
+        "assets/images/tiger_5.png",
+      ],
+      imagePath: 'assets/images/tiger_main.png',
+      title: 'Tiger Backoffice',
+      description:
+          'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
+      techIcons: FontAwesomeIcons.laravel,
+      role:
+          'Develop full stack dashboard together under a lead senior fullstack developer',
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Internal use application",
+      techStacks: [
+        {"Framework/Language": "Laravel/PHP"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Controller"},
+        {"Backend": "PostGraphQl"},
+      ],
+      psAndKf: [
+        "Centralized management of financial transactions and user accounts for online casinos.",
+        "Streamlined admin workflows by providing all modules in a single dashboard.",
+        "User account management including roles, permissions, and settings.",
+        "Detailed log tracking and activity monitoring for security compliance.",
+        "Modular dashboard design for easy navigation between different backoffice sections."
+      ],
+      challenges: [
+        "Integrating multiple financial APIs securely and efficiently.",
+        "Ensuring real-time updates for transactions and banking data.",
+        "Maintaining high security and access control for sensitive casino data.",
+        "Coordinating development with a team under tight project deadlines."
+      ],
+    ),
+    Project(
+      company: "Whatif Solutions Sdn Bhd",
+      images: [
+        "assets/images/infinity_1.png",
+        "assets/images/infinity_2.png",
+        "assets/images/infinity_3.png",
+        "assets/images/infinity_4.png",
+        "assets/images/infinity_5.png",
+        "assets/images/infinity_6.png",
+      ],
+      imagePath: 'assets/images/infinity_main.jpg',
+      title: 'Infinity 688 Backoffice',
+      description:
+          'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
+      techIcons: FontAwesomeIcons.laravel,
+      role:
+          'Develop full stack dashboard together under a lead senior fullstack developer',
+      platform: "web",
+      iosLink: "",
+      androidLink: "",
+      webLink: "",
+      status: "Internal use application",
+      techStacks: [
+        {"Framework/Language": "Laravel/PHP"},
+        {"Architecture": "MVVM"},
+        {"State Management": "Controller"},
+        {"Backend": "PostGraphQl"},
+      ],
+      psAndKf: [
+        "Centralized management of financial transactions and user accounts for online casinos.",
+        "Streamlined admin workflows by providing all modules in a single dashboard.",
+        "User account management including roles, permissions, and settings.",
+        "Detailed log tracking and activity monitoring for security compliance.",
+        "Modular dashboard design for easy navigation between different backoffice sections."
+      ],
+      challenges: [
+        "Integrating multiple financial APIs securely and efficiently.",
+        "Ensuring real-time updates for transactions and banking data.",
+        "Maintaining high security and access control for sensitive casino data.",
+        "Coordinating development with a team under tight project deadlines."
       ],
     ),
     Project(
@@ -651,92 +734,6 @@ class _HeroSectionState extends State<HeroSection>
         "Structuring scalable data models for memberships and payments"
       ],
     ),
-
-    // Project(
-    //   company: "Whatif Solutions Sdn Bhd",
-    //   images: [
-    //     "assets/images/tiger_1.png",
-    //     "assets/images/tiger_2.png",
-    //     "assets/images/tiger_3.png",
-    //     "assets/images/tiger_4.png",
-    //     "assets/images/tiger_5.png",
-    //   ],
-    //   imagePath: 'assets/images/tiger_main.png',
-    //   title: 'Tiger Backoffice',
-    //   description:
-    //       'A backoffice management system for online casinos, providing modules for banking, transactions, user settings, and log tracking.',
-    //   techIcons: FontAwesomeIcons.laravel,
-    //   role:
-    //       'Develop full stack dashboard together under a lead senior fullstack developer',
-    //   platform: "web",
-    //   iosLink: "",
-    //   androidLink: "",
-    //   // webLink: "https://admin.bluescreen.site/",
-    //   webLink: "",
-    //   status: "Internal use application",
-    //   techStacks: [
-    //     {"Framework/Language": "Laravel/PHP"},
-    //     {"Architecture": "MVVM"},
-    //     {"State Management": "Controller"},
-    //     {"Backend": "PostGraphQl"},
-    //   ],
-    //   psAndKf: [
-    //     "Centralized management of financial transactions and user accounts for online casinos.",
-    //     "Streamlined admin workflows by providing all modules in a single dashboard.",
-    //     "User account management including roles, permissions, and settings.",
-    //     "Detailed log tracking and activity monitoring for security compliance.",
-    //     "Modular dashboard design for easy navigation between different backoffice sections."
-    //   ],
-    //   challenges: [
-    //     "Integrating multiple financial APIs securely and efficiently.",
-    //     "Ensuring real-time updates for transactions and banking data.",
-    //     "Maintaining high security and access control for sensitive casino data.",
-    //     "Coordinating development with a team under tight project deadlines."
-    //   ],
-    // ),
-    // Project(
-    //   company: "Whatif Solutions Sdn Bhd",
-    //   images: [
-    //     "assets/images/infinity_1.png",
-    //     "assets/images/infinity_2.png",
-    //     "assets/images/infinity_3.png",
-    //     "assets/images/infinity_4.png",
-    //     "assets/images/infinity_5.png",
-    //     "assets/images/infinity_6.png",
-    //   ],
-    //   imagePath: 'assets/images/infinity_main.jpg',
-    //   title: 'Infinity 688 Backoffice',
-    //   description:
-    //       'A backoffice solution for casino operators, designed for secure transaction handling, banking integration, and operational monitoring.',
-    //   techIcons: FontAwesomeIcons.laravel,
-    //   role:
-    //       'Develop full stack dashboard together under a lead senior fullstack developer',
-    //   platform: "web",
-    //   iosLink: "",
-    //   androidLink: "",
-    //   webLink: "",
-    //   status: "Internal use application",
-    //   // webLink: "https://mmk.infinitynow.biz/login",
-    //   techStacks: [
-    //     {"Framework/Language": "Laravel/PHP"},
-    //     {"Architecture": "MVVM"},
-    //     {"State Management": "Controller"},
-    //     {"Backend": "PostGraphQl"},
-    //   ],
-    //   psAndKf: [
-    //     "Centralized management of financial transactions and user accounts for online casinos.",
-    //     "Streamlined admin workflows by providing all modules in a single dashboard.",
-    //     "User account management including roles, permissions, and settings.",
-    //     "Detailed log tracking and activity monitoring for security compliance.",
-    //     "Modular dashboard design for easy navigation between different backoffice sections."
-    //   ],
-    //   challenges: [
-    //     "Integrating multiple financial APIs securely and efficiently.",
-    //     "Ensuring real-time updates for transactions and banking data.",
-    //     "Maintaining high security and access control for sensitive casino data.",
-    //     "Coordinating development with a team under tight project deadlines."
-    //   ],
-    // ),
   ];
 
   bool _isProfilePrecached = false;
@@ -949,7 +946,6 @@ class _HeroSectionState extends State<HeroSection>
           }),
         );
 
-
         Navigator.of(context, rootNavigator: true).pop();
 
         if (response.statusCode == 200) {
@@ -995,7 +991,7 @@ class _HeroSectionState extends State<HeroSection>
 
   Future<void> _downloadResume() async {
     final Uri uri = Uri.parse(
-        'https://drive.google.com/file/d/1jeTfp21HTbk-OMPSdjBkQ79V-UNYnlbm/view?usp=sharing');
+        'https://drive.google.com/file/d/10ZCoR_1gn257NKQz_ye60xQUstTuka_c/view?usp=sharing');
     if (!await launchUrl(
       uri,
       mode: LaunchMode.externalApplication,
