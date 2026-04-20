@@ -991,7 +991,7 @@ class _HeroSectionState extends State<HeroSection>
 
   Future<void> _downloadResume() async {
     final Uri uri = Uri.parse(
-        'https://drive.google.com/file/d/10ZCoR_1gn257NKQz_ye60xQUstTuka_c/view?usp=sharing');
+        'https://drive.google.com/file/d/10SQc1icmqwmQA0lle--uJYxCMO5FkwvQ/view?usp=sharing');
     if (!await launchUrl(
       uri,
       mode: LaunchMode.externalApplication,
@@ -1221,7 +1221,7 @@ class _HeroSectionState extends State<HeroSection>
                                   ),
                                   const SizedBox(height: 32),
                                   Text(
-                                    "I'm a passionate Mobile developer with a focus on creating beautiful and functional cross-platform applications. I have over 3 years of experience in mobile app development, specializing in Flutter and Dart.",
+                                    "I'm a passionate Mobile developer with a focus on creating beautiful and functional cross-platform applications. I have over 4 years of experience in mobile app development, specializing in Flutter and Dart.",
                                     style: GoogleFonts.poppins(
                                       fontSize: isDesktop ? 16 : 12,
                                       color: Colors.white,
